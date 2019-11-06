@@ -1,7 +1,8 @@
-# SEG-Lab-Project
+# SEG-Lab-Project - Hello World!!!
 
 This is the lab project for team Reykjavik.
 
-Team Members:
+Our brilliant Team Members:
 >Kristin
 >Harald
+>Uri ;) 
