@@ -1,1 +1,1 @@
-// index
+// Common functions used throughout project

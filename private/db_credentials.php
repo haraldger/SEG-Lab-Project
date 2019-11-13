@@ -1,1 +1,1 @@
-// index
+// File necessary for establishing SQL connection

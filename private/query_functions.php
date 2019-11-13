@@ -1,1 +1,1 @@
-// index
+// Functions useful for querying SQL

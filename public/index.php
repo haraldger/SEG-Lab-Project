@@ -1,1 +1,1 @@
-// index 
+// Homepage of the project
