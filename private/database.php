@@ -1,1 +1,1 @@
-// index
+// File necessary for SQL and database management
