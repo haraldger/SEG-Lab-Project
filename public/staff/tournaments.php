@@ -29,13 +29,14 @@
         </tr>
         <?php 
             $query = "SELECT * FROM tournaments";
+			$connection = db_connect();
             $result_set = mysqli_query($connection, $query);
     
             while($tournaments = mysqli_fetch_assoc($result_set)){
                 echo "<tr>";
-                    echo "<td>".$tournaments["id"]."</td>";
-                    echo "<td>".$tounrnaments["signup"]."</td>";
-                    echo "<td> <a href=tournamentsEdit.php?id=".$tournmanets["id"].">Edit</td>";
+                    echo "<td>".$tournaments["tournamentID"]."</td>";
+                    echo "<td>".$tounrnaments["signupDeadline"]."</td>";
+                    echo "<td> <a href=tournamentsEdit.php?id=".$tournmanets["tournamentID"].">Edit</td>";
                     //echo "<td> <a href="?delete=$tournamnets["id"]">Delete</td>";
                 echo "</tr>";
             }
@@ -49,5 +50,5 @@
 
 <?php 
     mysqli_free_result($result_set);
-    mysqli_close($connection);
+    db_disconnect($connection)
 ?>

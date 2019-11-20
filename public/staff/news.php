@@ -1,4 +1,4 @@
-<?php require_once('../../private/shared/initialise.php'); ?>
+<?php require_once('../../private/initialise.php'); ?>
 
 <!doctype html>
 
@@ -34,17 +34,18 @@
         </tr>
         <?php 
             $query = "SELECT * FROM news";
+			$connection = db_connect();
             $result_set = mysqli_query($connection, $query);
     
             while($news = mysqli_fetch_assoc($result_set)){
                 echo "<tr>";
-                    echo "<td>".$news["id"]."</td>";
+                    echo "<td>".$news["newsID"]."</td>";
                     echo "<td>".$news["title"]."</td>";
-                    echo "<td>".$news["author"]."</td>";
+                    echo "<td>".$news["authorID"]."</td>";
                     echo "<td>".$news["description"]."</td>";
                     echo "<td>".$news["releaseDate"]."</td>";
                     echo "<td>".$news["expiryDate"]."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$news["id"].">Edit</td>";
+                    echo "<td> <a href=newsEdit.php?id=".$news["newsID"].">Edit</td>";
                     //echo "<td> <a href="?delete=$news["id"]">Delete</td>";
                 echo "</tr>";
             }
@@ -58,5 +59,5 @@
 
 <?php 
     mysqli_free_result($result_set);
-    mysqli_close($connection);
+    db_disconnect($connection)
 ?>

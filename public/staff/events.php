@@ -26,25 +26,26 @@
         <tr>
             <th>Event ID</th>
             <th>Name</th>
-            <th>Owner ID</th>
             <th>Description</th>
+            <th>Event Date</th>
             <th>Release Date</th>
             <th>Expiry Date</th>
             
         </tr>
         <?php 
-            $query = "SELECT * FROM events";
+            $query = "SELECT * FROM societyEvents";
+			$connection = db_connect();
             $result_set = mysqli_query($connection, $query);
     
             while($events = mysqli_fetch_assoc($result_set)){
                 echo "<tr>";
-                    echo "<td>".$events["id"]."</td>";
+                    echo "<td>".$events["eventID"]."</td>";
                     echo "<td>".$events["name"]."</td>";
-                    echo "<td>".$events["ownerId"]."</td>";
                     echo "<td>".$events["description"]."</td>";
+                    echo "<td>".$events["eventDate"]."</td>";
                     echo "<td>".$events["releaseDate"]."</td>";
                     echo "<td>".$events["expiryDate"]."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$events["id"].">Edit</td>";
+                    echo "<td> <a href=newsEdit.php?id=".$events["eventID"].">Edit</td>";
                     //echo "<td> <a href="?delete=$events["id"]">Delete</td>";
                 echo "</tr>";
             }
@@ -58,5 +59,5 @@
 
 <?php 
     mysqli_free_result($result_set);
-    mysqli_close($connection);
+    db_disconnect($connection)
 ?>
