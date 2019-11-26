@@ -1,18 +1,19 @@
-// File used as top of all webpages
-// Mostly html code
+<?php
+  if(!isset($page_title)) { $page_title = 'KCL Chess Society'; }
+?>
 
 <!doctype html>
 
 <html lang="en">
   <head>
-    <title>Welcome to KCLSU</title>
+    <title><?php echo h($page_title); ?></title>
     <meta charset="utf-8">
    <!-- needs link to css -->
   </head>
 
   <body>
     <header>
-      <h1>KCLSU</h1>
+      <h1>KCL Chess Society</h1>
     </header>
 <!-- needs navigation links  -->
 
