@@ -8,15 +8,14 @@ if(is_post_request()) {
   $news['title'] = $_POST['title'] ?? '';
   $news['authorID'] = $_POST['authorID'] ?? '';
   $news['description'] = $_POST['description'] ?? '';
-  $news['releasedate'] = $_POST['release_date'] ?? '';
-  $news['expirydate'] = $_POST['expiry_date'] ?? '';
+  $news['releaseDate'] = $_POST['releaseDate'] ?? '';
+  $news['expiryDate'] = $_POST['expiryDate'] ?? '';
   
 
   $new_news = new News($news);
   $result = $new_news->create();
   
   if($result == false){
-	echo $new_news->errors[0];
   }
   else{
 	redirect_to(url_for('officer/news.php'));
@@ -28,8 +27,8 @@ if(is_post_request()) {
   $news['title'] = '';
   $news['authorID'] = '';
   $news['description'] = '';
-  $news['release_date'] = '';
-  $news['expiry_date'] = '';
+  $news['releaseDate'] = '';
+  $news['expiryDate'] = '';
 
 }
 
@@ -73,11 +72,11 @@ if(is_post_request()) {
       </dl>
 	  <dl>
         <dt>Release Date</dt>
-        <dd><input type="text" name="release_date" value="<?php echo h($news['release_date']); ?>" /></dd>
+        <dd><input type="datetime-local" name="releaseDate" value="<?php echo h($news['releaseDate']); ?>" /></dd>
       </dl>
 	  <dl>
         <dt>Expiry Date</dt>
-        <dd><input type="text" name="expiry_date" value="<?php echo h($news['expiry_date']); ?>" /></dd>
+        <dd><input type="datetime-local" name="expiryDate" value="<?php echo h($news['expiryDate']); ?>" /></dd>
       </dl>
       <div id="operations">
         <input type="submit" value="Create News" />
