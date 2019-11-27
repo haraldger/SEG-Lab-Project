@@ -22,6 +22,7 @@
         <hr>
         <p>Phone 020 7848 1588
         Email <a href = "mailto: strandhub@kclsu.org">strandhub@kclsu.org</a></p>
+        <a href="http://facebook.com/groups/kclchess">Find Us on Facebook</a> <br><br>
     </div>
     <br>
     <h3>Feeback</h3>
