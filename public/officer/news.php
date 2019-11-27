@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialise.php'); 
 
 include(SHARED_PATH . '/header.php');
-include('../../private/shared/classes/news.class.php');
+include(SHARED_PATH . '/classes/news.class.php');
 ?>
 
 
@@ -36,12 +36,13 @@ include('../../private/shared/classes/news.class.php');
             <th>Description</th>
             <th>Release Date</th>
             <th>Expiry Date</th>
-            
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
         </tr>
         <?php 
             $query = "SELECT * FROM news";
             $result_set = News::find_by_sql($query);
-    
+			
             foreach($result_set as $news){
                 echo "<tr>";
                     echo "<td>".$news->id."</td>";
@@ -64,12 +65,10 @@ include('../../private/shared/classes/news.class.php');
     </div>
 
 	<br>
-	
   </body>
 </html>
 
 <?php 
 	include(SHARED_PATH . '/footer.php');
-	
     db_disconnect($connection)
 ?>

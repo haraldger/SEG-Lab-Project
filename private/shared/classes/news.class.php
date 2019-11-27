@@ -8,7 +8,8 @@
     class News extends DatabaseObject{
         
         static protected $table_name = 'news';
-        static protected $db_columns = ['id', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
+		    static protected $id_name = 'newsID';
+        static protected $db_columns = ['newsID', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
 
         public $id;
         public $authorID;
@@ -18,7 +19,8 @@
         public $expiryDate;
 
         public function __construct($args=[]) {
-            $this->authorID = $args['authorID'] ?? '';
+            $this->id = $args['newsID'] ?? '';
+			$this->authorID = $args['authorID'] ?? '';
             $this->title = $args['title'] ?? '';
             $this->description = $args['description'] ?? '';
             $this->releaseDate = $args['releaseDate'] ?? '';
@@ -27,9 +29,9 @@
 
         protected function validate() {
             $this->errors = [];
-        
+			
             if(is_blank($this->authorID)) {
-              $this->errors[] = "Creator newsID cannot be blank.";
+              $this->errors[] = "Creator id cannot be blank.";
             }
             if(is_blank($this->title)) {
               $this->errors[] = "Title cannot be blank.";
@@ -43,6 +45,9 @@
             if(is_blank($this->expiryDate)){
                 $this->errors[] = "Event end date cannot be blank.";
             }
+			if($this->releaseDate > $this->expiryDate){
+				$this->errors[] = "Release date cannot be after expiry date";
+			}
             return $this->errors;
         }
       
