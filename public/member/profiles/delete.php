@@ -22,7 +22,7 @@ if(is_post_request()) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/member/profiles/index.php'); ?>">&laquo; Back to Profile</a>
+  <a class="back-link" href="<?php echo url_for('/member/profiles/index.php?id='.$id);  ?>">&laquo; Back to Profile</a>
 
   <div class="member delete">
     <h1>Delete Profile</h1>
