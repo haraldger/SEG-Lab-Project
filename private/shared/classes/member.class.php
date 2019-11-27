@@ -1,21 +1,28 @@
 <?php
 
-class User extends DatabaseObject {
+class Member extends DatabaseObject {
 
-  static protected $table_name = "users";
-  static protected $db_columns = ['id', 'first_name', 'last_name', 'email', 'username', 'accesslevel', 'hashed_password'];
+  static protected $table_name = "members";
+  static protected $db_columns = ['id', 'fName', 'lName', 'email', 'address', 'phoneNum', 
+             'gender', 'dob', 'rating', 'role', 'hashed_password'];
 
   public $id;
-  public $first_name;
-  public $last_name;
+  public $fName;
+  public $lName;
   public $email;
-  public $username;
+  public $address;
+  public $phoneNum;
+  public $gender;
+  public $dob;
+  public $rating;
+  public $role;
+
   protected $hashed_password;
   public $password;
   public $confirm_password;
   protected $password_required = true;
 
-  public const ACCESS_LEVELS = ['MEMBER', 'OFFICER', 'SYSADMIN'];    
+  public const ROLES = ['MEMBER', 'OFFICER', 'SYSADMIN'];    
 
   public function __construct($args=[]) {
     $this->first_name = $args['first_name'] ?? '';

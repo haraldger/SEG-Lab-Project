@@ -8,9 +8,9 @@
     class News extends DatabaseObject{
         
         static protected $table_name = 'news';
-        static protected $db_columns = ['newsID', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
+        static protected $db_columns = ['id', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
 
-        public $newsID;
+        public $id;
         public $authorID;
         public $title;
         public $description;
@@ -25,7 +25,7 @@
             $this->expiryDate = $args['expiryDate'] ?? '';
         }
 
-        protected function valnewsIDate() {
+        protected function validate() {
             $this->errors = [];
         
             if(is_blank($this->authorID)) {
