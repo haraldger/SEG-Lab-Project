@@ -44,7 +44,7 @@ include('../../private/shared/classes/news.class.php');
     
             foreach($result_set as $news){
                 echo "<tr>";
-                    echo "<td>".$news->newsID."</td>";
+                    echo "<td>".$news->id."</td>";
                     echo "<td>".$news->title."</td>";
                     echo "<td>".$news->authorID."</td>";
                     echo "<td>".$news->description."</td>";
