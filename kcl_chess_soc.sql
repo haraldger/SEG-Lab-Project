@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS members;
 CREATE TABLE members (
-  memberID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   fName VARCHAR(255),
   lName VARCHAR(255),
   address VARCHAR(255),
@@ -9,37 +9,37 @@ CREATE TABLE members (
   dob DATE,
   rating INT,
   role ENUM ('Member', 'Officer', 'System Admin') DEFAULT 'Member',
-  PRIMARY KEY (memberID)
+  PRIMARY KEY (id)
 );
  
 DROP TABLE IF EXISTS societyEvents;
 CREATE TABLE societyEvents (
-  eventID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255),
   description VARCHAR(255),
   eventDate DATETIME,
   releaseDate DATETIME,
   expiryDate DATETIME,
-  PRIMARY KEY (eventID)
+  PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS news;
 CREATE TABLE news (
-  newsID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(255),
   authorID int,
   description VARCHAR(255),
   releaseDate DATETIME,
   expiryDate DATETIME,
-  PRIMARY KEY (newsID),
-  FOREIGN KEY (authorID) REFERENCES members(memberID)
+  PRIMARY KEY (id),
+  FOREIGN KEY (authorID) REFERENCES members(id)
 );
 
 DROP TABLE IF EXISTS tournaments;
 CREATE TABLE tournaments (
-  tournamentID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   signupDeadline DATETIME,
-  PRIMARY KEY (tournamentID)
+  PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS tournamentOrganisers;
@@ -47,8 +47,8 @@ CREATE TABLE tournamentOrganisers (
   tournamentID INT,
   organiserID INT,
   PRIMARY KEY (tournamentID, organiserID),
-  FOREIGN KEY (tournamentID) REFERENCES tournaments(tournamentID),
-  FOREIGN KEY (organiserID) REFERENCES members(memberID)
+  FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
+  FOREIGN KEY (organiserID) REFERENCES members(id)
 );
 
 DROP TABLE IF EXISTS tournamentCompetitors;
@@ -56,21 +56,21 @@ CREATE TABLE tournamentCompetitors (
   tournamentID INT,
   competitorID INT,
   PRIMARY KEY (tournamentID, competitorID),
-  FOREIGN KEY (tournamentID) REFERENCES tournaments(tournamentID),
-  FOREIGN KEY (competitorID) REFERENCES members(memberID)
+  FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
+  FOREIGN KEY (competitorID) REFERENCES members(id)
 );
 
 DROP TABLE IF EXISTS tournamentMatches;
 CREATE TABLE tournamentMatches (
-  matchID INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   tournamentID INT,
   matchDate DATETIME,
   competitorID1 INT,
   competitorID2 INT,
   winner INT,
-  PRIMARY KEY (matchID),
-  FOREIGN KEY (competitorID1) REFERENCES members(memberID),
-  FOREIGN KEY (competitorID2) REFERENCES members(memberID)
+  PRIMARY KEY (id),
+  FOREIGN KEY (competitorID1) REFERENCES members(id),
+  FOREIGN KEY (competitorID2) REFERENCES members(id)
 );
 
 
