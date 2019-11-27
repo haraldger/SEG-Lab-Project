@@ -1,8 +1,11 @@
-// File used in bottom of all webpages
-// Mostly html code but also closes DB connection
+<!-- // File used in bottom of all webpages
+// Mostly html code but also closes DB connection -->
 
-<footer>
-  &copy; <?php echo date('Y'); ?> KCLSU 
+<footer class="jumbotron jumbotron-fluid" style="margin-bottom:0px;">
+  <div class="container">
+
+  &copy; <?php echo date('Y'); ?> King's College London Students' Union (KCLSU). 
+</div>
 </footer>
 
 </body>
