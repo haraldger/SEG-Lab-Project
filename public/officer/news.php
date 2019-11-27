@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialise.php'); 
 
 include(SHARED_PATH . '/header.php');
-include('../../private/shared/classes/news.class.php');
+include(SHARED_PATH . '/classes/news.class.php');
 ?>
 
 
@@ -36,22 +36,24 @@ include('../../private/shared/classes/news.class.php');
             <th>Description</th>
             <th>Release Date</th>
             <th>Expiry Date</th>
-            
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
         </tr>
         <?php 
             $query = "SELECT * FROM news";
-            $result_set = News::find_by_sql($query);
-    
+			$connection = db_connect();
+            $result_set = mysqli_query($connection, $query);
+			
             foreach($result_set as $news){
                 echo "<tr>";
-                    echo "<td>".$news->newsID."</td>";
-                    echo "<td>".$news->title."</td>";
-                    echo "<td>".$news->authorID."</td>";
-                    echo "<td>".$news->description."</td>";
-                    echo "<td>".$news->releaseDate."</td>";
-                    echo "<td>".$news->expiryDate."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$news->newsID.">Edit</td>";
-                    //echo "<td> <a href="?delete=$news["id"]">Delete</td>";
+                    echo "<td>".$news["newsID"]."</td>";
+                    echo "<td>".$news["title"]."</td>";
+                    echo "<td>".$news["authorID"]."</td>";
+                    echo "<td>".$news["description"]."</td>";
+                    echo "<td>".$news["releaseDate"]."</td>";
+                    echo "<td>".$news["expiryDate"]."</td>";
+                    echo "<td> <a href=newsEdit.php?id=".$news["newsID"].">Edit</td>";
+                    echo "<td> <a href=newsDelete.php?id=".$news["newsID"].">Delete</td>";
                 echo "</tr>";
             }
         ?>
@@ -64,12 +66,12 @@ include('../../private/shared/classes/news.class.php');
     </div>
 
 	<br>
-	
   </body>
 </html>
 
 <?php 
 	include(SHARED_PATH . '/footer.php');
 	
+	mysqli_free_result($result_set);
     db_disconnect($connection)
 ?>

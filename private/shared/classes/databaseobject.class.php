@@ -4,6 +4,7 @@ class DatabaseObject {
 
   static protected $database;
   static protected $table_name = "";
+  static protected $id_name = "";
   static protected $columns = [];
   public $errors = [];
 
@@ -42,7 +43,7 @@ class DatabaseObject {
 
   static public function find_by_id($id) {
     $sql = "SELECT * FROM " . static::$table_name . " ";
-    $sql .= "WHERE id='" . self::$database->escape_string($id) . "'";
+    $sql .= "WHERE ".static::$id_name."='" . self::$database->escape_string($id) . "'";
     $obj_array = static::find_by_sql($sql);
     if(!empty($obj_array)) {
       return array_shift($obj_array);
@@ -84,10 +85,11 @@ class DatabaseObject {
     if($result) {
       $this->id = self::$database->insert_id;
     }
+	
     return $result;
   }
 
-  protected function update() {
+  public function update() {
     $this->validate();
     if(!empty($this->errors)) { return false; }
 
@@ -99,7 +101,7 @@ class DatabaseObject {
 
     $sql = "UPDATE " . static::$table_name . " SET ";
     $sql .= join(', ', $attribute_pairs);
-    $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
+    $sql .= " WHERE ".static::$id_name."='" . self::$database->escape_string($this->id) . "' ";
     $sql .= "LIMIT 1";
     $result = self::$database->query($sql);
     return $result;
@@ -126,7 +128,7 @@ class DatabaseObject {
   public function attributes() {
     $attributes = [];
     foreach(static::$db_columns as $column) {
-      if($column == 'id') { continue; }
+      if($column == static::$id_name) { continue; }
       $attributes[$column] = $this->$column;
     }
     return $attributes;
@@ -142,7 +144,7 @@ class DatabaseObject {
 
   public function delete() {
     $sql = "DELETE FROM " . static::$table_name . " ";
-    $sql .= "WHERE id='" . self::$database->escape_string($this->id) . "' ";
+    $sql .= "WHERE ".static::$id_name."='" . self::$database->escape_string($this->id) . "' ";
     $sql .= "LIMIT 1";
     $result = self::$database->query($sql);
     return $result;
