@@ -1,4 +1,6 @@
 <?php
+	require_once('../../private/shared/classes/databaseobject.class.php');
+
     /**
      * A class to represent an event.
      * Example: Disco-night, Brunch, etc.

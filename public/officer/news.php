@@ -1,4 +1,9 @@
-<?php require_once('../../private/initialise.php'); ?>
+<?php require_once('../../private/initialise.php'); 
+
+include(SHARED_PATH . '/header.php')
+?>
+
+
 
 <!doctype html>
 
@@ -51,13 +56,21 @@
             }
         ?>
     </table>
-    
-    <a href=newsCreate.php>Create
-    
+   
+	<br>
+	
+	<div class="actions">
+      <a href=newsCreate.php>Create</a>
+    </div>
+
+	<br>
+	
   </body>
 </html>
 
 <?php 
-    mysqli_free_result($result_set);
+	include(SHARED_PATH . '/footer.php');
+	
+	mysqli_free_result($result_set);
     db_disconnect($connection)
 ?>
