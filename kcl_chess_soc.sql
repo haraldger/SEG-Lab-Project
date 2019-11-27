@@ -3,6 +3,7 @@ CREATE TABLE members (
   id INT NOT NULL AUTO_INCREMENT,
   fName VARCHAR(255),
   lName VARCHAR(255),
+  email VARCHAR(255),
   address VARCHAR(255),
   phoneNum VARCHAR(255),
   gender ENUM ('Male','Female','Other'),
