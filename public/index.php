@@ -8,10 +8,6 @@
     <!--  style="width: 75%;" -->
         <div class="col-8">
         <img src="./static/chessBackground2.jpg" alt="chess" class="img-fluid" >
-            <br>
-            <a href = "mailto: strandhub@kclsu.org"><button type="button" class="btn btn-light">Email Us</button></a>
-        
-            <a href="http://facebook.com/groups/kclchess">Find Us on Facebook</a> 
         </div>
         <!--  style="width: 25%;" -->
         <div class="col-4">
