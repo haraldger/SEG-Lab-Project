@@ -7,18 +7,18 @@
      */
     class News extends DatabaseObject{
         
-        static protected $table_name = 'societyEvents';
-        static protected $db_columns = ['id', 'creatorid', 'title', 'description', 'eventdate', 'releasedate', 'expirydate'];
+        static protected $table_name = 'news';
+        static protected $db_columns = ['id', 'authorID', 'title', 'description', 'releasedate', 'expirydate'];
 
         public $id;
-        public $creatorid;
+        public $authorID;
         public $title;
         public $description;
         public $releasedate;
         public $expirydate;
 
         public function __construct($args=[]) {
-            $this->creatorid = $args['creatorid'] ?? '';
+            $this->authorID = $args['authorID'] ?? '';
             $this->title = $args['title'] ?? '';
             $this->description = $args['description'] ?? '';
             $this->releasedate = $args['releasedate'] ?? '';
@@ -28,7 +28,7 @@
         protected function validate() {
             $this->errors = [];
         
-            if(is_blank($this->creator_id)) {
+            if(is_blank($this->authorID)) {
               $this->errors[] = "Creator id cannot be blank.";
             }
             if(is_blank($this->title)) {

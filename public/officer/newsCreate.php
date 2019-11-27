@@ -6,24 +6,27 @@ if(is_post_request()) {
 
   $news = [];
   $news['title'] = $_POST['title'] ?? '';
-  $news['author'] = $_POST['author'] ?? '';
+  $news['authorID'] = $_POST['authorID'] ?? '';
   $news['description'] = $_POST['description'] ?? '';
-  $news['release_date'] = $_POST['release_date'] ?? '';
-  $news['expiry_date'] = $_POST['expiry_date'] ?? '';
+  $news['releasedate'] = $_POST['release_date'] ?? '';
+  $news['expirydate'] = $_POST['expiry_date'] ?? '';
+  
 
   $new_news = new News($news);
-  
-  echo $new_news -> $title;
-  
   $result = $new_news->create();
   
-  redirect_to(url_for('officer/news.php'));
+  if($result == false){
+	echo $new_news->errors[0];
+  }
+  else{
+	redirect_to(url_for('officer/news.php'));
+  }
   
 } else {
 
   $news = [];
   $news['title'] = '';
-  $news['author'] = '';
+  $news['authorID'] = '';
   $news['description'] = '';
   $news['release_date'] = '';
   $news['expiry_date'] = '';
@@ -60,7 +63,7 @@ if(is_post_request()) {
       </dl>
       <dl>
         <dt>Author</dt>
-        <dd><input type="text" name="author" value="<?php echo h($news['author']); ?>" /></dd>
+        <dd><input type="text" name="authorID" value="<?php echo h($news['authorID']); ?>" /></dd>
       </dl>
       <dl>
         <dt>Description</dt>
