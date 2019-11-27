@@ -1,6 +1,6 @@
 
 <?php include '../private/shared/header.php' ?>
-<div class="container">
+<div class="container mt-5 mb-5">
     <h2>KCLCS</h2>
     <img src="./static/chessSocietyLogo.jpg" alt="logo" width="10%" height="10%">
     <hr>
