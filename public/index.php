@@ -1,5 +1,10 @@
 
-<?php include '../private/shared/header.php' ?>
+<?php 
+include ('../private/shared/header.php');
+include ('../private/shared/classes/news.class.php');
+?>
+
+
 <div class="container">
     <h2>KCLCS</h2>
     <img src="./static/chessSocietyLogo.jpg" alt="logo" width="10%" height="10%">
@@ -14,11 +19,26 @@
             <a href="http://facebook.com/groups/kclchess">Find Us on Facebook</a> 
         </div>
         <!--  style="width: 25%;" -->
-        <div class="col-4">
+        <div class="news-column">
             <h3>News</h3>
-            <h4>Tournament Success</h4>
-            <p>Thanks to all who participated in the tournament today, and a special congratulations to our 3 winners: 3rd place: Seth Warren 2nd place: Mehmet Ismail 1st place: Ellie Gamal
-            We hope you had a good time, and we hope to see you at our next session in 2 weeks' time!</p>
+            <?php 
+            // Get and sort all news objects
+            $news = News::find_all();
+            usort($news, function($a, $b){ 
+                if($a->releasedate < $b->releasedate) return -1;
+                elseif ($a->releasedate == $b->releasedate) return 0;
+                else return 1; 
+            });
+
+            // Loop through all news, display non-expired ones
+            foreach ($news as $newsItem) {
+                if(strtotime($newsItem->expirydate) < time()) continue;
+                // Title
+                echo ("<h4>" . h($newsItem->title) . "</h4>
+                    <p>" . h($newsItem->description) . "</p>
+                    <small>" . h($newsItem->releasedate) . "</small>");
+            }
+            ?>
         </div>
     </div><br>
 
