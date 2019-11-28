@@ -15,7 +15,15 @@ if(is_post_request()) {
 	$result = $new_news->create();
   
 	if($result == false){
-		$errors = $new_news->errors;
+		if(empty($new_news->errors)){		
+			$errorMessage = [];
+			$errorMessage[] = "The author ID provided doesn't match any authors";
+			
+			$errors = $errorMessage;
+		}
+		else{
+			$errors = $new_news->errors;
+		}
 	}
 	else{
 		redirect_to(url_for('officer/news.php'));
@@ -33,6 +41,9 @@ if(is_post_request()) {
 }
 
 ?>
+
+<?php include(SHARED_PATH . '/header.php'); ?>
+
 <div id="content">
 
   <a class="back-link" href="<?php echo url_for('/officer/news.php'); ?>">&laquo; Back to List</a>

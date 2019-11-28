@@ -1,4 +1,8 @@
-<?php require_once('../../private/initialise.php'); ?>
+<?php require_once('../../private/initialise.php'); 
+
+include(SHARED_PATH . '/header.php');
+include(SHARED_PATH . '/classes/societyevent.class.php');
+?>
 
 <!doctype html>
 
@@ -30,6 +34,8 @@
             <th>Event Date</th>
             <th>Release Date</th>
             <th>Expiry Date</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
             
         </tr>
         <?php 
@@ -45,19 +51,23 @@
                     echo "<td>".$events["eventDate"]."</td>";
                     echo "<td>".$events["releaseDate"]."</td>";
                     echo "<td>".$events["expiryDate"]."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$events["eventID"].">Edit</td>";
-                    //echo "<td> <a href="?delete=$events["id"]">Delete</td>";
+                    echo "<td> <a href=eventEdit.php?id=".$events["eventID"].">Edit</td>";
+                    echo "<td> <a href=eventDelete.php?id=".$events["eventID"].">Delete</td>";
                 echo "</tr>";
             }
         ?>
     </table>
     
-    <a href=eventsCreate.php>Create
-    
+	<br>
+    <a href=eventCreate.php>Create</a>
+    <br>
+	<br>
   </body>
 </html>
 
-<?php 
+<?php
+	include(SHARED_PATH . '/footer.php');
+	
     mysqli_free_result($result_set);
     db_disconnect($connection)
 ?>
