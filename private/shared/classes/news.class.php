@@ -6,7 +6,7 @@
     class News extends DatabaseObject{
         
         static protected $table_name = 'news';
-		static protected $id_name = 'newsID';
+		    static protected $id_name = 'newsID';
         static protected $db_columns = ['newsID', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
 
         public $authorID;
