@@ -2,6 +2,15 @@
 
 include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/classes/societyevent.class.php');
+
+if(is_post_request()) {
+	$query = "SELECT * FROM societyEvents";
+}
+else{
+	date_default_timezone_set("Europe/London");
+	$date = date('Y-m-d H:i:s', time());
+	$query = "SELECT * FROM societyEvents WHERE releaseDate < '".$date."' AND expiryDate > '".$date."'";
+}
 ?>
 
 <!doctype html>
@@ -38,8 +47,7 @@ include(SHARED_PATH . '/classes/societyevent.class.php');
 			<th>&nbsp;</th>
             
         </tr>
-        <?php 
-            $query = "SELECT * FROM societyEvents";
+        <?php			
 			$connection = db_connect();
             $result_set = mysqli_query($connection, $query);
     
@@ -59,6 +67,23 @@ include(SHARED_PATH . '/classes/societyevent.class.php');
     </table>
     
 	<br>
+	
+	<?php
+		if(is_post_request()){
+			echo "<form action=".url_for('/officer/events.php')." method='get'>";
+				echo "<div id='operations'>";
+				echo "<input type='submit' value='Hide unreleased/expired events' />";
+		}
+		else{
+			echo "<form action=".url_for('/officer/events.php')." method='post'>";
+				echo "<div id='operations'>";
+				echo "<input type='submit' value='Show unreleased/expired events' />";
+		}
+		
+		echo "</div>";
+		echo "</form>";
+	?>
+	
     <a href=eventCreate.php>Create</a>
     <br>
 	<br>
