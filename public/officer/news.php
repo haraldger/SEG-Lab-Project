@@ -61,8 +61,8 @@ else{
                     echo "<td>".$news->description."</td>";
                     echo "<td>".$news->releaseDate."</td>";
                     echo "<td>".$news->expiryDate."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$news->newsID.">Edit</td>";
-                    //echo "<td> <a href="?delete=$news["id"]">Delete</td>";
+                    echo "<td> <a href=newsEdit.php?id=".$news->id.">Edit</td>";
+                    echo "<td> <a href=newsDelete.php?id=".$news->id.">Delete</td>";
                 echo "</tr>";
             }
         ?>

@@ -9,13 +9,16 @@ $id = $_GET['id'];
 
 if(is_post_request()) {
 	
-	$event['eventID'] = $id;
-	$new_event = new SocietyEvent($event);
-	$result = $new_event->delete();
+	$event = new SocietyEvent($_POST);
+	$event->id = $id;
+	$result = $event->delete();
 	
 	if($result){
 		redirect_to(url_for('officer/events.php'));
 	}
+}
+else {
+	$event = SocietyEvent::find_by_id($id);
 }
 
 ?>

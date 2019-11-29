@@ -9,9 +9,9 @@ $id = $_GET['id'];
 
 if(is_post_request()) {
 	
-	$news['newsID'] = $id;
-	$new_news = new News($news);
-	$result = $new_news->delete();
+	$news = new News();
+	$news->id = $id;
+	$result = $news->delete();
 	
 	if($result){
 		redirect_to(url_for('officer/news.php'));

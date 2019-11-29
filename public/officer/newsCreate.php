@@ -2,20 +2,18 @@
 require_once('../../private/initialise.php'); 
 require_once('../../private/shared/classes/news.class.php'); 
 
-$news = new News([]);
-
+// TODO: set authorID to currently logged in user's ID
 if(is_post_request()) {
-  $news->title = $_POST['title'] ?? '';
-  $news->authorID = $_POST['authorID'] ?? '';
-  $news->description = $_POST['description'] ?? '';
-  $news->releaseDate = $_POST['releaseDate'] ?? '';
-  $news->expiryDate = $_POST['expiryDate'] ?? '';
-  $result = $news->create();
+  $news = new News($_POST);
+  $result = $news->save();
   
   if($result == true){
 	redirect_to(url_for('officer/news.php'));
   }
 } 
+else{
+  $news = new News;
+}
 
 ?>
 

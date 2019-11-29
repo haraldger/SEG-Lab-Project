@@ -6,46 +6,22 @@ if(!isset($_GET['id'])) {
 	redirect_to(url_for('officer/news.php'));
 }
 $id = $_GET['id'];
-$newsItem = News::find_by_id($id);
 
 if(is_post_request()) {
 
-	$news = [];
-	$news['newsID'] = $id;
-	$news['title'] = $_POST['title'] ?? '';
-	$news['authorID'] = $_POST['authorID'] ?? '';
-	$news['description'] = $_POST['description'] ?? '';
-	$news['releaseDate'] = $_POST['releaseDate'] ?? '';
-	$news['expiryDate'] = $_POST['expiryDate'] ?? '';
-	
-	$new_news = new News($news);
-	$result = $new_news->update();
-  
+	$newsItem = new News($_POST);
+	$newsItem->id = $id;
+	$result = $newsItem->save();
+
 	if($result == false){
-		if(empty($new_news->errors)){		
-			$errorMessage = [];
-			$errorMessage[] = "The author ID provided doesn't match any authors";
-			
-			$errors = $errorMessage;
-		}
-		else{
-			$errors = $new_news->errors;
-		}
+		// error!
 	}
 	else{
 		redirect_to(url_for('officer/news.php'));
 	}
   
 } else {
-
-	$news = [];
-	$news['newsID'] = $id;
-	$news['title'] = '';
-	$news['authorID'] = '';
-	$news['description'] = '';
-	$news['releaseDate'] = '';
-	$news['expiryDate'] = '';
-
+	$newsItem = News::find_by_id($id);
 }
 
 ?>

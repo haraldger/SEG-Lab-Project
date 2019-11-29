@@ -3,7 +3,7 @@ CREATE TABLE members (
   id INT NOT NULL AUTO_INCREMENT,
   fName VARCHAR(255) NOT NULL,
   lName VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
   address VARCHAR(255) NOT NULL,
   phoneNum VARCHAR(255) NOT NULL,
   gender ENUM ('Male','Female','Other') NOT NULL,
@@ -40,6 +40,7 @@ CREATE TABLE news (
 DROP TABLE IF EXISTS tournaments;
 CREATE TABLE tournaments (
   id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
   signupDeadline DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
@@ -93,3 +94,8 @@ VALUES ('Awards Ceremony', 'Come and celebrate the achievements of our society m
 
 INSERT INTO news (title, authorID, description, releaseDate, expiryDate)
 VALUES ('This is a Headline', 1, 'This is the contents of the news post.', '2019-11-15 08:00:00', '2020-01-01 00:00:00');
+
+INSERT INTO tournaments(name, signupDeadline)
+VALUES ('The Grandest Of The Grandmasters', '2019-12-10');
+INSERT INTO tournaments(name, signupDeadline)
+VALUES ('Quest of the Best Beginner', '2019-12-21');
