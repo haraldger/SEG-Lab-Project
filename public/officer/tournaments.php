@@ -1,4 +1,8 @@
-<?php require_once('../../private/initialise.php'); ?>
+<?php require_once('../../private/initialise.php'); 
+
+include(SHARED_PATH . '/header.php');
+include(SHARED_PATH . '/classes/tournament.class.php');
+?>
 
 <!doctype html>
 
@@ -25,7 +29,9 @@
     <table>
         <tr>
             <th>Tournament ID</th>
-            <th>Signup Date</th>         
+            <th>Signup Date</th>     
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>			
         </tr>
         <?php 
             $query = "SELECT * FROM tournaments";
@@ -36,15 +42,18 @@
                 echo "<tr>";
                     echo "<td>".$tournaments["tournamentID"]."</td>";
                     echo "<td>".$tounrnaments["signupDeadline"]."</td>";
-                    echo "<td> <a href=tournamentsEdit.php?id=".$tournmanets["tournamentID"].">Edit</td>";
-                    //echo "<td> <a href="?delete=$tournamnets["id"]">Delete</td>";
+                    echo "<td> <a href=tournamentEdit.php?id=".$tournmanets["tournamentID"].">Edit</td>";
+                    echo "<td> <a href=tournamentDelete.php?id=".$tournamnets["tournamentID"].">Delete</td>";
                 echo "</tr>";
             }
         ?>
     </table>
     
-    <a href=tournamentCreate.php]>Create
-    
+	<br>
+    <a href=tournamentCreate.php>Create</a>
+	<br>
+    <br>
+	
   </body>
 </html>
 

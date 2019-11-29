@@ -6,7 +6,9 @@ class DatabaseObject {
   static protected $table_name = "";
   static protected $columns = [];
   public $errors = [];
-
+  public $id;
+  
+  
   static public function set_database($database) {
     self::$database = $database;
   }
@@ -145,6 +147,7 @@ class DatabaseObject {
     $sql = "DELETE FROM " . static::$table_name . " ";
     $sql .= "WHERE ".static::$id_name."='" . self::$database->escape_string($this->id) . "' ";
     $sql .= "LIMIT 1";
+	
     $result = self::$database->query($sql);
     return $result;
 

@@ -5,7 +5,6 @@ require_once('../../private/shared/classes/news.class.php');
 $news = new News([]);
 
 if(is_post_request()) {
- 
   $news->title = $_POST['title'] ?? '';
   $news->authorID = $_POST['authorID'] ?? '';
   $news->description = $_POST['description'] ?? '';
@@ -22,12 +21,11 @@ if(is_post_request()) {
 
 <!doctype html>
 
+<?php include(SHARED_PATH . '/header.php'); ?>
+
 <html lang="en">
   <head>
     <title>Create News</title>
-    <style>
-        
-    </style>
   </head>
 
   <body>

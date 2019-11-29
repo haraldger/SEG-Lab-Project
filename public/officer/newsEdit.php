@@ -22,7 +22,15 @@ if(is_post_request()) {
 	$result = $new_news->update();
   
 	if($result == false){
-		$errors = $new_news->errors;
+		if(empty($new_news->errors)){		
+			$errorMessage = [];
+			$errorMessage[] = "The author ID provided doesn't match any authors";
+			
+			$errors = $errorMessage;
+		}
+		else{
+			$errors = $new_news->errors;
+		}
 	}
 	else{
 		redirect_to(url_for('officer/news.php'));

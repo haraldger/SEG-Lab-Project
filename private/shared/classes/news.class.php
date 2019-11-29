@@ -1,6 +1,4 @@
 <?php
-	require_once('../../private/shared/classes/databaseobject.class.php');
-
     /**
      * A class to represent an event.
      * Example: Disco-night, Brunch, etc.
@@ -11,7 +9,6 @@
 		    static protected $id_name = 'newsID';
         static protected $db_columns = ['newsID', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
 
-        public $id;
         public $authorID;
         public $title;
         public $description;
