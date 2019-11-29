@@ -21,7 +21,7 @@
           <a class="nav-link" href="../public/index.php">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-          <a class="nav-link" href="/public/about.php">About</a>
+          <a class="nav-link" href="../public/about.php">About</a>
             </li>
             <li class="nav-item active">
           <a class="nav-link" href="../public/contact.php">Contact</a>
