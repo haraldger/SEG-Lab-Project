@@ -31,7 +31,7 @@ require_once('../private/shared/classes/news.class.php');
             }
             ?>
             <br><br>
-            <a href=""><i>More...</i></a>
+            <a href="../public/news.php"><i>More...</i></a>
         </div>
     </div><br>
 
