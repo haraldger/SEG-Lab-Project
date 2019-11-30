@@ -1,4 +1,6 @@
 <?php
+	require_once('databaseobject.class.php');
+
     /**
      * A class to represent an event.
      * Example: Disco-night, Brunch, etc.
@@ -6,9 +8,9 @@
     class News extends DatabaseObject{
         
         static protected $table_name = 'news';
-		static protected $id_name = 'newsID';
-        static protected $db_columns = ['newsID', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
+        static protected $db_columns = ['id', 'authorID', 'title', 'description', 'releaseDate', 'expiryDate'];
 
+        public $id;
         public $authorID;
         public $title;
         public $description;
@@ -16,7 +18,7 @@
         public $expiryDate;
 
         public function __construct($args=[]) {
-            $this->id = $args['newsID'] ?? '';
+            $this->id = $args['id'] ?? '';
 			$this->authorID = $args['authorID'] ?? '';
             $this->title = $args['title'] ?? '';
             $this->description = $args['description'] ?? '';

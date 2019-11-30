@@ -1,36 +1,29 @@
 <?php
 
-abstract class Tournament extends DatabaseObject {
+require_once('databaseobject.class.php');
+
+
+class Tournament extends DatabaseObject {
 
   static protected $table_name = 'tournaments';
-  static protected $db_columns = ['id', 'creatorid', 'title', 'description', 'signupdeadline'];
+  static protected $db_columns = ['id', 'name', 'signupDeadline'];
 
   public $id;
-  public $creatorid;
-  public $title;
-  public $description;
-  public $signupdeadline;
+  public $name;
+  public $signupDeadline;
 
   public function __construct($args=[]) {
-    $this->creatorid = $args['creatorid'] ?? '';
-    $this->title = $args['title'] ?? '';
-    $this->description = $args['description'] ?? '';
-    $this->signupdeadline = $args['signupdeadline'] ?? '';
+    $this->name = $args['name'] ?? '';
+    $this->signupDeadline = $args['signupDeadline'] ?? '';
   }
 
   protected function validate() {
     $this->errors = [];
 
-    if(is_blank($this->creatorid)) {
-      $this->errors[] = "Creator id cannot be blank.";
+    if(is_blank($this->name)) {
+      $this->errors[] = "Name of tournament cannot be blank.";
     }
-    if(is_blank($this->title)) {
-      $this->errors[] = "Title cannot be blank.";
-    }
-    if(is_blank($this->description)) {
-      $this->errors[] = "Title cannot be blank.";
-    }
-    if(is_blank($this->signupdeadline)) {
+    if(is_blank($this->signupDeadline)) {
       $this->errors[] = "Signup deadline cannot be blank.";
     }
     return $this->errors;

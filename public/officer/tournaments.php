@@ -34,16 +34,13 @@ include(SHARED_PATH . '/classes/tournament.class.php');
 			<th>&nbsp;</th>			
         </tr>
         <?php 
-            $query = "SELECT * FROM tournaments";
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
-    
-            while($tournaments = mysqli_fetch_assoc($result_set)){
+            $tournaments = Tournament::find_all();
+            foreach($tournaments as $tournament){
                 echo "<tr>";
-                    echo "<td>".$tournaments["tournamentID"]."</td>";
-                    echo "<td>".$tounrnaments["signupDeadline"]."</td>";
-                    echo "<td> <a href=tournamentEdit.php?id=".$tournmanets["tournamentID"].">Edit</td>";
-                    echo "<td> <a href=tournamentDelete.php?id=".$tournamnets["tournamentID"].">Delete</td>";
+                    echo "<td>".$tournament->id."</td>";
+                    echo "<td>".$tournament->signupDeadline."</td>";
+                    echo "<td> <a href=tournamentEdit.php?id=".$tournament->id.">Edit</td>";
+                    echo "<td> <a href=tournamentDelete.php?id=".$tournament->id.">Delete</td>";
                 echo "</tr>";
             }
         ?>
@@ -58,6 +55,5 @@ include(SHARED_PATH . '/classes/tournament.class.php');
 </html>
 
 <?php 
-    mysqli_free_result($result_set);
-    db_disconnect($connection)
+include(SHARED_PATH . "/footer.php");
 ?>
