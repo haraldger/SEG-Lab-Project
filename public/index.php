@@ -1,5 +1,10 @@
 
-<?php include '../private/shared/header.php' ?>
+<?php 
+require_once('../private/initialise.php');
+require_once('../private/shared/header.php');
+require_once('../private/shared/classes/news.class.php');
+?>
+
 <div class="container mt-5 mb-5">
     <h2>KCLCS</h2>
     <img src="./static/chessSocietyLogo.jpg" alt="logo" width="10%" height="10%">
@@ -10,11 +15,23 @@
         <img src="./static/chessBackground2.jpg" alt="chess" class="img-fluid" >
         </div>
         <!--  style="width: 25%;" -->
-        <div class="col-4">
+        <div class="news-feed">
             <h3>News</h3>
-            <h4>Tournament Success</h4>
-            <p>Thanks to all who participated in the tournament today, and a special congratulations to our 3 winners: 3rd place: Seth Warren 2nd place: Mehmet Ismail 1st place: Ellie Gamal
-            We hope you had a good time, and we hope to see you at our next session in 2 weeks' time!</p>
+            <?php
+            $news = News::find_all();
+            foreach ($news as $newsItem) {
+                echo("
+                    <h4>" . h($newsItem->title) . "</h4>
+                    <p>" . h($newsItem->description) . "</p>
+                    ");
+                if($newsItem->releaseDate){
+                    $date = date_create_from_format('Y-m-d H:i:s', $newsItem->releaseDate);
+                    echo("<small><i>" . h($date->format('Y-m-d')) . "</i></small>");
+                } else {
+                    echo("<small>Unknown release date</small>");
+                }
+            }
+            ?>
         </div>
     </div><br>
 
