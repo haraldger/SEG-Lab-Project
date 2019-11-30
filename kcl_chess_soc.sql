@@ -28,7 +28,7 @@ CREATE TABLE news (
   newsID INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(255),
   authorID int,
-  description VARCHAR(255),
+  description text,
   releaseDate DATETIME,
   expiryDate DATETIME,
   PRIMARY KEY (newsID),
