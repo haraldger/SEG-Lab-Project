@@ -15,23 +15,23 @@ require_once('../private/shared/classes/news.class.php');
         <img src="./static/chessBackground2.jpg" alt="chess" class="img-fluid" >
         </div>
         <!--  style="width: 25%;" -->
-        <div class="news-feed">
+        <div class="col-4">
             <h3>News</h3>
             <?php
-            $news = News::find_all();
-            foreach ($news as $newsItem) {
-                echo("
-                    <h4>" . h($newsItem->title) . "</h4>
-                    <p>" . h($newsItem->description) . "</p>
-                    ");
-                if($newsItem->releaseDate){
-                    $date = date_create_from_format('Y-m-d H:i:s', $newsItem->releaseDate);
-                    echo("<small><i>" . h($date->format('Y-m-d')) . "</i></small>");
-                } else {
-                    echo("<small>Unknown release date</small>");
-                }
+            $sampleNews = News::find_all()[0];
+            echo("
+                <h4>" . h($sampleNews->title) . "</h4>
+                <p>" . h($sampleNews->description) . "</p>
+                ");
+            if($sampleNews->releaseDate){
+                $date = date_create_from_format('Y-m-d H:i:s', $sampleNews->releaseDate);
+                echo("<small><i>" . h($date->format('Y-m-d')) . "</i></small>");
+            } else {
+                echo("<small>Unknown release date</small>");
             }
             ?>
+            <br><br>
+            <a href=""><i>Read more news...</i></a>
         </div>
     </div><br>
 
