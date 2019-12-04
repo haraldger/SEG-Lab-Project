@@ -6,6 +6,5 @@
 </html>
 
 <?php
-// to be uncommented later
-//   db_disconnect($db);
+  db_disconnect($db);
 ?>
