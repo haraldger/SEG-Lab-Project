@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../private/initialise.php');
 require_once('../private/shared/header.php');
 require_once('../private/shared/classes/news.class.php');
