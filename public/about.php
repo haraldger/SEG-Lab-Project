@@ -1,8 +1,11 @@
+<?php require_once('../private/initialise.php'); ?>
+<?php $page_title = "About Us"; ?>
+
 
 <?php include '../private/shared/header.php' ?>
 <div class="container mt-5 mb-5">
 <h2>About Us</h2>
-<p>About Us
+<p>
 Hi! We’re KCLSU (King’s College London Students’ Union). Every student at King's is automatically a member of KCLSU. 
 Together with our members, we are a union of students where individuals connect, have fun, build communities, share experiences, and make change. 
 <br> <br>

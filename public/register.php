@@ -1,3 +1,6 @@
+<?php require_once('../private/initialise.php'); ?>
+<?php $page_title = "Register"; ?>
+
 <?php 
   include('../private/shared/header.php');
   require_once('../private/initialise.php'); 

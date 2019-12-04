@@ -1,4 +1,9 @@
 
+<?php require_once('../private/initialise.php'); ?>
+
+<?php 
+    $page_title = "Welcome to KCL Chess Society";
+?>
 <?php include '../private/shared/header.php' ?>
 <div class="container mt-5 mb-5">
     <h2>KCLCS</h2>
