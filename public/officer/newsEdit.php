@@ -52,8 +52,6 @@ if(is_post_request()) {
 
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
-<!doctype html>
-
 	<div id="content" class="container mt-5 mb-5">
 
 	  <a class="back-link" href="<?php echo url_for('/officer/news.php'); ?>">&laquo; Back to List</a>

@@ -14,7 +14,7 @@
   <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Member's Area</a>
+            <a class="navbar-brand" href="../../public/member/index.php">Member's Area</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="nav-item active">

@@ -6,6 +6,7 @@ if(is_post_request()) {
 
 	$tournament = [];
 	$tournament['signupDeadline'] = $_POST['signupDeadline'] ?? '';
+	$tournament['name']= $_POST['name'] ?? '';
 	
 	$new_tournament = new Tournament($tournament);
 	$result = $new_tournament->create();
@@ -27,38 +28,35 @@ if(is_post_request()) {
 
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <title>Create Tournament</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
-  </head>
-  <body>
-  
-	<div id="content">
+	<div id="content" class="container mt-5 mb-5">
 
 	  <a class="back-link" href="<?php echo url_for('/officer/tournaments.php'); ?>">&laquo; Back to List</a>
-
+		<br><br>
 	  <div class="tournament new">
-		<h1>Create Tournament</h1>
+		<h1>Create Tournament</h1><br><hr>
 
 		<?php echo display_errors($errors); ?>
 		
 		<form action="<?php echo url_for('/officer/tournamentCreate.php'); ?>" method="post">
+		<div class="form-group">
 		  <dl>
 			<dt>Signup Deadline</dt>
-			<dd><input type="datetime-local" name="signupDeadline" value="<?php echo h($tournament['signupDeadline']); ?>" /></dd>
+			<dd><input class="form-control" type="datetime-local" name="signupDeadline" value="<?php echo h($tournament['signupDeadline']); ?>" /></dd>
 		  </dl>
+		  </div>
+		  <div class="form-group">
+		  <dl>
+		  	<dt>Name of Tournament</dt>
+			  <dd><input class="form-control" type="text" name="name" value="<?php echo h($tournament['name']); ?>" /></dd>
+		  </dl>
+		  </div>
 		  <div id="operations">
-			<input type="submit" value="Create Tournament" />
+			<input class= "btn btn-primary btn-lg" type="submit" value="Create Tournament" />
 		  </div>
 		</form>
 		<br>
 	  </div>
 
 	</div>
-  </body>
-</html>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

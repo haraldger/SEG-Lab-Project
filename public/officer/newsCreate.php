@@ -86,7 +86,7 @@ if(is_post_request()) {
 				<dd><input class="form-control" type="datetime-local" name="expiryDate" value="<?php echo h($news['expiryDate']); ?>" /></dd>
 			  </dl>
 			  <div id="operations">
-				<input type="submit" class="btn btn-primary btn-lg"value="Create News" />
+				<input type="submit" class="btn btn-primary btn-lg" value="Create News" />
 			  </div>
 			</form>
 			<br>

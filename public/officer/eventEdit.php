@@ -45,15 +45,6 @@ if(is_post_request()) {
 
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <title>Edit Event</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
-  </head>
-
-  <body>
 	<div id="content" class="container mt-5 mb-5">
 	<a class="back-link" href="<?php echo url_for('/officer/events.php'); ?>">&laquo; Back to List</a>
 	  <br><br>
@@ -105,6 +96,5 @@ if(is_post_request()) {
 	  </div>
 
 	</div>
-  </body>
-</html>
+
 <?php include(SHARED_PATH . '/footer.php'); ?>
