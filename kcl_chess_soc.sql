@@ -17,7 +17,7 @@ CREATE TABLE members (
 DROP TABLE IF EXISTS societyEvents;
 CREATE TABLE societyEvents (
   id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL,
   eventDate DATETIME NOT NULL,
   releaseDate DATETIME NOT NULL,
