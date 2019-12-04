@@ -18,22 +18,22 @@ CREATE TABLE members (
 DROP TABLE IF EXISTS societyEvents;
 CREATE TABLE societyEvents (
   id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255),
-  description VARCHAR(255),
-  eventDate DATETIME,
-  releaseDate DATETIME,
-  expiryDate DATETIME,
+  title VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  eventDate DATETIME NOT NULL,
+  releaseDate DATETIME NOT NULL,
+  expiryDate DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS news;
 CREATE TABLE news (
   id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255),
+  title VARCHAR(255) NOT NULL,
   authorID int,
-  description VARCHAR(255),
-  releaseDate DATETIME,
-  expiryDate DATETIME,
+  description VARCHAR(255) NOT NULL,
+  releaseDate DATETIME NOT NULL,
+  expiryDate DATETIME NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (authorID) REFERENCES members(id)  ON DELETE SET NULL
 );
@@ -41,7 +41,7 @@ CREATE TABLE news (
 DROP TABLE IF EXISTS tournaments;
 CREATE TABLE tournaments (
   id INT NOT NULL AUTO_INCREMENT,
-  signupDeadline DATETIME,
+  signupDeadline DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -67,7 +67,7 @@ DROP TABLE IF EXISTS tournamentMatches;
 CREATE TABLE tournamentMatches (
   id INT NOT NULL AUTO_INCREMENT,
   tournamentID INT,
-  matchDate DATETIME,
+  matchDate DATETIME NOT NULL,
   competitorID1 INT,
   competitorID2 INT,
   winner INT,
