@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialise.php'); 
 
-include(SHARED_PATH . '/header.php');
+include(SHARED_PATH . '/officer_header.php');
 include(SHARED_PATH . '/classes/societyevent.class.php');
 
 if(is_post_request()) {
@@ -18,17 +18,7 @@ else{
 <html lang="en">
   <head>
     <title>Events</title>
-    <style>
-        table{
-            border-collapse:collapse;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-            padding:5px
-        }
-        
-    </style>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
   </head>
 
   <body>
@@ -48,18 +38,19 @@ else{
             
         </tr>
         <?php			
-			$events = SocietyEvent::find_by_sql($query);
+			$connection = db_connect();
+            $result_set = mysqli_query($connection, $query);
     
-            foreach($events as $event){
+            while($events = mysqli_fetch_assoc($result_set)){
                 echo "<tr>";
-                    echo "<td>".$event->id."</td>";
-                    echo "<td>".$event->name."</td>";
-                    echo "<td>".$event->description."</td>";
-                    echo "<td>".$event->eventDate."</td>";
-                    echo "<td>".$event->releaseDate."</td>";
-                    echo "<td>".$event->expiryDate."</td>";
-                    echo "<td> <a href=eventEdit.php?id=".$event->id.">Edit</td>";
-                    echo "<td> <a href=eventDelete.php?id=".$event->id.">Delete</td>";
+                    echo "<td>".$events["id"]."</td>";
+                    echo "<td>".$events["name"]."</td>";
+                    echo "<td>".$events["description"]."</td>";
+                    echo "<td>".$events["eventDate"]."</td>";
+                    echo "<td>".$events["releaseDate"]."</td>";
+                    echo "<td>".$events["expiryDate"]."</td>";
+                    echo "<td> <a href=eventEdit.php?id=".$events["id"].">Edit</td>";
+                    echo "<td> <a href=eventDelete.php?id=".$events["id"].">Delete</td>";
                 echo "</tr>";
             }
         ?>
@@ -82,8 +73,8 @@ else{
 		echo "</div>";
 		echo "</form>";
 	?>
-	
-    <a href=eventCreate.php>Create</a>
+	<br>
+    <h5><a href=eventCreate.php>Create Event</a></h5>
     <br>
 	<br>
   </body>
@@ -91,5 +82,7 @@ else{
 
 <?php
 	include(SHARED_PATH . '/footer.php');
+	
+    mysqli_free_result($result_set);
     db_disconnect($connection)
 ?>

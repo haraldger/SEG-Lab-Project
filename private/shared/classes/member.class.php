@@ -53,12 +53,12 @@ class Member extends DatabaseObject {
     return password_verify($password, $this->hashed_password);
   }
 
-  protected function create() {
+  public function create() {
     $this->set_hashed_password();
     return parent::create();
   }
 
-  protected function update() {
+  public function update() {
     if($this->password != '') {
       $this->set_hashed_password();
       // validate password
