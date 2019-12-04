@@ -24,12 +24,12 @@ define("WWW_ROOT", $doc_root);
 
 require_once('functions.php');
 require_once('database.php');
-require_once('query_functions.php');
 require_once('validation_functions.php');
-require_once('shared/classes/databaseobject.class.php');
 
-$db = db_connect();
-DatabaseObject::set_database($db);
-$errors = [];
+require_once('shared/classes/databaseobject.class.php');
+require_once('shared/classes/member.class.php');
+
+$database = db_connect();
+DatabaseObject::set_database($database);
 
 ?>

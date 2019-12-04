@@ -1,6 +1,10 @@
 
 <?php 
 require_once('../private/initialise.php');
+<?php 
+    $page_title = "Welcome to KCL Chess Society";
+?>
+                   
 require_once('../private/shared/header.php');
 require_once('../private/shared/classes/news.class.php');
 ?>

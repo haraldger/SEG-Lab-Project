@@ -34,7 +34,7 @@ CREATE TABLE news (
   releaseDate DATETIME NOT NULL,
   expiryDate DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (authorID) REFERENCES members(id)
+  FOREIGN KEY (authorID) REFERENCES members(id)  ON DELETE SET NULL
 );
 
 DROP TABLE IF EXISTS tournaments;
@@ -51,7 +51,7 @@ CREATE TABLE tournamentOrganisers (
   organiserID INT,
   PRIMARY KEY (tournamentID, organiserID),
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
-  FOREIGN KEY (organiserID) REFERENCES members(id)
+  FOREIGN KEY (organiserID) REFERENCES members(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS tournamentCompetitors;
@@ -60,7 +60,7 @@ CREATE TABLE tournamentCompetitors (
   competitorID INT,
   PRIMARY KEY (tournamentID, competitorID),
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
-  FOREIGN KEY (competitorID) REFERENCES members(id)
+  FOREIGN KEY (competitorID) REFERENCES members(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS tournamentMatches;
