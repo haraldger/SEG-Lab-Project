@@ -2,8 +2,10 @@
 <?php 
 require_once('../private/initialise.php');
 require_once('../private/shared/header.php');
-require_once('../private/shared/classes/news.class.php'); 
+
+require_once('../private/shared/classes/news.class.php');
 ?>
+
 <div class="container mt-5 mb-5">
     <h2>KCLCS</h2>
     <img src="./static/chessSocietyLogo.jpg" alt="logo" width="10%" height="10%">
@@ -16,9 +18,21 @@ require_once('../private/shared/classes/news.class.php');
         <!--  style="width: 25%;" -->
         <div class="col-4">
             <h3>News</h3>
-            <h4>Tournament Success</h4>
-            <p>Thanks to all who participated in the tournament today, and a special congratulations to our 3 winners: 3rd place: Seth Warren 2nd place: Mehmet Ismail 1st place: Ellie Gamal
-            We hope you had a good time, and we hope to see you at our next session in 2 weeks' time!</p>
+            <?php
+            $sampleNews = News::find_all()[0];
+            echo("
+                <h4>" . h($sampleNews->title) . "</h4>
+                <p>" . h($sampleNews->description) . "</p>
+                ");
+            if($sampleNews->releaseDate){
+                $date = date_create_from_format('Y-m-d H:i:s', $sampleNews->releaseDate);
+                echo("<small><i>" . h($date->format('Y-m-d')) . "</i></small>");
+            } else {
+                echo("<small>Unknown release date</small>");
+            }
+            ?>
+            <br><br>
+            <a href="../public/news.php"><i>More...</i></a>
         </div>
     </div><br>
 

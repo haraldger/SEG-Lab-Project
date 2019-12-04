@@ -2,7 +2,7 @@
 
 class Session {
 
-  private $admin_id;
+  private $user_id;
   public $username;
   private $last_login;
 
@@ -17,7 +17,7 @@ class Session {
     if($admin) {
       // prevent session fixation attacks
       session_regenerate_id();
-      $this->admin_id = $_SESSION['admin_id'] = $admin->id;
+      $this->admin_id = $_SESSION['id'] = $admin->id;
       $this->username = $_SESSION['username'] = $admin->username;
       $this->last_login = $_SESSION['last_login'] = time();
     }

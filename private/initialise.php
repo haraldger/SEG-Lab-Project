@@ -2,8 +2,6 @@
 /* 
 Code required to initialise any webpage.
 */
-
-
 ob_start(); // output buffering
              
 // Display error messages (if any), instead of a white screen
@@ -28,9 +26,10 @@ require_once('functions.php');
 require_once('database.php');
 require_once('query_functions.php');
 require_once('validation_functions.php');
-
+require_once('shared/classes/databaseobject.class.php');
 
 $db = db_connect();
+DatabaseObject::set_database($db);
 $errors = [];
 
 ?>
