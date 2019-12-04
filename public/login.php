@@ -1,3 +1,6 @@
+<?php require_once('../private/initialise.php'); ?>
+<?php $page_title = "Log In"; ?>
+
 <?php include '../private/shared/header.php' ?>
 
 <?php

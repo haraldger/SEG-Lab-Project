@@ -4,8 +4,8 @@
 <footer class="jumbotron jumbotron-fluid mt-10" style="margin-bottom:0px;">
   <div class="container">
   <br>
- 
-  &copy; <?php echo date('Y'); ?> King's College London Students' Union (KCLSU). 
+
+&copy; <?php echo date('Y'); ?> King's College London Students' Union (KCLSU).
 </div>
 </footer>
 
@@ -13,6 +13,5 @@
 </html>
 
 <?php
-// to be uncommented later
-//   db_disconnect($db);
+  db_disconnect($db);
 ?>
