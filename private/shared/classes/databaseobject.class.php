@@ -64,7 +64,7 @@ class DatabaseObject {
     return $this->errors;
   }
 
-  protected function create() {
+  public function create() {
     $this->validate();
     if(!empty($this->errors)) { return false; }
 
@@ -82,7 +82,7 @@ class DatabaseObject {
     return $result;
   }
 
-  protected function update() {
+  public function update() {
     $this->validate();
     if(!empty($this->errors)) { return false; }
 

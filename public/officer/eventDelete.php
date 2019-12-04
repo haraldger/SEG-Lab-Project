@@ -9,39 +9,48 @@ $id = $_GET['id'];
 
 if(is_post_request()) {
 	
-	$event = new SocietyEvent($_POST);
-	$event->id = $id;
-	$result = $event->delete();
+	$event['id'] = $id;
+	$new_event = new SocietyEvent($event);
+	$result = $new_event->delete();
 	
 	if($result){
 		redirect_to(url_for('officer/events.php'));
 	}
 }
-else {
-	$event = SocietyEvent::find_by_id($id);
-}
 
 ?>
 
 <?php $page_title = 'Delete Society Event'; ?>
-<?php include(SHARED_PATH . '/header.php'); ?>
+<?php include(SHARED_PATH . '/officer_header.php'); ?>
 
-<div id="content">
+<!doctype html>
 
-  <a class="back-link" href="<?php echo url_for('officer/events.php'); ?>">&laquo; Back to List</a>
+<html lang="en">
+  <head>
+    <title>Delete Event</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
+  </head>
 
-  <div class="event delete">
-	<h1>Delete Society Event</h1>
-	<p>Are you sure you want to delete this event?</p>
-	<p class="item"><?php echo "Society Event ID: ".h($id); ?></p>
+  <body>
+	<div id="content">
 
-	<form action="<?php echo url_for('/officer/eventDelete.php?id=' .h(u($id))); ?>" method="post">
-	  <div id="operations">
-		<input type="submit" name="commit" value="Delete Event" />
+	  <a class="back-link" href="<?php echo url_for('officer/events.php'); ?>">&laquo; Back to List</a>
+
+	  <div class="event delete">
+		<h1>Delete Society Event</h1>
+		<p>Are you sure you want to delete this event?</p>
+		<p class="item"><?php echo "Society Event ID: ".h($id); ?></p>
+
+		<form action="<?php echo url_for('/officer/eventDelete.php?id=' .h(u($id))); ?>" method="post">
+		  <div id="operations">
+			<input type="submit" name="commit" value="Delete Event" />
+		  </div>
+		</form>
+		<br>
+		
 	  </div>
-	</form>
-  </div>
 
-</div>
-
+	</div>
+  </body>
+</html>
 <?php include(SHARED_PATH . '/footer.php'); ?>

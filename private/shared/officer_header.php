@@ -1,13 +1,8 @@
 <!doctype html>
 
-<?php
-  if(!isset($page_title)) { $page_title = 'KCLCS'; }
-?>
-
-
 <html lang="en">
   <head>
-    <title><?php echo h($page_title) ?></title>
+    <title>Welcome to KCLSU</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -23,27 +18,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
           <li class="nav-item active">
-          <a class="nav-link" href="../public/index.php">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="news.php">News</a>
             </li>
             <li class="nav-item active">
-          <a class="nav-link" href="../public/about.php">About</a>
-            </li>
-            <li class="nav-item active">
-          <a class="nav-link" href="../public/contact.php">Contact</a>
-            </li>
-            <li class="nav-item active">
-          <a class="nav-link" href="../public/news.php">News</a>
+          <a class="nav-link" href="events.php">Events</a>
             </li>
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
            <ul class="navbar-nav">
-          <li class="nav-item px-md-1">
-            <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
-            
-            </li>
-            <li class="nav-item px-md-1">
-            <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
-            </li>
           </ul>
           </div>
         </div>
