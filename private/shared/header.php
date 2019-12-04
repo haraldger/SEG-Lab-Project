@@ -26,6 +26,9 @@
             <li class="nav-item active">
           <a class="nav-link" href="../public/contact.php">Contact</a>
             </li>
+            <li class="nav-item active">
+          <a class="nav-link" href="../public/news.php">News</a>
+            </li>
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
            <ul class="navbar-nav">
