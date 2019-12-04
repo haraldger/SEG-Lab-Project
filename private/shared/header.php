@@ -1,4 +1,6 @@
-<!doctype html>
+<?php 
+require_once('../private/initialise.php');
+?>
 
 <html lang="en">
   <head>
@@ -32,13 +34,21 @@
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
            <ul class="navbar-nav">
-          <li class="nav-item px-md-1">
-            <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
-            
-            </li>
-            <li class="nav-item px-md-1">
-            <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
-            </li>
+
+          <?php
+          if(am_logged_in()){
+            echo(
+              h(
+                '<li class="nav-item px-md-1">
+                  <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
+                </li>
+                <li class="nav-item px-md-1">
+                  <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
+                </li>'
+              )
+            );
+          }
+          ?>
           </ul>
           </div>
         </div>
