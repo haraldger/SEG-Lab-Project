@@ -85,11 +85,11 @@ VALUES ('Alice', 'Johnson', 'alice@kcl.ac.uk', '456 Fake Street London', '079876
 INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
 VALUES ('Riley', 'Thompson', 'riley@kcl.ac.uk', '789 Fake Street London', '07192837465', 'Other', '1995-01-01', 130, 'Officer', '$SK3DEDd3');
 
-INSERT INTO societyEvents (title, description, eventDate, releaseDate, expiryDate)
+INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Coffee Morning', 'Come to the cafe and enjoy a hot drink while meeting society members', '2019-12-05 10:00:00', '2019-11-18 00:00:00', '2019-12-05 12:00:00');
-INSERT INTO societyEvents (title, description, eventDate, releaseDate, expiryDate)
+INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Pub Quiz', 'Get to know society members with a little friendly competition', '2019-12-07 17:00:00', '2019-11-18 00:00:00', '2019-12-07 21:00:00');
-INSERT INTO societyEvents (title, description, eventDate, releaseDate, expiryDate)
+INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Awards Ceremony', 'Come and celebrate the achievements of our society members', '2020-04-01 14:00:00', '2020-02-01 00:00:00', '2020-04-01 21:00:00');
 
 INSERT INTO news (title, authorID, description, releaseDate, expiryDate)
