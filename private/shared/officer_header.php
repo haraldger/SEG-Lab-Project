@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
           <li class="nav-item active">
-          <a class="nav-link" href="news.php">News</a>
+          <a class="nav-link" href="../../public/officer/news.php">News</a>
             </li>
             <li class="nav-item active">
-          <a class="nav-link" href="events.php">Events</a>
+          <a class="nav-link" href="../../public/officer/events.php">Events</a>
             </li>
           </ul>
           <div class="collapse navbar-collapse justify-content-end">

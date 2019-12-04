@@ -23,27 +23,20 @@ if(is_post_request()) {
 <?php $page_title = 'Delete Society Event'; ?>
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
-<!doctype html>
 
-<html lang="en">
-  <head>
-    <title>Delete Event</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
-  </head>
-
-  <body>
-	<div id="content">
+	<div id="content" class="container mt-5 mb-5">
 
 	  <a class="back-link" href="<?php echo url_for('officer/events.php'); ?>">&laquo; Back to List</a>
 
 	  <div class="event delete">
-		<h1>Delete Society Event</h1>
+	  <br><br>
+		<h1>Delete Society Event</h1><hr>
 		<p>Are you sure you want to delete this event?</p>
-		<p class="item"><?php echo "Society Event ID: ".h($id); ?></p>
+		<p class="item"><?php echo "Society Event ID: ".h($id); ?></p> <br>
 
 		<form action="<?php echo url_for('/officer/eventDelete.php?id=' .h(u($id))); ?>" method="post">
 		  <div id="operations">
-			<input type="submit" name="commit" value="Delete Event" />
+			<input type="submit" class= "btn btn-danger" name="commit" value="Delete Event" />
 		  </div>
 		</form>
 		<br>
@@ -51,6 +44,5 @@ if(is_post_request()) {
 	  </div>
 
 	</div>
-  </body>
-</html>
+
 <?php include(SHARED_PATH . '/footer.php'); ?>

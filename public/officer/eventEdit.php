@@ -54,40 +54,51 @@ if(is_post_request()) {
   </head>
 
   <body>
-	<div id="content">
-
-	  <a class="back-link" href="<?php echo url_for('/officer/events.php'); ?>">&laquo; Back to List</a>
+	<div id="content" class="container mt-5 mb-5">
+	<a class="back-link" href="<?php echo url_for('/officer/events.php'); ?>">&laquo; Back to List</a>
+	  <br><br>
 	  
 	  <div class="event edit">
+
 		<h1>Edit Society Event</h1>
 
 		<?php echo display_errors($errors); ?>
 
 		<form action="<?php echo url_for('/officer/eventEdit.php?id=' . h(u($id))); ?>" method="post">
+		<div class="form-group">
 		  <dl>
 			<dt>Name</dt>
-			<dd><input type="text" name="name" value="<?php echo h($eventItem->name); ?>" /></dd>
+			<dd><input type="text" class="form-control" name="name" value="<?php echo h($eventItem->name); ?>" /></dd>
 		  </dl>
+		  </div>
+		  <div class="form-group">
 		  <dl>
 			<dt>Description</dt>
 			<dd>
-			  <textarea name="description" cols="60" rows="10"><?php echo h($eventItem->description); ?></textarea>
+			  <textarea name="description" class="form-control" cols="60" rows="10"><?php echo h($eventItem->description); ?></textarea>
 			</dd>
 		  </dl>
+		  </div>
+		  <div class="form-group">
 		  <dl>
 			<dt>Event Date</dt>
-			<dd><input type="datetime-local" name="eventDate" value="<?php echo substr($eventItem->eventDate, 0, 10)."T".substr($eventItem->eventDate, 11, 8) ?>" /></dd>
+			<dd><input type="datetime-local" class="form-control" name="eventDate" value="<?php echo substr($eventItem->eventDate, 0, 10)."T".substr($eventItem->eventDate, 11, 8) ?>" /></dd>
 		  </dl>
+		  </div>
+		  <div class="form-group">
 		  <dl>
 			<dt>Release Date</dt>
-			<dd><input type="datetime-local" name="releaseDate" value="<?php echo substr($eventItem->releaseDate, 0, 10)."T".substr($eventItem->releaseDate, 11, 8) ?>" /></dd>
+			<dd><input type="datetime-local" class="form-control" name="releaseDate" value="<?php echo substr($eventItem->releaseDate, 0, 10)."T".substr($eventItem->releaseDate, 11, 8) ?>" /></dd>
 		  </dl>
+		  </div>
+		  <div class="form-group">
 		  <dl>
 			<dt>Expiry Date</dt>
-			<dd><input type="datetime-local" name="expiryDate" value="<?php echo substr($eventItem->expiryDate, 0, 10)."T".substr($eventItem->expiryDate, 11, 8) ?>" /></dd>
+			<dd><input type="datetime-local" class="form-control" name="expiryDate" value="<?php echo substr($eventItem->expiryDate, 0, 10)."T".substr($eventItem->expiryDate, 11, 8) ?>" /></dd>
 		  </dl>
+		  </div>
 		  <div id="operations">
-			<input type="submit" value="Update Event" />
+			<input type="submit" class="btn btn-primary" value="Update Event" />
 		  </div>
 		</form>
 	    <br>
