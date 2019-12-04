@@ -2,8 +2,6 @@
 /* 
 Code required to initialise any webpage.
 */
-
-
 ob_start(); // output buffering
              
 // Display error messages (if any), instead of a white screen

@@ -1,16 +1,15 @@
 DROP TABLE IF EXISTS members;
 CREATE TABLE members (
   id INT NOT NULL AUTO_INCREMENT,
-  first_name VARCHAR(255) NOT NULL,
-  last_name VARCHAR(255) NOT NULL,
-  address VARCHAR(255),
-  phone_number VARCHAR(255),
-  gender ENUM ('Male','Female','Other'),
-  date_of_birth DATE,
-  rating INT,
+  fName VARCHAR(255) NOT NULL,
+  lName VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  phoneNum VARCHAR(255) NOT NULL,
+  gender ENUM ('Male','Female','Other') NOT NULL,
+  dob DATE NOT NULL,
+  rating INT NOT NULL,
   role ENUM ('Member', 'Officer', 'System Admin') DEFAULT 'Member',
-  email VARCHAR(255) NOT NULL,
-  username VARCHAR(255) NOT NULL,
   hashed_password VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
@@ -29,7 +28,7 @@ CREATE TABLE societyEvents (
 DROP TABLE IF EXISTS news;
 CREATE TABLE news (
   id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
+  title VARCHAR(255),
   authorID int,
   description VARCHAR(255) NOT NULL,
   releaseDate DATETIME NOT NULL,
@@ -41,6 +40,7 @@ CREATE TABLE news (
 DROP TABLE IF EXISTS tournaments;
 CREATE TABLE tournaments (
   id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
   signupDeadline DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
@@ -70,19 +70,20 @@ CREATE TABLE tournamentMatches (
   matchDate DATETIME NOT NULL,
   competitorID1 INT,
   competitorID2 INT,
-  winner INT,
+  winner INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (competitorID1) REFERENCES members(id) ON DELETE SET NULL,
-  FOREIGN KEY (competitorID2) REFERENCES members(id) ON DELETE SET NULL
+  FOREIGN KEY (competitorID1) REFERENCES members(id),
+  FOREIGN KEY (competitorID2) REFERENCES members(id),
+  FOREIGN KEY (tournamentID) REFERENCES members(id)
 );
 
 
-INSERT INTO members (first_name, last_name, address, phone_number, gender, date_of_birth, rating, role, email, username, hashed_password)
-VALUES ('John', 'Smith', '123 Fake Street London', '07123456789', 'Male', '1995-01-01', 1000, 'Member', 'jsmith@gmail.com', 'jsmith', 'qwertyuiop');
-INSERT INTO members (first_name, last_name, address, phone_number, gender, date_of_birth, rating, role, email, username, hashed_password)
-VALUES ('Alice', 'Johnson', '456 Fake Street London', '07987654321', 'Female', '1994-12-12', 1500, 'System Admin', 'ajohnson@gmail.com', 'ajohnson', 'asdfghjkl');
-INSERT INTO members (first_name, last_name, address, phone_number, gender, date_of_birth, rating, role, email, username, hashed_password)
-VALUES ('Riley', 'Thompson', '789 Fake Street London', '07192837465', 'Other', '1995-01-01', 1300, 'Officer', 'rthompson@gmail.com', 'rthompson', 'zxcvbnm');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('John', 'Smith', 'john@kcl.ac.uk','123 Fake Street London', '07123456789', 'Male', '1995-01-01', 100, 'Member', '$we33ewmdks');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Alice', 'Johnson', 'alice@kcl.ac.uk', '456 Fake Street London', '07987654321', 'Female', '1994-12-12', 150, 'System Admin', '$3DSKM3e');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Riley', 'Thompson', 'riley@kcl.ac.uk', '789 Fake Street London', '07192837465', 'Other', '1995-01-01', 130, 'Officer', '$SK3DEDd3');
 
 INSERT INTO societyEvents (title, description, eventDate, releaseDate, expiryDate)
 VALUES ('Coffee Morning', 'Come to the cafe and enjoy a hot drink while meeting society members', '2019-12-05 10:00:00', '2019-11-18 00:00:00', '2019-12-05 12:00:00');
@@ -93,3 +94,8 @@ VALUES ('Awards Ceremony', 'Come and celebrate the achievements of our society m
 
 INSERT INTO news (title, authorID, description, releaseDate, expiryDate)
 VALUES ('This is a Headline', 1, 'This is the contents of the news post.', '2019-11-15 08:00:00', '2020-01-01 00:00:00');
+
+INSERT INTO tournaments(name, signupDeadline)
+VALUES ('The Grandest Of The Grandmasters', '2019-12-10');
+INSERT INTO tournaments(name, signupDeadline)
+VALUES ('Quest of the Best Beginner', '2019-12-21');

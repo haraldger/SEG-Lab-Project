@@ -49,19 +49,19 @@
       ?>
 
       First Name:<br>
-      <input type="text" name="member[first_name]" value="<?php echo h($member->first_name); ?>" /><br><br>
+      <input type="text" name="member[fName]" value="<?php echo h($member->fName); ?>" /><br><br>
       Last Name:<br>
-      <input type="text" name="member[last_name]" value="<?php echo h($member->last_name); ?>" /><br><br>
+      <input type="text" name="member[lName]" value="<?php echo h($member->lName); ?>" /><br><br>
       Address:<br>
       <input type="text" name="member[address]" value="<?php echo h($member->address); ?>" /><br><br>
       Phone Number:<br>
-      <input type="text" name="member[phone_number]" value="<?php echo h($member->phone_number); ?>" /><br><br>
+      <input type="text" name="member[phoneNum]" value="<?php echo h($member->phoneNum); ?>" /><br><br>
       Gender:<br>
       <input type="radio" name="member[gender]" value="Male" <?php if ($member->gender=='Male') { echo 'checked'; } ?>> Male<br>
       <input type="radio" name="member[gender]" value="Female" <?php if ($member->gender=='Female') { echo 'checked'; } ?>> Female<br>
       <input type="radio" name="member[gender]" value="Other" <?php if ($member->gender=='Other') { echo 'checked'; } ?>> Other<br><br>
       Date of Birth:<br>
-      <input type="date" name="member[date_of_birth]" value="<?php echo h($member->date_of_birth); ?>" /><br><br>
+      <input type="date" name="member[dob]" value="<?php echo h($member->dob); ?>" /><br><br>
   
         <div id="operations">
             <input type="submit" value="Submit" />
