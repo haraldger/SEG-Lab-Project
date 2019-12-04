@@ -36,7 +36,7 @@ require_once('../private/initialise.php');
            <ul class="navbar-nav">
 
           <?php
-          if(am_logged_in()){
+          if(!am_logged_in()){
             echo(
               h(
                 '<li class="nav-item px-md-1">
