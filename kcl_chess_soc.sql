@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS members;
 CREATE TABLE members (
   id INT NOT NULL AUTO_INCREMENT,
-  fName VARCHAR(255) NOT NULL,
-  lName VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
   address VARCHAR(255),
-  phoneNum VARCHAR(255),
+  phone_number VARCHAR(255),
   gender ENUM ('Male','Female','Other'),
-  dob DATE,
+  date_of_birth DATE,
   rating INT,
   role ENUM ('Member', 'Officer', 'System Admin') DEFAULT 'Member',
   email VARCHAR(255) NOT NULL,
@@ -77,11 +77,11 @@ CREATE TABLE tournamentMatches (
 );
 
 
-INSERT INTO members (fName, lName, address, phoneNum, gender, dob, rating, role, email, username, hashed_password)
+INSERT INTO members (first_name, last_name, address, phone_number, gender, date_of_birth, rating, role, email, username, hashed_password)
 VALUES ('John', 'Smith', '123 Fake Street London', '07123456789', 'Male', '1995-01-01', 1000, 'Member', 'jsmith@gmail.com', 'jsmith', 'qwertyuiop');
-INSERT INTO members (fName, lName, address, phoneNum, gender, dob, rating, role, email, username, hashed_password)
+INSERT INTO members (first_name, last_name, address, phone_number, gender, date_of_birth, rating, role, email, username, hashed_password)
 VALUES ('Alice', 'Johnson', '456 Fake Street London', '07987654321', 'Female', '1994-12-12', 1500, 'System Admin', 'ajohnson@gmail.com', 'ajohnson', 'asdfghjkl');
-INSERT INTO members (fName, lName, address, phoneNum, gender, dob, rating, role, email, username, hashed_password)
+INSERT INTO members (first_name, last_name, address, phone_number, gender, date_of_birth, rating, role, email, username, hashed_password)
 VALUES ('Riley', 'Thompson', '789 Fake Street London', '07192837465', 'Other', '1995-01-01', 1300, 'Officer', 'rthompson@gmail.com', 'rthompson', 'zxcvbnm');
 
 INSERT INTO societyEvents (title, description, eventDate, releaseDate, expiryDate)
