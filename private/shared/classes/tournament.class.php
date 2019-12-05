@@ -1,8 +1,5 @@
 <?php
 
-require_once('databaseobject.class.php');
-
-
 class Tournament extends DatabaseObject {
 
   static protected $table_name = 'tournaments';

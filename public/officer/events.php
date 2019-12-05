@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialise.php'); 
 
-include(SHARED_PATH . '/officer_header.php');
+include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/classes/societyevent.class.php');
 
 if(is_post_request()) {
@@ -13,44 +13,59 @@ else{
 }
 ?>
 
-<div class="container mt-5 mb-5">
-    <h1>Events</h1> <br>
+<!doctype html>
+
+
+<?php include(SHARED_PATH . '/officer_header.php'); ?>
+
+<html lang="en">
+  <head>
+    <title>Events</title>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding:5px
+        }
+        
+    </style>
+  </head>
+
+  <body>
+
+    <h1>Events</h1>
     
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Event ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Event Date</th>
-                <th>Release Date</th>
-                <th>Expiry Date</th>
-                <th>&nbsp;</th>
-                <th>
-                <a href=eventCreate.php><button class="btn btn-primary btn-lg">+</button></a>
-                </th>
-                
-          </tr>   
-        </thead>
-        <tbody>
+    <table>
+        <tr>
+            <th>Event ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Event Date</th>
+            <th>Release Date</th>
+            <th>Expiry Date</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+            
+        </tr>
         <?php			
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
+			$events = SocietyEvent::find_by_sql($query);
     
-            while($events = mysqli_fetch_assoc($result_set)){
+            foreach($events as $event){
                 echo "<tr>";
-                    echo "<th scope=\"row\">".$events["id"]."</th>";
-                    echo "<td>".$events["name"]."</td>";
-                    echo "<td>".$events["description"]."</td>";
-                    echo "<td>".$events["eventDate"]."</td>";
-                    echo "<td>".$events["releaseDate"]."</td>";
-                    echo "<td>".$events["expiryDate"]."</td>";
-                    echo "<td> <a href=eventEdit.php?id=".$events["id"].">Edit</td>";
-                    echo "<td> <a href=eventDelete.php?id=".$events["id"].">Delete</td>";
+                    echo "<td>".$event->id."</td>";
+                    echo "<td>".$event->name."</td>";
+                    echo "<td>".$event->description."</td>";
+                    echo "<td>".$event->eventDate."</td>";
+                    echo "<td>".$event->releaseDate."</td>";
+                    echo "<td>".$event->expiryDate."</td>";
+                    echo "<td> <a href=eventEdit.php?id=".$event->id.">Edit</td>";
+                    echo "<td> <a href=eventDelete.php?id=".$event->id.">Delete</td>";
                 echo "</tr>";
             }
         ?>
-        </tbody>
     </table>
     
 	<br>
@@ -59,26 +74,24 @@ else{
 		if(is_post_request()){
 			echo "<form action=".url_for('/officer/events.php')." method='get'>";
 				echo "<div id='operations'>";
-				echo "<input type='submit' class='btn btn-danger' value='Hide unreleased/expired events' />";
+				echo "<input type='submit' value='Hide unreleased/expired events' />";
 		}
 		else{
 			echo "<form action=".url_for('/officer/events.php')." method='post'>";
 				echo "<div id='operations'>";
-				echo "<input type='submit' class='btn btn-info' value='Show unreleased/expired events' />";
+				echo "<input type='submit' value='Show unreleased/expired events' />";
 		}
 		
 		echo "</div>";
 		echo "</form>";
 	?>
-	<br>
+	
+    <a href=eventCreate.php>Create</a>
     <br>
 	<br>
+  </body>
+</html>
 
-</div>
- 
 <?php
 	include(SHARED_PATH . '/footer.php');
-	
-    mysqli_free_result($result_set);
-    db_disconnect($connection)
 ?>

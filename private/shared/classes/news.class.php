@@ -1,6 +1,4 @@
 <?php
-	require_once('databaseobject.class.php');
-
     /**
      * A class to represent an event.
      * Example: Disco-night, Brunch, etc.
@@ -30,8 +28,9 @@
             $this->errors = [];
 			
             if(is_blank($this->authorID)) {
-              $this->errors[] = "Creator id cannot be blank.";
+              $this->errors[] = "Author id cannot be blank.";
             }
+
             if(is_blank($this->title)) {
               $this->errors[] = "Title cannot be blank.";
             }

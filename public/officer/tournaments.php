@@ -1,47 +1,63 @@
 <?php require_once('../../private/initialise.php'); 
 
-include(SHARED_PATH . '/officer_header.php');
 include(SHARED_PATH . '/classes/tournament.class.php');
+
 ?>
-    <div class="container mt-5 mb-5">
+
+<?php include(SHARED_PATH . '/officer_header.php'); ?>
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <title>Tournaments</title>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        
+        table, th, td {
+            border: 1px solid black;
+            padding:5px
+        }
+        
+    </style>
+  </head>
+
+  <body>
+
     <h1>Tournaments</h1>
     
-    <table class="table">
-    <thead>
+    <table>
         <tr>
-            <th scope="col">Tournament ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Signup Date</th>     
-			<th scope="col">&nbsp;</th>
-			<th scope="col">&nbsp;</th>			
+            <th>Tournament ID</th>
+            <th>Name of the tournament</th>
+            <th>Signup Date</th>     
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>			
         </tr>
-    </thead>
         <?php 
-            $query = "SELECT * FROM tournaments";
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
-    
-            while($tournaments = mysqli_fetch_assoc($result_set)){
+            $tournaments = Tournament::find_all();
+            foreach($tournaments as $tournament){
                 echo "<tr>";
-                    echo "<th scope=\"row\">".$tournaments["id"]."</th>";
-                    echo "<td>".$tournaments["name"]."</td>";
-                    echo "<td>".$tournaments["signupDeadline"]."</td>";
-                    echo "<td> <a href=tournamentEdit.php?id=".$tournaments["id"].">Edit</td>";
-                    echo "<td> <a href=tournamentDelete.php?id=".$tournaments["id"].">Delete</td>";
+                    echo "<td>$tournament->id</td>";
+                    echo "<td>$tournament->name</td>";
+                    echo "<td>$tournament->signupDeadline</td>";
+                    echo "<td> <a href=tournamentEdit.php?id=$tournament->id>Edit</td>";
+                    echo "<td> <a href=tournamentDelete.php?id=$tournament->id>Delete</td>";
                 echo "</tr>";
             }
         ?>
     </table>
     
 	<br>
-    <a href=tournamentCreate.php><button class="btn btn-primary">Create Tournament</button></a>
+    <a href=tournamentCreate.php>Create</a>
 	<br>
     <br>
 	
-    
-    </div>
+  </body>
+</html>
 
 <?php 
-    mysqli_free_result($result_set);
-    db_disconnect($connection)
+include(SHARED_PATH . "/footer.php");
 ?>

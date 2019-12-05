@@ -12,7 +12,6 @@ if(is_post_request()) {
 	$result = $new_tournament->create();
   
 	if($result == false){
-		$errors = $new_tournament->errors;
 	}
 	else{
 		redirect_to(url_for('officer/tournaments.php'));
@@ -35,7 +34,7 @@ if(is_post_request()) {
 	  <div class="tournament new">
 		<h1>Create Tournament</h1><br><hr>
 
-		<?php echo display_errors($errors); ?>
+		<?php echo display_errors($new_tournament->errors); ?>
 		
 		<form action="<?php echo url_for('/officer/tournamentCreate.php'); ?>" method="post">
 		<div class="form-group">
