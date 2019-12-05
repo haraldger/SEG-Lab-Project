@@ -13,37 +13,33 @@ else{
 }
 ?>
 
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <title>Events</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
-  </head>
-
-  <body>
-
-    <h1>Events</h1>
+<div class="container mt-5 mb-5">
+    <h1>Events</h1> <br>
     
-    <table>
-        <tr>
-            <th>Event ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Event Date</th>
-            <th>Release Date</th>
-            <th>Expiry Date</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-            
-        </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Event ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Event Date</th>
+                <th>Release Date</th>
+                <th>Expiry Date</th>
+                <th>&nbsp;</th>
+                <th>
+                <a href=eventCreate.php><button class="btn btn-primary btn-lg">+</button></a>
+                </th>
+                
+          </tr>   
+        </thead>
+        <tbody>
         <?php			
 			$connection = db_connect();
             $result_set = mysqli_query($connection, $query);
     
             while($events = mysqli_fetch_assoc($result_set)){
                 echo "<tr>";
-                    echo "<td>".$events["id"]."</td>";
+                    echo "<th scope=\"row\">".$events["id"]."</th>";
                     echo "<td>".$events["name"]."</td>";
                     echo "<td>".$events["description"]."</td>";
                     echo "<td>".$events["eventDate"]."</td>";
@@ -54,6 +50,7 @@ else{
                 echo "</tr>";
             }
         ?>
+        </tbody>
     </table>
     
 	<br>
@@ -62,24 +59,23 @@ else{
 		if(is_post_request()){
 			echo "<form action=".url_for('/officer/events.php')." method='get'>";
 				echo "<div id='operations'>";
-				echo "<input type='submit' value='Hide unreleased/expired events' />";
+				echo "<input type='submit' class='btn btn-danger' value='Hide unreleased/expired events' />";
 		}
 		else{
 			echo "<form action=".url_for('/officer/events.php')." method='post'>";
 				echo "<div id='operations'>";
-				echo "<input type='submit' value='Show unreleased/expired events' />";
+				echo "<input type='submit' class='btn btn-info' value='Show unreleased/expired events' />";
 		}
 		
 		echo "</div>";
 		echo "</form>";
 	?>
 	<br>
-    <h5><a href=eventCreate.php>Create Event</a></h5>
     <br>
 	<br>
-  </body>
-</html>
 
+</div>
+ 
 <?php
 	include(SHARED_PATH . '/footer.php');
 	

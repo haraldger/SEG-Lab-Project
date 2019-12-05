@@ -24,30 +24,24 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 <!doctype html>
 
-<html lang="en">
-  <head>
-    <title>Delete News</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
-  </head>
-  <body>
-	<div id="content">
+
+	<div id="content" class="container mt-5 mb-5">
 
 	  <a class="back-link" href="<?php echo url_for('officer/news.php'); ?>">&laquo; Back to List</a>
-
+		<br><br>
 	  <div class="news delete">
-		<h1>Delete News</h1>
+		<h1>Delete News</h1> <hr>
 		<p>Are you sure you want to delete this news?</p>
-		<p class="item"><?php echo "News ID: ".h($id); ?></p>
+		<p class="item"><?php echo "News ID: ".h($id); ?></p><br>
 
 		<form action="<?php echo url_for('/officer/newsDelete.php?id=' .h(u($id))); ?>" method="post">
 		  <div id="operations">
-			<input type="submit" name="commit" value="Delete News" />
+			<input type="submit" class="btn btn-danger" name="commit" value="Delete News" />
 		  </div>
 		</form>
 		<br>
 	  </div>
 
 	</div>
-  </body>
-</html>
+
 <?php include(SHARED_PATH . '/footer.php'); ?>

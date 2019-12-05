@@ -14,17 +14,17 @@
   <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">KCLSU</a>
+            <a class="navbar-brand" href="../../public/member/index.php">Member's Area</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="nav-item active">
-                <a class="nav-link" href="../public/index.php">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../../public/member/index.php">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                 <a class="nav-link" href="../public/about.php">About</a>
                 </li>
                 <li class="nav-item active">
-                <a class="nav-link" href="../public/contact.php">Contact</a>
+                <a class="nav-link" href="../../public/contact.php">Contact</a>
                 </li> 
                 </ul>
             </div>

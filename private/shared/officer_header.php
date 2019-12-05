@@ -14,14 +14,14 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">KCLSU</a>
+        <a class="navbar-brand" href="../../public/member/index.php">KCLSU</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
           <li class="nav-item active">
-          <a class="nav-link" href="news.php">News</a>
+          <a class="nav-link" href="../../public/officer/news.php">News</a>
             </li>
             <li class="nav-item active">
-          <a class="nav-link" href="events.php">Events</a>
+          <a class="nav-link" href="../../public/officer/events.php">Events</a>
             </li>
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
