@@ -1,15 +1,27 @@
 <?php require_once('../../private/initialise.php'); 
 
-include(SHARED_PATH . '/officer_header.php');
 include(SHARED_PATH . '/classes/tournament.class.php');
+
 ?>
+
+<?php include(SHARED_PATH . '/officer_header.php'); ?>
 
 <!doctype html>
 
 <html lang="en">
   <head>
     <title>Tournaments</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        
+        table, th, td {
+            border: 1px solid black;
+            padding:5px
+        }
+        
+    </style>
   </head>
 
   <body>
@@ -19,28 +31,27 @@ include(SHARED_PATH . '/classes/tournament.class.php');
     <table>
         <tr>
             <th>Tournament ID</th>
+            <th>Name of the tournament</th>
             <th>Signup Date</th>     
 			<th>&nbsp;</th>
 			<th>&nbsp;</th>			
         </tr>
         <?php 
-            $query = "SELECT * FROM tournaments";
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
-    
-            while($tournaments = mysqli_fetch_assoc($result_set)){
+            $tournaments = Tournament::find_all();
+            foreach($tournaments as $tournament){
                 echo "<tr>";
-                    echo "<td>".$tournaments["id"]."</td>";
-                    echo "<td>".$tounrnaments["signupDeadline"]."</td>";
-                    echo "<td> <a href=tournamentEdit.php?id=".$tournmanets["id"].">Edit</td>";
-                    echo "<td> <a href=tournamentDelete.php?id=".$tournamnets["id"].">Delete</td>";
+                    echo "<td>$tournament->id</td>";
+                    echo "<td>$tournament->name</td>";
+                    echo "<td>$tournament->signupDeadline</td>";
+                    echo "<td> <a href=tournamentEdit.php?id=$tournament->id>Edit</td>";
+                    echo "<td> <a href=tournamentDelete.php?id=$tournament->id>Delete</td>";
                 echo "</tr>";
             }
         ?>
     </table>
     
 	<br>
-    <h5><a href=tournamentCreate.php>Create Tournament</a></h5>
+    <a href=tournamentCreate.php>Create</a>
 	<br>
     <br>
 	
@@ -48,6 +59,5 @@ include(SHARED_PATH . '/classes/tournament.class.php');
 </html>
 
 <?php 
-    mysqli_free_result($result_set);
-    db_disconnect($connection)
+include(SHARED_PATH . "/footer.php");
 ?>

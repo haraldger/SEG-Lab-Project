@@ -1,7 +1,5 @@
 <?php
 
-require_once('databaseobject.class.php');
-
 class Member extends DatabaseObject {
 
   static protected $table_name = "members";
@@ -53,12 +51,12 @@ class Member extends DatabaseObject {
     return password_verify($password, $this->hashed_password);
   }
 
-  public function create() {
+  protected function create() {
     $this->set_hashed_password();
     return parent::create();
   }
 
-  public function update() {
+  protected function update() {
     if($this->password != '') {
       $this->set_hashed_password();
       // validate password

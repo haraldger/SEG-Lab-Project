@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialise.php'); 
 
-include(SHARED_PATH . '/officer_header.php');
+include(SHARED_PATH . '/header.php');
 include(SHARED_PATH . '/classes/news.class.php');
 
 if(is_post_request()) {
@@ -13,6 +13,7 @@ else{
 }
 ?>
 
+<?php include(SHARED_PATH . '/officer_header.php'); ?>
 
 
 <!doctype html>
@@ -20,7 +21,17 @@ else{
 <html lang="en">
   <head>
     <title>News</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        
+        table, th, td {
+            border: 1px solid black;
+            padding:5px
+        }
+        
+    </style>
   </head>
 
   <body>
@@ -38,20 +49,21 @@ else{
 			<th>&nbsp;</th>
 			<th>&nbsp;</th>
         </tr>
-        <?php
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
+
+        <?php 
+            $query = "SELECT * FROM news";
+            $result_set = News::find_by_sql($query);
 			
             foreach($result_set as $news){
                 echo "<tr>";
-                    echo "<td>".$news["id"]."</td>";
-                    echo "<td>".$news["title"]."</td>";
-                    echo "<td>".$news["authorID"]."</td>";
-                    echo "<td>".$news["description"]."</td>";
-                    echo "<td>".$news["releaseDate"]."</td>";
-                    echo "<td>".$news["expiryDate"]."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$news["id"].">Edit</td>";
-                    echo "<td> <a href=newsDelete.php?id=".$news["id"].">Delete</td>";
+                    echo "<td>".$news->id."</td>";
+                    echo "<td>".$news->title."</td>";
+                    echo "<td>".$news->authorID."</td>";
+                    echo "<td>".$news->description."</td>";
+                    echo "<td>".$news->releaseDate."</td>";
+                    echo "<td>".$news->expiryDate."</td>";
+                    echo "<td> <a href=newsEdit.php?id=".$news->id.">Edit</td>";
+                    echo "<td> <a href=newsDelete.php?id=".$news->id.">Delete</td>";
                 echo "</tr>";
             }
         ?>
@@ -74,9 +86,9 @@ else{
 		echo "</div>";
 		echo "</form>";
 	?>
-	<br>
+	
 	<div class="actions">
-      <h5><a href=newsCreate.php>Create News</a></h5>
+      <a href=newsCreate.php>Create</a>
     </div>
 
 	<br>
@@ -85,7 +97,4 @@ else{
 
 <?php 
 	include(SHARED_PATH . '/footer.php');
-	
-	mysqli_free_result($result_set);
-    db_disconnect($connection)
 ?>
