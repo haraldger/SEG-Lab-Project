@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS tournamentOrganisers;
 CREATE TABLE tournamentOrganisers (
   tournamentID INT,
   organiserID INT,
-  PRIMARY KEY (tournamentID, organiserID),
+  UNIQUE (tournamentID, organiserID),
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
   FOREIGN KEY (organiserID) REFERENCES members(id) ON DELETE CASCADE
 );
@@ -58,7 +58,7 @@ DROP TABLE IF EXISTS tournamentCompetitors;
 CREATE TABLE tournamentCompetitors (
   tournamentID INT,
   competitorID INT,
-  PRIMARY KEY (tournamentID, competitorID),
+  UNIQUE (tournamentID, competitorID),
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
   FOREIGN KEY (competitorID) REFERENCES members(id) ON DELETE CASCADE
 );
