@@ -9,9 +9,8 @@ $id = $_GET['id'];
 
 if(is_post_request()) {
 	
-	$tournament['id'] = $id;
-	$new_tournament = new Tournament($tournament);
-	$result = $new_tournament->delete();
+	$tournament = Tournament::find_by_id($id);
+	$result = $tournament->delete();
 	
 	if($result){
 		redirect_to(url_for('officer/tournaments.php'));

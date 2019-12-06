@@ -3,26 +3,20 @@
 require_once(SHARED_PATH .'/classes/tournament.class.php'); 
 
 if(is_post_request()) {
-
-	$tournament = [];
-	$tournament['signupDeadline'] = $_POST['signupDeadline'] ?? '';
-	$tournament['name']= $_POST['name'] ?? '';
-	
-	$new_tournament = new Tournament($tournament);
-	$result = $new_tournament->create();
+	$tournament = new Tournament($_POST);
+	$result = $tournament->save();
   
 	if($result == false){
-		$errors = $new_tournament->errors;
 	}
 	else{
 		redirect_to(url_for('officer/tournaments.php'));
 	}
   
-} else {
+	} else {
+		$tournament = new Tournament;
+	}
 
-	$tournament = [];
-	$tournament['signupDeadline'] = '';
-}
+?>
 
 ?>
 
@@ -35,19 +29,19 @@ if(is_post_request()) {
 	  <div class="tournament new">
 		<h1>Create Tournament</h1><br><hr>
 
-		<?php echo display_errors($errors); ?>
-		
+		<?php echo display_errors($tournament->errors); ?>
+
 		<form action="<?php echo url_for('/officer/tournamentCreate.php'); ?>" method="post">
 		<div class="form-group">
 		  <dl>
 			<dt>Signup Deadline</dt>
-			<dd><input class="form-control" type="datetime-local" name="signupDeadline" value="<?php echo h($tournament['signupDeadline']); ?>" /></dd>
+			<dd><input class="form-control" type="datetime-local" name="signupDeadline" value="<?php echo h($tournament->signupDeadline); ?>" /></dd>
 		  </dl>
 		  </div>
 		  <div class="form-group">
 		  <dl>
 		  	<dt>Name of Tournament</dt>
-			  <dd><input class="form-control" type="text" name="name" value="<?php echo h($tournament['name']); ?>" /></dd>
+			  <dd><input class="form-control" type="text" name="name" value="<?php echo h($tournament->name); ?>" /></dd>
 		  </dl>
 		  </div>
 		  <div id="operations">

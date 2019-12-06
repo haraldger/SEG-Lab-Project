@@ -6,41 +6,23 @@ if(!isset($_GET['id'])) {
 	redirect_to(url_for('officer/events.php'));
 }
 $id = $_GET['id'];
-$eventItem = SocietyEvent::find_by_id($id);
 
 if(is_post_request()) {
 
-	$event = [];
-	$event['id'] = $id;
-	$event['name'] = $_POST['name'] ?? '';
-	$event['description'] = $_POST['description'] ?? '';
-	$event['eventDate'] = $_POST['eventDate'] ?? '';
-	$event['releaseDate'] = $_POST['releaseDate'] ?? '';
-	$event['expiryDate'] = $_POST['expiryDate'] ?? '';
-	
-	$new_event = new SocietyEvent($event);
-	$result = $new_event->update();
+	$eventItem = new SocietyEvent($_POST);
+	$eventItem->id = $id;
+	$result = $eventItem->save();
   
 	if($result == false){
-		
-		$errors = $new_event->errors;	
+		// errors!
 	}
 	else{
 		redirect_to(url_for('officer/events.php'));
 	}
   
-} else {
-
-	$event = [];
-	$event['id'] = $id;
-	$event['name'] = '';
-	$event['eventDate'] = '';
-	$event['description'] = '';
-	$event['releaseDate'] = '';
-	$event['expiryDate'] = '';
-
+}else {
+	$eventItem = SocietyEvent::find_by_id($id);
 }
-
 ?>
 
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
@@ -53,7 +35,7 @@ if(is_post_request()) {
 
 		<h1>Edit Society Event</h1>
 
-		<?php echo display_errors($errors); ?>
+		<?php echo display_errors($eventItem->errors); ?>
 
 		<form action="<?php echo url_for('/officer/eventEdit.php?id=' . h(u($id))); ?>" method="post">
 		<div class="form-group">

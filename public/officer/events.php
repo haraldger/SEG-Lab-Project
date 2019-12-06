@@ -33,22 +33,21 @@ else{
           </tr>   
         </thead>
         <tbody>
-        <?php			
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
+        <?php		
+            $events = SocietyEvent::find_by_sql($query);
     
-            while($events = mysqli_fetch_assoc($result_set)){
+            foreach($events as $event){
                 echo "<tr>";
-                    echo "<th scope=\"row\">".$events["id"]."</th>";
-                    echo "<td>".$events["name"]."</td>";
-                    echo "<td>".$events["description"]."</td>";
-                    echo "<td>".$events["eventDate"]."</td>";
-                    echo "<td>".$events["releaseDate"]."</td>";
-                    echo "<td>".$events["expiryDate"]."</td>";
-                    echo "<td> <a href=eventEdit.php?id=".$events["id"].">Edit</td>";
-                    echo "<td> <a href=eventDelete.php?id=".$events["id"].">Delete</td>";
+                    echo "<th scope=\"row\">".$event->id."</th>";
+                    echo "<td>".$event->name."</td>";
+                    echo "<td>".$event->description."</td>";
+                    echo "<td>".$event->eventDate."</td>";
+                    echo "<td>".$event->releaseDate."</td>";
+                    echo "<td>".$event->expiryDate."</td>";
+                    echo "<td> <a href=eventEdit.php?id=".$event->id.">Edit</td>";
+                    echo "<td> <a href=eventDelete.php?id=".$event->id.">Delete</td>";
                 echo "</tr>";
-            }
+            }	
         ?>
         </tbody>
     </table>
@@ -78,7 +77,4 @@ else{
  
 <?php
 	include(SHARED_PATH . '/footer.php');
-	
-    mysqli_free_result($result_set);
-    db_disconnect($connection)
 ?>

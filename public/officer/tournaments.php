@@ -16,18 +16,16 @@ include(SHARED_PATH . '/classes/tournament.class.php');
 			<th scope="col">&nbsp;</th>			
         </tr>
     </thead>
-        <?php 
-            $query = "SELECT * FROM tournaments";
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
-    
-            while($tournaments = mysqli_fetch_assoc($result_set)){
+        <?php
+
+            $tournaments = Tournament::find_all();
+            foreach($tournaments as $tournament){
                 echo "<tr>";
-                    echo "<th scope=\"row\">".$tournaments["id"]."</th>";
-                    echo "<td>".$tournaments["name"]."</td>";
-                    echo "<td>".$tournaments["signupDeadline"]."</td>";
-                    echo "<td> <a href=tournamentEdit.php?id=".$tournaments["id"].">Edit</td>";
-                    echo "<td> <a href=tournamentDelete.php?id=".$tournaments["id"].">Delete</td>";
+                    echo "<th scope=\"row\">".$tournament->id."</th>";
+                    echo "<td>$tournament->name</td>";
+                    echo "<td>$tournament->signupDeadline</td>";
+                    echo "<td> <a href=tournamentEdit.php?id=$tournament->id>Edit</td>";
+                    echo "<td> <a href=tournamentDelete.php?id=$tournament->id>Delete</td>";
                 echo "</tr>";
             }
         ?>
@@ -41,7 +39,6 @@ include(SHARED_PATH . '/classes/tournament.class.php');
     
     </div>
 
-<?php 
-    mysqli_free_result($result_set);
-    db_disconnect($connection)
+<?php
+	include(SHARED_PATH . '/footer.php');
 ?>
