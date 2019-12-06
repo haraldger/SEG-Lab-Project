@@ -9,8 +9,7 @@ $id = $_GET['id'];
 
 if(is_post_request()) {
 	
-	$event['id'] = $id;
-	$new_event = new SocietyEvent($event);
+	$new_event = SocietyEvent::find_by_id($id);
 	$result = $new_event->delete();
 	
 	if($result){

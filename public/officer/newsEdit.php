@@ -6,46 +6,22 @@ if(!isset($_GET['id'])) {
 	redirect_to(url_for('officer/news.php'));
 }
 $id = $_GET['id'];
-$newsItem = News::find_by_id($id);
 
 if(is_post_request()) {
 
-	$news = [];
-	$news['id'] = $id;
-	$news['title'] = $_POST['title'] ?? '';
-	$news['authorID'] = $_POST['authorID'] ?? '';
-	$news['description'] = $_POST['description'] ?? '';
-	$news['releaseDate'] = $_POST['releaseDate'] ?? '';
-	$news['expiryDate'] = $_POST['expiryDate'] ?? '';
-	
-	$new_news = new News($news);
-	$result = $new_news->update();
-  
+	$newsItem = new News($_POST);
+	$newsItem->id = $id;
+	$result = $newsItem->save();
+
 	if($result == false){
-		if(empty($new_news->errors)){		
-			$errorMessage = [];
-			$errorMessage[] = "The author ID provided doesn't match any authors";
-			
-			$errors = $errorMessage;
-		}
-		else{
-			$errors = $new_news->errors;
-		}
+		// error!
 	}
 	else{
 		redirect_to(url_for('officer/news.php'));
 	}
   
 } else {
-
-	$news = [];
-	$news['id'] = $id;
-	$news['title'] = '';
-	$news['authorID'] = '';
-	$news['description'] = '';
-	$news['releaseDate'] = '';
-	$news['expiryDate'] = '';
-
+	$newsItem = News::find_by_id($id);
 }
 
 ?>
@@ -58,7 +34,7 @@ if(is_post_request()) {
 	  <br><br>
 	  <div class="news edit">
 		<h1>Edit News</h1><br><hr>
-		<?php echo display_errors($errors); ?>
+		<?php echo display_errors($newsItem->errors); ?>
 
 		<form action="<?php echo url_for('/officer/newsEdit.php?id=' . h(u($id))); ?>" method="post">
 		<div class="form-group">

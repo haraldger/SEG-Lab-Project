@@ -9,8 +9,7 @@ $id = $_GET['id'];
 
 if(is_post_request()) {
 	
-	$news['id'] = $id;
-	$new_news = new News($news);
+	$new_news = News::find_by_id($id);
 	$result = $new_news->delete();
 	
 	if($result){

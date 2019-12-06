@@ -1,44 +1,22 @@
-<?php require_once('../../private/initialise.php'); 
+<?php 
+require_once('../../private/initialise.php'); 
+require_once('../../private/shared/classes/news.class.php'); 
 
-require_once(SHARED_PATH .'/classes/news.class.php'); 
-
+// TODO: set authorID to currently logged in user's ID
 if(is_post_request()) {
-
-	$news = [];
-	$news['title'] = $_POST['title'] ?? '';
-	$news['authorID'] = $_POST['authorID'] ?? '';
-	$news['description'] = $_POST['description'] ?? '';
-	$news['releaseDate'] = $_POST['releaseDate'] ?? '';
-	$news['expiryDate'] = $_POST['expiryDate'] ?? '';
-	
-	$new_news = new News($news);
-	$result = $new_news->create();
+  $news = new News($_POST);
+  $result = $news->save();
   
-	if($result == false){
-		if(empty($new_news->errors)){		
-			$errorMessage = [];
-			$errorMessage[] = "The author ID provided doesn't match any authors";
-			
-			$errors = $errorMessage;
-		}
-		else{
-			$errors = $new_news->errors;
-		}
-	}
-	else{
-		redirect_to(url_for('officer/news.php'));
-	}
-  
-} else {
-
-	$news = [];
-	$news['title'] = '';
-	$news['authorID'] = '';
-	$news['description'] = '';
-	$news['releaseDate'] = '';
-	$news['expiryDate'] = '';
-
+  if($result == true){
+	redirect_to(url_for('officer/news.php'));
+  }
+} 
+else{
+  $news = new News;
 }
+
+?>
+
 
 ?>
 
@@ -51,39 +29,39 @@ if(is_post_request()) {
 		  <div class="news new">
 			<h1>Create News</h1>
 			<hr>
-			<?php echo display_errors($errors); ?>
+			<?php echo display_errors($news->errors); ?>
 			
 			<form action="<?php echo url_for('/officer/newsCreate.php'); ?>" method="post">
 			<div class="form-group">
 				<dl>
 				<label>Title</label>
 				<dd>
-				<input type="text" class="form-control" name="title" value="<?php echo h($news['title']); ?>" />
+				<input type="text" class="form-control" name="title" value="<?php echo h($news->title); ?>" />
 				</dd>
 			  </dl>
 			</div>
 			<div class="form-group">
 			  <dl>
 				<label>Author</label>
-				<dd><input type="text" class="form-control" name="authorID" value="<?php echo h($news['authorID']); ?>" /></dd>
+				<dd><input type="text" class="form-control" name="authorID" value="<?php echo h($news->authorID); ?>" /></dd>
 			  </dl>
 			</div>
 			<div class="form-group">
 			  <dl>
 				<label>Description</label>
 				<dd>
-				  <textarea class="form-control" name="description" cols="60" rows="10"><?php echo h($news['description']); ?></textarea>
+				  <textarea class="form-control" name="description" cols="60" rows="10"><?php echo h($news->description); ?></textarea>
 				</dd>
 			  </dl>
 			</div>
 			  <dl>
 				<label>Release Date</label>
 				<dd>
-				<input class="form-control" type="datetime-local" name="releaseDate" value="<?php echo h($news['releaseDate']); ?>" /></dd>
+				<input class="form-control" type="datetime-local" name="releaseDate" value="<?php echo h($news->releaseDate); ?>" /></dd>
 			  </dl>
 			  <dl>
 				<label>Expiry Date</label>
-				<dd><input class="form-control" type="datetime-local" name="expiryDate" value="<?php echo h($news['expiryDate']); ?>" /></dd>
+				<dd><input class="form-control" type="datetime-local" name="expiryDate" value="<?php echo h($news->expiryDate); ?>" /></dd>
 			  </dl>
 			  <div id="operations">
 				<input type="submit" class="btn btn-primary btn-lg" value="Create News" />

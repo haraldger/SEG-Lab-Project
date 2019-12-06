@@ -5,29 +5,18 @@ require_once(SHARED_PATH .'/classes/tournament.class.php');
 if(!isset($_GET['id'])) {
 	redirect_to(url_for('officer/tournaments.php'));
 }
+
 $id = $_GET['id'];
 $tournamentItem = Tournament::find_by_id($id);
 
 if(is_post_request()) {
 
-    $tournament = [];
-    $tournament['id'] = $id;
-    $tournament['name'] = $_POST['name'] ?? '';
-    $tournament['signupDeadline'] = $_POST['signupDeadline'] ?? '';
-	
-	$new_tournament = new Tournament($tournament);
-	$result = $new_tournament->update();
+	$tournamentItem->name = $_POST["name"];
+	$tournamentItem->signupDeadline = $_POST["signupDeadline"];
+	$result = $tournamentItem->save();
   
 	if($result == false){
-		if(empty($new_tournament->errors)){		
-			$errorMessage = [];
-			$errorMessage[] = "The author ID provided doesn't match any authors";
-			
-			$errors = $errorMessage;
-		}
-		else{
-			$errors = $new_tournament->errors;
-		}
+		
 	}
 	else{
 		redirect_to(url_for('officer/tournaments.php'));
@@ -35,10 +24,6 @@ if(is_post_request()) {
   
 } else {
 
-	$tournament = [];
-    $tournament['id'] = $id;
-    $tournament['name'] = '';
-	$tournament['signupDeadline'] = '';
 }
 
 ?>

@@ -35,21 +35,22 @@ else{
       </thead>
       <tbody>
       <?php
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
-			
-            foreach($result_set as $news){
-                echo "<tr>";
-                    echo "<th scope=\"row\">".$news["id"]."</th>";
-                    echo "<td>".$news["title"]."</td>";
-                    echo "<td>".$news["authorID"]."</td>";
-                    echo "<td>".$news["description"]."</td>";
-                    echo "<td>".$news["releaseDate"]."</td>";
-                    echo "<td>".$news["expiryDate"]."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$news["id"].">Edit</td>";
-                    echo "<td> <a href=newsDelete.php?id=".$news["id"].">Delete</td>";
-                echo "</tr>";
-            }
+
+          $result_set = News::find_by_sql($query);
+                
+          foreach($result_set as $news){
+              echo "<tr>";
+                  echo "<th scope=\"row\">".$news->id."</th>";
+                  echo "<td>".$news->title."</td>";
+                  echo "<td>".$news->authorID."</td>";
+                  echo "<td>".$news->description."</td>";
+                  echo "<td>".$news->releaseDate."</td>";
+                  echo "<td>".$news->expiryDate."</td>";
+                  echo "<td> <a href=newsEdit.php?id=".$news->id.">Edit</td>";
+                  echo "<td> <a href=newsDelete.php?id=".$news->id.">Delete</td>";
+              echo "</tr>";
+          }
+
         ?>
       
       </tbody>
@@ -80,7 +81,4 @@ else{
 </div> 
 <?php 
 	include(SHARED_PATH . '/footer.php');
-	
-	mysqli_free_result($result_set);
-    db_disconnect($connection)
 ?>
