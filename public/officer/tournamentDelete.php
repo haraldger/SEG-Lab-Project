@@ -2,6 +2,10 @@
 require_once('../../private/initialise.php');
 require_once(SHARED_PATH .'/classes/tournament.class.php');
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 if(!isset($_GET['id'])) {
 	redirect_to(url_for('officer/tournaments.php'));
 }

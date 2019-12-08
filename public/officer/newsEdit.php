@@ -2,6 +2,10 @@
 
 require_once(SHARED_PATH .'/classes/news.class.php'); 
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 if(!isset($_GET['id'])) {
 	redirect_to(url_for('officer/news.php'));
 }
