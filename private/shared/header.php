@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
           <li class="nav-item active">
-          <a class="nav-link" href="/SEG-Lab-Project/public/index.php">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?php echo(url_for('index.php')); ?>">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
           <a class="nav-link" href="/SEG-Lab-Project/public/about.php">About</a>
@@ -48,15 +48,25 @@
             );
           }
 
+          if(am_officer()){
+            echo(
+              '
+                <a href="<?php echo(url_for('officer/')); ?>"><button class="button">Officer Menu</button></a>
+              '
+            );
+          }
+
           if(am_logged_in()){ 
             echo( /*Links to profile page*/
               '
                 <a href="/SEG-Lab-Project/public/member/profiles/index.php?id=' . get_session_id() . '"><img src="/SEG-Lab-Project/public/static/profile.jpg" alt="View profile" width="50" height="50" border="0"></a>
-                
+                <a href="/SEG-Lab-Project/public/logout.php"><button class="button">Log out</button></a>
 
               '
             );
           }
+
+
 
           
           ?>
