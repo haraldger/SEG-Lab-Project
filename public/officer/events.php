@@ -5,7 +5,7 @@ if(!(am_sysadmin() || am_officer())){
 }
 
 include(SHARED_PATH . '/officer_header.php');
-include(SHARED_PATH . '/classes/societyevent.class.php');
+require_once(SHARED_PATH . '/classes/societyevent.class.php');
 
 if(is_post_request()) {
 	$query = "SELECT * FROM societyEvents";

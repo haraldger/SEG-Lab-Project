@@ -5,7 +5,7 @@ if(!(am_sysadmin() || am_officer())){
 }
 
 include(SHARED_PATH . '/officer_header.php');
-include(SHARED_PATH . '/classes/tournament.class.php');
+require_once(SHARED_PATH . '/classes/tournament.class.php');
 ?>
     <div class="container mt-5 mb-5">
 	<a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
