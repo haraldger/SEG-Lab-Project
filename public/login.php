@@ -43,7 +43,6 @@
                 $errors[] = "Password doesn't match.";
             }
         }
-        var_dump($errors);
     }
 
 ?>
@@ -52,7 +51,7 @@
 <form action="<?php echo url_for('login.php'); ?>" method="post">
 <h3>Member's Login</h3>
 <hr><br>
-
+    <?php echo(display_errors($errors));?>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
