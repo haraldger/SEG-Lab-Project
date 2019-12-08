@@ -1,97 +1,74 @@
-<?php require_once('../../private/initialise.php'); 
+<?php 
+require_once('../../private/initialise.php'); 
+require_once('../../private/shared/classes/news.class.php'); 
 
-require_once(SHARED_PATH .'/classes/news.class.php'); 
-
+// TODO: set authorID to currently logged in user's ID
 if(is_post_request()) {
-
-	$news = [];
-	$news['title'] = $_POST['title'] ?? '';
-	$news['authorID'] = $_POST['authorID'] ?? '';
-	$news['description'] = $_POST['description'] ?? '';
-	$news['releaseDate'] = $_POST['releaseDate'] ?? '';
-	$news['expiryDate'] = $_POST['expiryDate'] ?? '';
-	
-	$new_news = new News($news);
-	$result = $new_news->create();
+  $news = new News($_POST);
+  $result = $news->save();
   
-	if($result == false){
-		if(empty($new_news->errors)){		
-			$errorMessage = [];
-			$errorMessage[] = "The author ID provided doesn't match any authors";
-			
-			$errors = $errorMessage;
-		}
-		else{
-			$errors = $new_news->errors;
-		}
-	}
-	else{
-		redirect_to(url_for('officer/news.php'));
-	}
-  
-} else {
-
-	$news = [];
-	$news['title'] = '';
-	$news['authorID'] = '';
-	$news['description'] = '';
-	$news['releaseDate'] = '';
-	$news['expiryDate'] = '';
-
+  if($result == true){
+	redirect_to(url_for('officer/news.php'));
+  }
+} 
+else{
+  $news = new News;
 }
+
+?>
+
 
 ?>
 
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <title>Create News</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
-  </head>
-	<body>
-		<div id="content">
+		<div id="content" class="container mt-5 mb-5">
 
 		  <a class="back-link" href="<?php echo url_for('/officer/news.php'); ?>">&laquo; Back to List</a>
-
+			<br><br>
 		  <div class="news new">
 			<h1>Create News</h1>
-
-			<?php echo display_errors($errors); ?>
+			<hr>
+			<?php echo display_errors($news->errors); ?>
 			
 			<form action="<?php echo url_for('/officer/newsCreate.php'); ?>" method="post">
-			  <dl>
-				<dt>Title</dt>
-				<dd><input type="text" name="title" value="<?php echo h($news['title']); ?>" /></dd>
-			  </dl>
-			  <dl>
-				<dt>Author</dt>
-				<dd><input type="text" name="authorID" value="<?php echo h($news['authorID']); ?>" /></dd>
-			  </dl>
-			  <dl>
-				<dt>Description</dt>
+			<div class="form-group">
+				<dl>
+				<label>Title</label>
 				<dd>
-				  <textarea name="description" cols="60" rows="10"><?php echo h($news['description']); ?></textarea>
+				<input type="text" class="form-control" name="title" value="<?php echo h($news->title); ?>" />
 				</dd>
 			  </dl>
+			</div>
+			<div class="form-group">
 			  <dl>
-				<dt>Release Date</dt>
-				<dd><input type="datetime-local" name="releaseDate" value="<?php echo h($news['releaseDate']); ?>" /></dd>
+				<label>Author</label>
+				<dd><input type="text" class="form-control" name="authorID" value="<?php echo h($news->authorID); ?>" /></dd>
+			  </dl>
+			</div>
+			<div class="form-group">
+			  <dl>
+				<label>Description</label>
+				<dd>
+				  <textarea class="form-control" name="description" cols="60" rows="10"><?php echo h($news->description); ?></textarea>
+				</dd>
+			  </dl>
+			</div>
+			  <dl>
+				<label>Release Date</label>
+				<dd>
+				<input class="form-control" type="datetime-local" name="releaseDate" value="<?php echo h($news->releaseDate); ?>" /></dd>
 			  </dl>
 			  <dl>
-				<dt>Expiry Date</dt>
-				<dd><input type="datetime-local" name="expiryDate" value="<?php echo h($news['expiryDate']); ?>" /></dd>
+				<label>Expiry Date</label>
+				<dd><input class="form-control" type="datetime-local" name="expiryDate" value="<?php echo h($news->expiryDate); ?>" /></dd>
 			  </dl>
 			  <div id="operations">
-				<input type="submit" value="Create News" />
+				<input type="submit" class="btn btn-primary btn-lg" value="Create News" />
 			  </div>
 			</form>
 			<br>
 		  </div>
 
 		</div>
-  </body>
-</html>
 <?php include(SHARED_PATH . '/footer.php'); ?>

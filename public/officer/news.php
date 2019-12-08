@@ -12,49 +12,48 @@ else{
 	$query = "SELECT * FROM news WHERE releaseDate < '".$date."' AND expiryDate > '".$date."'";
 }
 ?>
-
-
-
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <title>News</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/officerStyle.css" />
-  </head>
-
-  <body>
-
-    <h1>News</h1>
+<div class="container mt-5 mb-5">
+    <h1>News</h1> <br>
     
-    <table>
+    <table class="table">
+      <thead>
         <tr>
-            <th>News ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Description</th>
-            <th>Release Date</th>
-            <th>Expiry Date</th>
+            <th scope="col">News ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Description</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Expiry Date</th>
 			<th>&nbsp;</th>
-			<th>&nbsp;</th>
+			<th>
+      <div class="actions">
+        <a href=newsCreate.php><button class="btn btn-primary btn-lg">+</button></a>
+      </div>
+      
+      </th>
         </tr>
-        <?php
-			$connection = db_connect();
-            $result_set = mysqli_query($connection, $query);
-			
-            foreach($result_set as $news){
-                echo "<tr>";
-                    echo "<td>".$news["id"]."</td>";
-                    echo "<td>".$news["title"]."</td>";
-                    echo "<td>".$news["authorID"]."</td>";
-                    echo "<td>".$news["description"]."</td>";
-                    echo "<td>".$news["releaseDate"]."</td>";
-                    echo "<td>".$news["expiryDate"]."</td>";
-                    echo "<td> <a href=newsEdit.php?id=".$news["id"].">Edit</td>";
-                    echo "<td> <a href=newsDelete.php?id=".$news["id"].">Delete</td>";
-                echo "</tr>";
-            }
+      </thead>
+      <tbody>
+      <?php
+
+          $result_set = News::find_by_sql($query);
+                
+          foreach($result_set as $news){
+              echo "<tr>";
+                  echo "<th scope=\"row\">".$news->id."</th>";
+                  echo "<td>".$news->title."</td>";
+                  echo "<td>".$news->authorID."</td>";
+                  echo "<td>".$news->description."</td>";
+                  echo "<td>".$news->releaseDate."</td>";
+                  echo "<td>".$news->expiryDate."</td>";
+                  echo "<td> <a href=newsEdit.php?id=".$news->id.">Edit</td>";
+                  echo "<td> <a href=newsDelete.php?id=".$news->id.">Delete</td>";
+              echo "</tr>";
+          }
+
         ?>
+      
+      </tbody>
     </table>
    
 	<br>
@@ -63,29 +62,23 @@ else{
 		if(is_post_request()){
 			echo "<form action=".url_for('/officer/news.php')." method='get'>";
 				echo "<div id='operations'>";
-				echo "<input type='submit' value='Hide unreleased/expired news' />";
+				echo "<input type='submit' class='btn btn-danger' value='Hide unreleased / expired news' />";
 		}
 		else{
 			echo "<form action=".url_for('/officer/news.php')." method='post'>";
 				echo "<div id='operations'>";
-				echo "<input type='submit' value='Show unreleased/expired news' />";
+				echo "<input type='submit' class='btn btn-info' value='Show unreleased / expired news' />";
 		}
 		
 		echo "</div>";
 		echo "</form>";
 	?>
 	<br>
-	<div class="actions">
-      <h5><a href=newsCreate.php>Create News</a></h5>
-    </div>
+
 
 	<br>
-  </body>
-</html>
 
+</div> 
 <?php 
 	include(SHARED_PATH . '/footer.php');
-	
-	mysqli_free_result($result_set);
-    db_disconnect($connection)
 ?>

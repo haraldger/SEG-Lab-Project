@@ -1,6 +1,7 @@
 
 <?php 
 require_once('../private/initialise.php');
+$page_title = "Welcome to KCL Chess Society";             
 require_once('../private/shared/header.php');
 
 require_once('../private/shared/classes/news.class.php');
@@ -11,11 +12,9 @@ require_once('../private/shared/classes/news.class.php');
     <img src="./static/chessSocietyLogo.jpg" alt="logo" width="10%" height="10%">
     <hr>
     <div class="row">
-    <!--  style="width: 75%;" -->
         <div class="col-8">
         <img src="./static/chessBackground2.jpg" alt="chess" class="img-fluid" >
         </div>
-        <!--  style="width: 25%;" -->
         <div class="col-4">
             <h3>News</h3>
             <?php
