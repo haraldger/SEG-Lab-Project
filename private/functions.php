@@ -1,6 +1,71 @@
 <?php 
 // Common functions used throughout project
 
+
+function am_logged_in(){
+  session_start();
+  if (isset($_SESSION["logged_in"])){
+    if ($_SESSION["logged_in"] == true){
+      return true;
+    }
+  }
+  return false;
+}
+function am_member(){
+  session_start();
+  if (isset($_SESSION["logged_in"])){
+    if ($_SESSION["logged_in"] == true){
+      if ($_SESSION["role"] == "Member"){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+function am_sysadmin(){
+  session_start();
+  if (isset($_SESSION["logged_in"])){
+    if ($_SESSION["logged_in"] == true){
+      if ($_SESSION["role"] == "System Admin"){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+function am_officer(){
+  session_start();
+  if (isset($_SESSION["logged_in"])){
+    if ($_SESSION["logged_in"] == true){
+      if ($_SESSION["role"] == "Officer"){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+function get_session_name(){
+  session_start();
+  if (isset($_SESSION["logged_in"])){
+    if ($_SESSION["logged_in"] == true){
+      $name = $_SESSION["name"];
+      return $name;
+    }
+  }
+  return "";
+}
+function get_session_id(){
+  session_start();
+  if (isset($_SESSION["logged_in"])){
+    if ($_SESSION["logged_in"] == true){
+      $name = $_SESSION["id"];
+      return $name;
+    }
+  }
+  return false;
+}
+
+
 /* Dynamically find a url */
 function url_for($script_path){
 	if($script_path[0] != '/'){
