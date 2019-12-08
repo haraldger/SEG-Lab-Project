@@ -13,6 +13,12 @@ CREATE TABLE members (
   hashed_password VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
+
+DROP TABLE IF EXISTS blacklist;
+CREATE TABLE blacklist (
+  email VARCHAR(255),
+  PRIMARY KEY (email)
+);
  
 DROP TABLE IF EXISTS societyEvents;
 CREATE TABLE societyEvents (

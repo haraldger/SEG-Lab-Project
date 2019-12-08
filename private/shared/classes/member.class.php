@@ -72,6 +72,14 @@ class Member extends DatabaseObject {
   protected function validate() {
     $this->errors = [];
 
+    $sql = "SELECT * FROM blacklist WHERE " . "email = '" . self::$database->escape_string($this->email) . "' LIMIT 1;";
+    $blacklist_res = $this::$database->query($sql);
+    $banned = $blacklist_res->fetch_assoc();
+    if ($banned) {
+      $this->errors[] = "This email has been banned.";
+      return $this->errors;
+    }
+
     if(is_blank($this->fName)) {
       $this->errors[] = "First name cannot be blank.";
     } elseif (!has_length($this->fName, array('min' => 2, 'max' => 255))) {
