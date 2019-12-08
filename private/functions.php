@@ -12,6 +12,7 @@ function am_logged_in(){
   return false;
 }
 
+
 function am_member(){
   session_start();
   if (isset($_SESSION["logged_in"])){
