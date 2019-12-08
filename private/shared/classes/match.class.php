@@ -67,6 +67,9 @@
                     $m1->rating = $m1->rating + $K * (0 - $P1); 
                     $m2->rating = $m2->rating + $K * (1 - $P2);
                 }
+                
+                $m1->save();
+                $m2->save();
             }
         }
     }
