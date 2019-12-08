@@ -43,15 +43,17 @@ require_once('../private/initialise.php');
           <?php
           if(!am_logged_in()){
             echo(
-              h(
                 '<li class="nav-item px-md-1">
                   <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
                 </li>
                 <li class="nav-item px-md-1">
                   <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
                 </li>'
-              )
             );
+          }
+
+          if(){
+            
           }
           ?>
           </ul>
