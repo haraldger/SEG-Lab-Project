@@ -24,17 +24,17 @@ if(is_post_request()) {
 <?php $page_title = 'Delete Profile'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<div id="content" class="container mt-5 mb-5">
 
   <a class="back-link" href="<?php echo url_for('/member/profiles/index.php?id='. h(u($id)));  ?>">&laquo; Back to Profile</a>
-
+<br><br>
   <div class="member delete">
-    <h1>Delete Profile</h1>
-    <p>Are you sure you want to delete your profile?</p>
+    <h1>Delete Profile</h1><br>
+    <p>Are you sure you want to delete your profile?</p><br>
 
     <form action="<?php echo url_for('/member/profiles/delete.php?id=' . h(u($member->id))); ?>" method="post">
       <div id="operations">
-        <input type="submit" name="commit" value="Delete" />
+        <input class="btn btn-danger" type="submit" name="commit" value="Delete My Profile" />
       </div>
     </form>
   </div>

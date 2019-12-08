@@ -5,7 +5,7 @@
 ?>
 
 
-<html lang="en">
+<html lang="en" style="position: relative;">
   <head>
     <title><?php echo h($page_title) ?></title>
     <meta charset="utf-8">
