@@ -32,7 +32,7 @@ class Member extends DatabaseObject {
     $this->email = $args['email'] ?? '';
     $this->address = $args['address'] ?? '';
     $this->phoneNum = $args['phoneNum'] ?? '';
-    $this->gender = $args['gender'] ?? '';
+    $this->gender = $args['gender'] ?? 'Other';
     $this->dob = $args['dob'] ?? '';
     $this->rating = $args['rating'] ?? '0';
     $this->role = $args['role'] ?? 'MEMBER';
@@ -94,10 +94,14 @@ class Member extends DatabaseObject {
       $this->errors[] = "Email already exists.";
     }
 
+    if(is_blank($this->dob)){
+      $this->errors[] = "Date of birth cannot be blank."
+    }
+
     if($this->password_required) {
       if(is_blank($this->password)) {
         $this->errors[] = "Password cannot be blank.";
-      } elseif (!has_length($this->password, array('min' => 6))) {
+      } elseif (!has_length($this->password, array('min' => 5))) {
         $this->errors[] = "Password must contain 6 or more characters";
       } elseif (!preg_match('/[A-Za-z]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 letter";
