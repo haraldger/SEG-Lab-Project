@@ -11,6 +11,8 @@ function am_logged_in(){
   }
   return false;
 }
+
+
 function am_member(){
   session_start();
   if (isset($_SESSION["logged_in"])){
@@ -22,6 +24,7 @@ function am_member(){
   }
   return false;
 }
+
 function am_sysadmin(){
   session_start();
   if (isset($_SESSION["logged_in"])){
@@ -33,6 +36,7 @@ function am_sysadmin(){
   }
   return false;
 }
+
 function am_officer(){
   session_start();
   if (isset($_SESSION["logged_in"])){
@@ -44,6 +48,7 @@ function am_officer(){
   }
   return false;
 }
+
 function get_session_name(){
   session_start();
   if (isset($_SESSION["logged_in"])){
@@ -54,6 +59,7 @@ function get_session_name(){
   }
   return "";
 }
+
 function get_session_id(){
   session_start();
   if (isset($_SESSION["logged_in"])){
