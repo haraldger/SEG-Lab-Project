@@ -51,7 +51,7 @@
           if(am_officer()){
             echo(
               '
-                <a href="<?php echo(url_for('officer/')); ?>"><button class="button">Officer Menu</button></a>
+                <a href=""><button class="button">Officer Menu</button></a>
               '
             );
           }
