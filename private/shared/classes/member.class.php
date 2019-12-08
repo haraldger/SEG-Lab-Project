@@ -95,7 +95,7 @@ class Member extends DatabaseObject {
     }
 
     if(is_blank($this->dob)){
-      $this->errors[] = "Date of birth cannot be blank."
+      $this->errors[] = "Date of birth cannot be blank.";
     }
 
     if($this->password_required) {
