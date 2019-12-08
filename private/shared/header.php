@@ -48,10 +48,12 @@
             );
           }
 
-          if(am_officer()){
+          if(am_officer() || am_sysadmin()){
             echo(
               '
-                <a href=""><button class="button">Officer Menu</button></a>
+                <li class="nav-item px-md-1">
+                  <a href="' . url_for('officer/index.php') . '"><button class="button">Officer Menu</button></a>
+                </li>
               '
             );
           }
@@ -59,8 +61,12 @@
           if(am_logged_in()){ 
             echo( /*Links to profile page*/
               '
-                <a href="/SEG-Lab-Project/public/member/profiles/index.php?id=' . get_session_id() . '"><img src="/SEG-Lab-Project/public/static/profile.jpg" alt="View profile" width="50" height="50" border="0"></a>
-                <a href="/SEG-Lab-Project/public/logout.php"><button class="button">Log out</button></a>
+                <li class="nav-item px-md-1">
+                  <a href="/SEG-Lab-Project/public/member/profiles/index.php?id=' . get_session_id() . '"><img src="/SEG-Lab-Project/public/static/profile.jpg" alt="View profile" width="50" height="50" border="0"></a>
+                </li>
+                <li class="nav-item px-md-1">
+                  <a href="/SEG-Lab-Project/public/logout.php"><button class="button">Log out</button></a>
+                </li>
 
               '
             );
