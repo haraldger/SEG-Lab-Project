@@ -1,5 +1,5 @@
 <?php require_once('../../../private/initialise.php'); ?>
-
+<?php require_once('../../../private/functions.php'); ?>
 <?php
     if(!isset($_GET['id'])) {
         redirect_to(url_for('/index.php'));
@@ -12,9 +12,11 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content" class="container mt-5 mb-5">
-
-<a class="back-link" href="<?php echo url_for('/index.php'); // change to home page ?>">&laquo; Back to Home</a>
-
+<?php if(!am_officer()){?>
+  <a class="back-link" href="<?php echo url_for('/member/index.php'); // change to home page ?>">&laquo; Back to Member's Home page</a>
+<?php } else { ?>
+  <a class="back-link" href="<?php echo url_for('/officer/viewMembers.php'); ?>">&laquo; Back to List of Members</a>
+  <?php }?>
 <div class="member show"><br><br>
 
   <h1>Member: <?php echo h($member->full_name()); ?></h1><hr>
@@ -27,9 +29,14 @@
     <?php echo "Date of Birth: " . h($member->dob) . "<br>"; ?>
     <?php echo "Rating: " . h($member->rating) . "<br>"; ?>
     <?php echo "Role: " . h($member->role) . "<br>"; ?><br>
+    <?php 
+      if(!am_officer()){
+    ?>
     <a class="action" href="<?php echo url_for('/member/profiles/edit.php?id=' . h(u($member->id))); ?>"><button class="btn btn-primary">Edit Profile</button></a>
     <a class="action" href="<?php echo url_for('/member/profiles/delete.php?id=' . h(u($member->id))); ?>"><button class="btn btn-danger">Delete Profile</button></a>
-    	  
+    <?php 
+      }
+    ?>
   </div>
 
 </div>
