@@ -1,4 +1,4 @@
-<?php
+<?php 
 /* 
 Code required to initialise any webpage.
 */
@@ -25,7 +25,6 @@ define("WWW_ROOT", $doc_root);
 require_once('functions.php');
 require_once('database.php');
 require_once('validation_functions.php');
-
 
 require_once('shared/classes/databaseobject.class.php');
 require_once('shared/classes/member.class.php');

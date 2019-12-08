@@ -2,9 +2,14 @@
 require_once('../../private/initialise.php'); 
 require_once('../../private/shared/classes/news.class.php'); 
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 // TODO: set authorID to currently logged in user's ID
 if(is_post_request()) {
   $news = new News($_POST);
+  $news->authorID = get_session_id();
   $result = $news->save();
   
   if($result == true){
@@ -38,12 +43,6 @@ else{
 				<dd>
 				<input type="text" class="form-control" name="title" value="<?php echo h($news->title); ?>" />
 				</dd>
-			  </dl>
-			</div>
-			<div class="form-group">
-			  <dl>
-				<label>Author</label>
-				<dd><input type="text" class="form-control" name="authorID" value="<?php echo h($news->authorID); ?>" /></dd>
 			  </dl>
 			</div>
 			<div class="form-group">

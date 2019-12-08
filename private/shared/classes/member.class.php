@@ -72,6 +72,14 @@ class Member extends DatabaseObject {
   protected function validate() {
     $this->errors = [];
 
+    $sql = "SELECT * FROM blacklist WHERE " . "email = '" . self::$database->escape_string($this->email) . "' LIMIT 1;";
+    $blacklist_res = $this::$database->query($sql);
+    $banned = $blacklist_res->fetch_assoc();
+    if ($banned) {
+      $this->errors[] = "This email has been banned.";
+      return $this->errors;
+    }
+
     if(is_blank($this->fName)) {
       $this->errors[] = "First name cannot be blank.";
     } elseif (!has_length($this->fName, array('min' => 2, 'max' => 255))) {
@@ -94,14 +102,10 @@ class Member extends DatabaseObject {
       $this->errors[] = "Email already exists.";
     }
 
-    if(is_blank($this->dob)){
-      $this->errors[] = "Date of birth cannot be blank.";
-    }
-
     if($this->password_required) {
       if(is_blank($this->password)) {
         $this->errors[] = "Password cannot be blank.";
-      } elseif (!has_length($this->password, array('min' => 5))) {
+      } elseif (!has_length($this->password, array('min' => 6))) {
         $this->errors[] = "Password must contain 6 or more characters";
       } elseif (!preg_match('/[A-Za-z]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 letter";

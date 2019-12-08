@@ -1,3 +1,5 @@
+<!doctype html>
+
 <?php
   if(!isset($page_title)) { $page_title = 'KCLCS'; }
 ?>
@@ -35,6 +37,7 @@
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
            <ul class="navbar-nav">
+
 
           <?php
           if(!am_logged_in()){
@@ -75,6 +78,7 @@
 
           
           ?>
+
           </ul>
           </div>
         </div>

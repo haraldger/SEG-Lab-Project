@@ -1,7 +1,11 @@
 <?php require_once('../../private/initialise.php'); 
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 include(SHARED_PATH . '/officer_header.php');
-include(SHARED_PATH . '/classes/news.class.php');
+require_once(SHARED_PATH . '/classes/news.class.php');
 
 if(is_post_request()) {
 	$query = "SELECT * FROM news";
@@ -13,6 +17,9 @@ else{
 }
 ?>
 <div class="container mt-5 mb-5">
+  <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+  <br>
+  <br>
     <h1>News</h1> <br>
     
     <table class="table">
