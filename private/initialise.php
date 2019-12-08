@@ -30,7 +30,7 @@ require_once('shared/classes/databaseobject.class.php');
 require_once('shared/classes/member.class.php');
 require_once('shared/classes/news.class.php');
 require_once('shared/classes/societyevent.class.php');
-require_once('shared/classes/tournament.class.php')
+require_once('shared/classes/tournament.class.php');
 
 $database = db_connect();
 DatabaseObject::set_database($database);
