@@ -5,6 +5,9 @@
         redirect_to(url_for('/index.php'));
     }
     $id = $_GET['id'];
+    if($id !== get_session_id()){
+        redirect_to(url_for('/index.php'));
+    }
     $member = Member::find_by_id($id);
 ?>
 

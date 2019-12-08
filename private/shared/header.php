@@ -1,5 +1,3 @@
-<!doctype html>
-
 <?php
   if(!isset($page_title)) { $page_title = 'KCLCS'; }
 ?>
@@ -37,13 +35,29 @@
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
            <ul class="navbar-nav">
-          <li class="nav-item px-md-1">
-            <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
-            
-            </li>
-            <li class="nav-item px-md-1">
-            <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
-            </li>
+
+          <?php
+          if(!am_logged_in()){
+            echo(
+              '<li class="nav-item px-md-1">
+                <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
+              </li>
+              <li class="nav-item px-md-1">
+                <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
+              </li>'
+            );
+          }
+
+          if(am_logged_in()){ 
+            echo( /*Links to profile page*/
+              '
+                <a href="/public/member/profile/index.php?id=' . get_session_id() . '"></a>
+              '
+            );
+          }
+
+          
+          ?>
           </ul>
           </div>
         </div>
