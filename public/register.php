@@ -72,8 +72,7 @@
       <div class="form-group col-md-4">
         <label for="inputState">Gender</label>
         <select name="gender" class="form-control">
-          <option selected> <?php echo h($member->gender); ?></option>
-          <option>Male</option>
+          <option selected>Male</option>
           <option>Female</option>
           <option>Other</option>
         </select>
