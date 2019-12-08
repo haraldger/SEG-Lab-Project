@@ -17,6 +17,9 @@ else{
 }
 ?>
 <div class="container mt-5 mb-5">
+  <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+  <br>
+  <br>
     <h1>News</h1> <br>
     
     <table class="table">

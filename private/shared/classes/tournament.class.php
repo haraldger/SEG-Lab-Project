@@ -36,7 +36,7 @@ class Tournament extends DatabaseObject {
     $sql = "INSERT INTO tournamentOrganisers(tournamentID, organiserID) VALUES ($this->id, $memberid)";
     $result = self::$database->query($sql);
     if (!$result){
-      exit("Insertion of organiser failed. Either member id doesnt exist or member is already an organiser.");
+      $this->errors[] = "Insertion of organiser failed. Either member id doesnt exist or member is already an organiser.";
     }
   }
 

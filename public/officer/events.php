@@ -18,7 +18,10 @@ else{
 ?>
 
 <div class="container mt-5 mb-5">
-    <h1>Events</h1> <br>
+  <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+  <br>
+  <br>
+	<h1>Events</h1> <br>
     
     <table class="table">
         <thead>

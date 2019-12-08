@@ -15,6 +15,7 @@ if(is_post_request()) {
 
 	$newsItem = new News($_POST);
 	$newsItem->id = $id;
+	$newsItem->authorID = get_session_id();
 	$result = $newsItem->save();
 
 	if($result == false){
@@ -45,12 +46,6 @@ if(is_post_request()) {
 		  <dl>
 			<dt>Title</dt>
 			<dd><input type="text" class="form-control" name="title" value="<?php echo h($newsItem->title); ?>" /></dd>
-		  </dl>
-		</div>
-		<div class="form-group">
-		  <dl>
-			<dt>Author</dt>
-			<dd><input type="text" class="form-control" name="authorID" value="<?php echo h($newsItem->authorID); ?>" /></dd>
 		  </dl>
 		</div>
 		<div class="form-group">
