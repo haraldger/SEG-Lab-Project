@@ -3,6 +3,7 @@
 
 <?php 
   include('../private/shared/header.php');
+  require_once('../private/initialise.php'); 
   require_once('../private/shared/classes/member.class.php'); 
 
 
