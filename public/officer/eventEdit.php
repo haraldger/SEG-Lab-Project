@@ -1,5 +1,9 @@
 <?php require_once('../../private/initialise.php'); 
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 require_once(SHARED_PATH .'/classes/societyevent.class.php'); 
 
 if(!isset($_GET['id'])) {
