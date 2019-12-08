@@ -97,17 +97,13 @@ class Member extends DatabaseObject {
     if($this->password_required) {
       if(is_blank($this->password)) {
         $this->errors[] = "Password cannot be blank.";
-      } elseif (!has_length($this->password, array('min' => 12))) {
-        $this->errors[] = "Password must contain 12 or more characters";
-      } elseif (!preg_match('/[A-Z]/', $this->password)) {
-        $this->errors[] = "Password must contain at least 1 uppercase letter";
-      } elseif (!preg_match('/[a-z]/', $this->password)) {
-        $this->errors[] = "Password must contain at least 1 lowercase letter";
+      } elseif (!has_length($this->password, array('min' => 6))) {
+        $this->errors[] = "Password must contain 6 or more characters";
+      } elseif (!preg_match('/[A-Za-z]/', $this->password)) {
+        $this->errors[] = "Password must contain at least 1 letter";
       } elseif (!preg_match('/[0-9]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 number";
-      } elseif (!preg_match('/[^A-Za-z0-9\s]/', $this->password)) {
-        $this->errors[] = "Password must contain at least 1 symbol";
-      }
+      } 
 
       if(is_blank($this->confirm_password)) {
         $this->errors[] = "Confirm password cannot be blank.";
