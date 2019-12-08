@@ -50,7 +50,7 @@ CREATE TABLE tournamentOrganisers (
   tournamentID INT,
   organiserID INT,
   UNIQUE (tournamentID, organiserID),
-  FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
+  FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE,
   FOREIGN KEY (organiserID) REFERENCES members(id) ON DELETE CASCADE
 );
 

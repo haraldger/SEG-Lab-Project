@@ -9,10 +9,11 @@ require_once(SHARED_PATH .'/classes/tournament.class.php');
 if(is_post_request()) {
 	$tournament = new Tournament($_POST);
 	$result = $tournament->save();
-  
+	$tournament->add_organiser(get_session_id());
+	
 	if($result == false){
-	}
-	else{
+		
+	} else{
 		redirect_to(url_for('officer/tournaments.php'));
 	}
   
