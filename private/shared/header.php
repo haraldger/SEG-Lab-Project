@@ -51,7 +51,7 @@
           if(am_logged_in()){ 
             echo( /*Links to profile page*/
               '
-              
+                <a href="/public/member/profile/index.php?id=' . get_session_id() . '"></a>
               '
             );
           }
