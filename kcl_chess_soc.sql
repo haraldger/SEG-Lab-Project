@@ -66,7 +66,7 @@ CREATE TABLE tournamentCompetitors (
 DROP TABLE IF EXISTS tournamentMatches;
 CREATE TABLE tournamentMatches (
   id INT NOT NULL AUTO_INCREMENT,
-  tournamentID INT,
+  tournamentID INT NOT NULL,
   matchDate DATETIME NOT NULL,
   competitorID1 INT,
   competitorID2 INT,
