@@ -21,16 +21,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
           <li class="nav-item active">
-          <a class="nav-link" href="../public/index.php">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/SEG-Lab-Project/public/index.php">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-          <a class="nav-link" href="../public/about.php">About</a>
+          <a class="nav-link" href="/SEG-Lab-Project/public/about.php">About</a>
             </li>
             <li class="nav-item active">
-          <a class="nav-link" href="../public/contact.php">Contact</a>
+          <a class="nav-link" href="/SEG-Lab-Project/public/contact.php">Contact</a>
             </li>
             <li class="nav-item active">
-          <a class="nav-link" href="../public/news.php">News</a>
+          <a class="nav-link" href="/SEG-Lab-Project/public/news.php">News</a>
             </li>
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
@@ -40,10 +40,10 @@
           if(!am_logged_in()){
             echo(
               '<li class="nav-item px-md-1">
-                <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
+                <a href="/SEG-Lab-Project/public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
               </li>
               <li class="nav-item px-md-1">
-                <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
+                <a href="/SEG-Lab-Project/public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
               </li>'
             );
           }
@@ -51,7 +51,9 @@
           if(am_logged_in()){ 
             echo( /*Links to profile page*/
               '
-                <a href="/public/member/profile/index.php?id=' . get_session_id() . '"></a>
+                <a href="/SEG-Lab-Project/public/member/profiles/index.php?id=' . get_session_id() . '"><img src="/SEG-Lab-Project/public/static/profile.jpg" alt="View profile" width="50" height="50" border="0"></a>
+                
+
               '
             );
           }
