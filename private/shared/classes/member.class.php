@@ -72,7 +72,7 @@ class Member extends DatabaseObject {
   protected function validate() {
     $this->errors = [];
 
-    $sql = "SELECT * FROM blacklist WHERE " . "email = '" . $this->email . "' LIMIT 1;";
+    $sql = "SELECT * FROM blacklist WHERE " . "email = '" . self::$database->escape_string($this->email) . "' LIMIT 1;";
     $blacklist_res = $this::$database->query($sql);
     $banned = $blacklist_res->fetch_assoc();
     if ($banned) {
