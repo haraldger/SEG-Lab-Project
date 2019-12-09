@@ -6,13 +6,17 @@
     }
     $id = $_GET['id'];
     $member = Member::find_by_id($id);
+	
+	if($member == false || (!am_officer() && get_session_id()!=$id)){
+		redirect_to(url_for('/index.php'));
+	}
 ?>
 
 <?php $page_title = 'Profile'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content" class="container mt-5 mb-5">
-<?php if(!am_officer()){?>
+<?php if(!(am_officer() || am_sysadmin())){?>
   <a class="back-link" href="<?php echo url_for('/member/index.php'); // change to home page ?>">&laquo; Back to Member's Home page</a>
 <?php } else { ?>
   <a class="back-link" href="<?php echo url_for('/officer/viewMembers.php'); ?>">&laquo; Back to List of Members</a>
@@ -30,7 +34,7 @@
     <?php echo "Rating: " . h($member->rating) . "<br>"; ?>
     <?php echo "Role: " . h($member->role) . "<br>"; ?><br>
     <?php 
-      if(!am_officer()){
+      if(!am_officer() || get_session_id()==$id){
     ?>
     <a class="action" href="<?php echo url_for('/member/profiles/edit.php?id=' . h(u($member->id))); ?>"><button class="btn btn-primary">Edit Profile</button></a>
     <a class="action" href="<?php echo url_for('/member/profiles/delete.php?id=' . h(u($member->id))); ?>"><button class="btn btn-danger">Delete Profile</button></a>

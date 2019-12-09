@@ -10,6 +10,10 @@
       redirect_to(url_for('//member/profiles/index.php'));
     }
     
+	if(get_session_id()!=$id){
+		redirect_to(url_for('/index.php'));
+	}
+	
     if(is_post_request()) {
         $args = $_POST['member'];
         $member->merge_attributes($args);

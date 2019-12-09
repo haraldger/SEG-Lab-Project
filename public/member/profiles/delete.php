@@ -10,6 +10,10 @@ if($member == false) {
   redirect_to(url_for('/member/profiles/index.php'));
 }
 
+if(get_session_id()!=$id){
+	redirect_to(url_for('/index.php'));
+}
+
 if(is_post_request()) {
     $result = $member->delete();
     //$session->message('The member was deleted successfully.');

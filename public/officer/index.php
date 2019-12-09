@@ -15,6 +15,7 @@ if(!(am_sysadmin() || am_officer())){
       <li><a href="<?php echo url_for('/officer/news.php'); ?>">News</a></li>
       <li><a href="<?php echo url_for('/officer/events.php'); ?>">Events</a></li>
 	  <li><a href="<?php echo url_for('/officer/tournaments.php'); ?>">Tournaments</a></li>
+	  <li><a href="<?php echo url_for('/officer/viewMembers.php'); ?>">Members</a></li>
     </ul>
   </div>
 

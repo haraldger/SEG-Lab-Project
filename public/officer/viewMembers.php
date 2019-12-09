@@ -1,11 +1,18 @@
 <?php require_once('../../private/initialise.php'); 
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 include(SHARED_PATH . '/officer_header.php');
 //include(SHARED_PATH . '/classes/member.class.php');
 ?>
 
 <div class="container mt-5 mb-5">
-    <h1>View Members</h1><br><br>
+    <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+	<br>
+	<br>
+	<h1>View Members</h1><br>
     
     <table class="table">
     <thead>
