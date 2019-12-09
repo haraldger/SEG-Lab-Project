@@ -48,6 +48,15 @@ class Tournament extends DatabaseObject {
             ."(SELECT organiserID FROM tournamentOrganisers WHERE tournamentID=$this->id)";
     return Member::find_by_sql($sql);
   }
+  
+  /**
+   * Get an array of competitors that are signed up for this tournament
+   */
+  public function get_competitors(){
+    $sql = "SELECT DISTINCT * from members WHERE members.id IN "
+            ."(SELECT competitorID FROM tournamentCompetitors WHERE tournamentID=$this->id)";
+    return Member::find_by_sql($sql);
+  }
 
   /**
    * Remove an organiser from a tournament
