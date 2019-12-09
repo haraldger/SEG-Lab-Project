@@ -46,6 +46,12 @@
                  if ($this->expiryDate < $this->releaseDate){
                       $this->errors[] = "Release date is after expiry date.";
                  }
+				 if ($this->eventDate < $this->releaseDate){
+                      $this->errors[] = "Event date is before release date.";
+                 }
+				 if ($this->eventDate > $this->expiryDate){
+                      $this->errors[] = "Event date is after expiry date.";
+                 }
             }
         }
       

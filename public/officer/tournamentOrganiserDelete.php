@@ -16,10 +16,22 @@ if(!isset($_GET['oid'])) {
 $tid = $_GET['tid'];
 $oid = $_GET['oid'];
 
+$tournament = Tournament::find_by_id($tid);
+
+$organiserIDs = array();
+$counter = 0;
+foreach($tournament->get_organisers() as $organiser){
+	$organiserIDs[$counter] = $organiser->id;
+	$counter++;
+}
+
+if(!in_array(get_session_id(), $organiserIDs) || get_session_id() == $oid){
+	redirect_to(url_for('officer/tournamentOrganisers.php?id=' . $tid));
+}
+
 if(is_post_request()) {
 	
-	$tournament = new Tournament();
-	$tournament->id = $tid;
+	
 	
 	$tournament->remove_organiser($oid);
 	

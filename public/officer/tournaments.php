@@ -20,32 +20,48 @@ require_once(SHARED_PATH . '/classes/tournament.class.php');
             <th scope="col">Name</th>
             <th scope="col">Signup Date</th>     
 			<th scope="col">&nbsp;</th>
-			<th scope="col">&nbsp;</th>			
+			<th scope="col">&nbsp;</th>
+			<th>
+		    <div class="actions">
+			<a href=tournamentCreate.php><button class="btn btn-primary">+</button></a>
+			</div>
         </tr>
     </thead>
         <?php
 
             $tournaments = Tournament::find_all();
+			
             foreach($tournaments as $tournament){
+				
+				$organiserIDs = array();
+				$counter = 0;
+				foreach($tournament->get_organisers() as $organiser){
+					$organiserIDs[$counter] = $organiser->id;
+					$counter++;
+				}
+				
                 echo "<tr>";
                     echo "<th scope=\"row\">".$tournament->id."</th>";
                     echo "<td>$tournament->name</td>";
                     echo "<td>$tournament->signupDeadline</td>";
                     echo "<td> <a href=tournamentOrganisers.php?id=$tournament->id>Organisers</td>";
-  				    echo "<td> <a href=tournamentEdit.php?id=$tournament->id>Edit</td>";
-                    echo "<td> <a href=tournamentDelete.php?id=$tournament->id>Delete</td>";
+  				    if(in_array(get_session_id(), $organiserIDs)){
+						echo "<td> <a href=tournamentEdit.php?id=$tournament->id>Edit</td>";
+						echo "<td> <a href=tournamentDelete.php?id=$tournament->id>Delete</td>";
+					}
+					else{
+						echo "<td>&nbsp;</td>";
+						echo "<td>&nbsp;</td>";
+					}
                 echo "</tr>";
             }
         ?>
     </table>
-    
-	<br>
-    <a href=tournamentCreate.php><button class="btn btn-primary">Create Tournament</button></a>
+ 
 	<br>
     <br>
 	
-    
-    </div>
+</div>
 
 <?php
 	include(SHARED_PATH . '/footer.php');
