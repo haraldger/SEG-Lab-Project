@@ -14,23 +14,35 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="../../public/member/index.php">KCLSU</a>
+        <a class="navbar-brand" href="../../public/index.php">KCLSU</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-          <li class="nav-item active">
-          <a class="nav-link" href="../../public/officer/news.php">News</a>
+            <li class="nav-item">
+              <a class="nav-link" href="../../public/officer/news.php">News</a>
             </li>
-            <li class="nav-item active">
-          <a class="nav-link" href="../../public/officer/events.php">Events</a>
+            <li class="nav-item">
+              <a class="nav-link" href="../../public/officer/events.php">Events</a>
             </li>
-			<li class="nav-item active">
-          <a class="nav-link" href="../../public/officer/tournaments.php">Tournaments</a>
+			<li class="nav-item">
+              <a class="nav-link" href="../../public/officer/tournaments.php">Tournaments</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link" href="../../public/officer/viewMembers.php">Members</a>
             </li>
           </ul>
-          <div class="collapse navbar-collapse justify-content-end">
-           <ul class="navbar-nav">
+        <div class="collapse navbar-collapse justify-content-end">
+         <ul class="navbar-nav">
+            <li class="nav-item px-md-1">
+              <a class="nav-link" href="../../public/index.php">Public</button></a>
+            </li>
+            <li class="nav-item px-md-1">
+              <a class="nav-link" href="../../public/member/profiles/index.php?id= <?php echo get_session_id()?>">Profile</a>
+            </li>
+            <li class="nav-item px-md-1">
+              <a href="../../public/logout.php"><button type="button" class="btn btn-secondary">Log out</button></a>
+            </li>
           </ul>
-          </div>
+        </div>
         </div>
       </nav>
     </header>

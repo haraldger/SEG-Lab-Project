@@ -22,16 +22,16 @@
         <a class="navbar-brand" href="../public/index.php">KCLSU</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item">
           <a class="nav-link" href="<?php echo(url_for('index.php')); ?>">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
           <a class="nav-link" href="/SEG-Lab-Project/public/about.php">About</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
           <a class="nav-link" href="/SEG-Lab-Project/public/contact.php">Contact</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
           <a class="nav-link" href="/SEG-Lab-Project/public/news.php">News</a>
             </li>
           </ul>
@@ -55,7 +55,7 @@
             echo(
               '
                 <li class="nav-item px-md-1">
-                  <a href="' . url_for('officer/index.php') . '"><button class="button">Admin</button></a>
+                  <a class="nav-link" href="' . url_for('officer/index.php') . '">Admin</button></a>
                 </li>
               '
             );
@@ -65,10 +65,10 @@
             echo( /*Links to profile page*/
               '
                 <li class="nav-item px-md-1">
-                  <a href="/SEG-Lab-Project/public/member/profiles/index.php?id=' . get_session_id() . '"><button class="button">Profile</button></a>
+                  <a class="nav-link" href="/SEG-Lab-Project/public/member/profiles/index.php?id=' . get_session_id() . '">Profile</a>
                 </li>
                 <li class="nav-item px-md-1">
-                  <a href="/SEG-Lab-Project/public/logout.php"><button class="button">Log out</button></a>
+                  <a href="/SEG-Lab-Project/public/logout.php"><button type="button" class="btn btn-secondary">Log out</button></a>
                 </li>
               '
             );
