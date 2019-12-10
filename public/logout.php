@@ -8,5 +8,4 @@ $_SESSION["role"] = "";
 $_SESSION["logged_in"] = false;
 session_destroy();
 redirect_to(url_for('index.php'));
-echo "LOGGED OUT!";
 ?>

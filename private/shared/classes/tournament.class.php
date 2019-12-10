@@ -35,8 +35,8 @@ class Tournament extends DatabaseObject {
   public function add_organiser($memberid){
     $sql = "INSERT INTO tournamentOrganisers(tournamentID, organiserID) VALUES ($this->id, $memberid)";
     $result = self::$database->query($sql);
-    if ($result){
-      exit("Insertion of organiser failed. Either member id doesnt exist or member is already an organiser.");
+    if (!$result){
+      $this->errors[] = "Insertion of organiser failed. Either member id doesnt exist or member is already an organiser.";
     }
   }
 
@@ -46,6 +46,15 @@ class Tournament extends DatabaseObject {
   public function get_organisers(){
     $sql = "SELECT DISTINCT * from members WHERE members.id IN "
             ."(SELECT organiserID FROM tournamentOrganisers WHERE tournamentID=$this->id)";
+    return Member::find_by_sql($sql);
+  }
+  
+  /**
+   * Get an array of competitors that are signed up for this tournament
+   */
+  public function get_competitors(){
+    $sql = "SELECT DISTINCT * from members WHERE members.id IN "
+            ."(SELECT competitorID FROM tournamentCompetitors WHERE tournamentID=$this->id)";
     return Member::find_by_sql($sql);
   }
 

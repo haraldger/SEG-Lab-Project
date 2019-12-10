@@ -22,28 +22,63 @@
         <a class="navbar-brand" href="../public/index.php">KCLSU</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-          <li class="nav-item active">
-          <a class="nav-link" href="../public/index.php">Home<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+          <a class="nav-link" href="<?php echo(url_for('index.php')); ?>">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-          <a class="nav-link" href="../public/about.php">About</a>
+            <li class="nav-item">
+          <a class="nav-link" href="/SEG-Lab-Project/public/about.php">About</a>
             </li>
-            <li class="nav-item active">
-          <a class="nav-link" href="../public/contact.php">Contact</a>
+            <li class="nav-item">
+          <a class="nav-link" href="/SEG-Lab-Project/public/contact.php">Contact</a>
             </li>
-            <li class="nav-item active">
-          <a class="nav-link" href="../public/news.php">News</a>
+            <li class="nav-item">
+          <a class="nav-link" href="/SEG-Lab-Project/public/news.php">News</a>
             </li>
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
            <ul class="navbar-nav">
-          <li class="nav-item px-md-1">
-            <a href="../public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
-            
-            </li>
-            <li class="nav-item px-md-1">
-            <a href="../public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
-            </li>
+
+
+          <?php
+          if(!am_logged_in()){
+            echo(
+              '<li class="nav-item px-md-1">
+                <a href="/SEG-Lab-Project/public/login.php"><button type="button" class="btn btn-secondary">Login</button></a>
+              </li>
+              <li class="nav-item px-md-1">
+                <a href="/SEG-Lab-Project/public/register.php"><button type="button" class="btn btn-primary ">Register</button></a>
+              </li>'
+            );
+          }
+
+          if(am_officer() || am_sysadmin()){
+            echo(
+              '
+                <li class="nav-item px-md-1">
+                  <a class="nav-link" href="' . url_for('officer/index.php') . '">Admin</button></a>
+                </li>
+              '
+            );
+          }
+
+          if(am_logged_in()){ 
+            echo( /*Links to profile page*/
+              '
+                <li class="nav-item px-md-1">
+                  <a class="nav-link" href="/SEG-Lab-Project/public/member/profiles/index.php?id=' . get_session_id() . '">Profile</a>
+                </li>
+                <li class="nav-item px-md-1">
+                  <a href="/SEG-Lab-Project/public/logout.php"><button type="button" class="btn btn-secondary">Log out</button></a>
+                </li>
+              '
+            );
+          }
+
+
+
+          
+          ?>
+
           </ul>
           </div>
         </div>

@@ -46,7 +46,13 @@
             }
 			if($this->releaseDate > $this->expiryDate){
 				$this->errors[] = "Release date cannot be after expiry date";
-			}
+            }
+            if (!is_blank($this->expiryDate) && !is_blank($this->releaseDate)){
+                if ($this->expiryDate < $this->releaseDate){
+                     $this->errors[] = "Release date is after expiry date.";
+                }
+           }
+
             return $this->errors;
         }
       

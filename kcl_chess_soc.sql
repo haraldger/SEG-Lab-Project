@@ -13,6 +13,12 @@ CREATE TABLE members (
   hashed_password VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
+
+DROP TABLE IF EXISTS blacklist;
+CREATE TABLE blacklist (
+  email VARCHAR(255),
+  PRIMARY KEY (email)
+);
  
 DROP TABLE IF EXISTS societyEvents;
 CREATE TABLE societyEvents (
@@ -50,7 +56,7 @@ CREATE TABLE tournamentOrganisers (
   tournamentID INT,
   organiserID INT,
   UNIQUE (tournamentID, organiserID),
-  FOREIGN KEY (tournamentID) REFERENCES tournaments(id),
+  FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE,
   FOREIGN KEY (organiserID) REFERENCES members(id) ON DELETE CASCADE
 );
 
@@ -66,7 +72,7 @@ CREATE TABLE tournamentCompetitors (
 DROP TABLE IF EXISTS tournamentMatches;
 CREATE TABLE tournamentMatches (
   id INT NOT NULL AUTO_INCREMENT,
-  tournamentID INT,
+  tournamentID INT NOT NULL,
   matchDate DATETIME NOT NULL,
   competitorID1 INT,
   competitorID2 INT,

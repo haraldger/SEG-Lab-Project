@@ -42,7 +42,17 @@
             if(is_blank($this->expiryDate)){
                 $this->errors[] = "Event expiry date cannot be blank.";
             }
-            return $this->errors;
+            if (!is_blank($this->expiryDate) && !is_blank($this->releaseDate)){
+                 if ($this->expiryDate < $this->releaseDate){
+                      $this->errors[] = "Release date is after expiry date.";
+                 }
+				 if ($this->eventDate < $this->releaseDate){
+                      $this->errors[] = "Event date is before release date.";
+                 }
+				 if ($this->eventDate > $this->expiryDate){
+                      $this->errors[] = "Event date is after expiry date.";
+                 }
+            }
         }
       
     }

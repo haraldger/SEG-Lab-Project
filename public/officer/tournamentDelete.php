@@ -2,14 +2,29 @@
 require_once('../../private/initialise.php');
 require_once(SHARED_PATH .'/classes/tournament.class.php');
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 if(!isset($_GET['id'])) {
 	redirect_to(url_for('officer/tournaments.php'));
 }
 $id = $_GET['id'];
 
+$tournament = Tournament::find_by_id($id);
+
+$organiserIDs = array();
+$counter = 0;
+foreach($tournament->get_organisers() as $organiser){
+	$organiserIDs[$counter] = $organiser->id;
+	$counter++;
+}
+
+if(!in_array(get_session_id(), $organiserIDs)){
+	redirect_to(url_for('officer/tournaments.php?id=' . $id));
+}
+
 if(is_post_request()) {
-	
-	$tournament = Tournament::find_by_id($id);
 	$result = $tournament->delete();
 	
 	if($result){

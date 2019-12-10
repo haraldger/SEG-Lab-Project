@@ -1,11 +1,16 @@
 <?php require_once('../../private/initialise.php'); 
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 include(SHARED_PATH . '/officer_header.php');
 
 $sys_admin = am_sysadmin();
 ?>
 
 <div class="container mt-5 mb-5">
+
     <?php 
         if($sys_admin){  
     ?>
