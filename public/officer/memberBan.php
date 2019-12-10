@@ -29,7 +29,7 @@ if(is_post_request()) {
 <?php $page_title = 'Ban User'; ?>
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
-<div id="content">
+<div id="content" class="container mt-5 mb-5">
 
   <a class="back-link" href="<?php echo url_for('/officer/index.php');  ?>">&laquo; Home</a>
 
@@ -40,7 +40,7 @@ if(is_post_request()) {
 
     <form action="<?php echo url_for('/officer/memberBan.php?id=' . h(u($member->id))); ?>" method="post">
       <div id="operations">
-        <input type="submit" name="commit" value="Ban" />
+        <input type="submit" class="btn btn-danger" name="commit" value="Ban" />
       </div>
     </form>
   </div>
