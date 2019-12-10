@@ -34,7 +34,7 @@ class Member extends DatabaseObject {
     $this->phoneNum = $args['phoneNum'] ?? '';
     $this->gender = $args['gender'] ?? '';
     $this->dob = $args['dob'] ?? '';
-    $this->rating = $args['rating'] ?? '0';
+    $this->rating = $args['rating'] ?? '1000';
     $this->role = $args['role'] ?? 'MEMBER';
     $this->password = $args['password'] ?? '';
     $this->password = $args['password'] ?? '';
