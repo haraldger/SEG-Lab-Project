@@ -9,9 +9,12 @@ $sys_admin = am_sysadmin();
     <?php 
         if($sys_admin){  
     ?>
-        <h1>View Members</h1><br><br>
-    <?php  } else {?>
         <h1>View Members & Officers</h1><br><br>
+    <?php  } else {?>
+        <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+	    <br>
+	    <br>
+        <h1>View Members</h1><br><br>
      <?php }?>
 
     <table class="table">
