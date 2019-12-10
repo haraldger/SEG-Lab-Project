@@ -7,7 +7,7 @@
     $id = $_GET['id'];
     $member = Member::find_by_id($id);
 	
-	if($member == false || (!am_officer() && get_session_id()!=$id)){
+	if($member == false || (!am_officer() && !am_sysadmin() && get_session_id()!=$id)){
 		redirect_to(url_for('/index.php'));
 	}
 ?>
@@ -34,7 +34,7 @@
     <?php echo "Rating: " . h($member->rating) . "<br>"; ?>
     <?php echo "Role: " . h($member->role) . "<br>"; ?><br>
     <?php 
-      if(!am_officer() || get_session_id()==$id){
+      if(get_session_id()==$id){
     ?>
     <a class="action" href="<?php echo url_for('/member/profiles/edit.php?id=' . h(u($member->id))); ?>"><button class="btn btn-primary">Edit Profile</button></a>
     <a class="action" href="<?php echo url_for('/member/profiles/delete.php?id=' . h(u($member->id))); ?>"><button class="btn btn-danger">Delete Profile</button></a>
