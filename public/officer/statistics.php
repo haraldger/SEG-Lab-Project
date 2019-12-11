@@ -12,6 +12,9 @@ if(!(am_sysadmin() || am_officer())){
 <br>
 <br>
   <div id="main-menu">
+  <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+  <br>
+  <br>
     <h2>Elo statistics</h2>
     <img src="../../private/shared/elodistribution.php">
   </div>

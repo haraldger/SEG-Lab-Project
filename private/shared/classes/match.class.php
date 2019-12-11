@@ -14,7 +14,6 @@
         public $competitorID2;
         public $winner;
 
-
         public function __construct($args=[]) {
             $this->id = $args['id'] ?? '';
             $this->tournamentID = $args['tournamentID'] ?? '';
