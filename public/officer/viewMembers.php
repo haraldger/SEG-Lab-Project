@@ -11,14 +11,14 @@ $sys_admin = am_sysadmin();
 
 <div class="container mt-5 mb-5">
 
+	<a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+  <br>
+  <br>
     <?php 
         if($sys_admin){  
     ?>
         <h1>View Members & Officers</h1><br><br>
     <?php  } else {?>
-        <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
-	    <br>
-	    <br>
         <h1>View Members</h1><br><br>
      <?php }?>
 

@@ -3,7 +3,7 @@
     require_once('tournament.class.php');
     require_once('member.class.php');
 
-    class Match {
+    class Match extends DatabaseObject{
         static protected $table_name = "tournamentMatches";
         static protected $db_columns = ['id', 'tournamentID', 'matchDate', 'competitorID1', 'competitorID2', 'winner'];
 

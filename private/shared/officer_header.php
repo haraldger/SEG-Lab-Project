@@ -29,6 +29,9 @@
 			<li class="nav-item">
               <a class="nav-link" href="../../public/officer/viewMembers.php">Members</a>
             </li>
+			<li class="nav-item">
+              <a class="nav-link" href="../../public/officer/statistics.php">Elo Distribution</a>
+            </li>
           </ul>
         <div class="collapse navbar-collapse justify-content-end">
          <ul class="navbar-nav">

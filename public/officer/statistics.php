@@ -8,6 +8,9 @@ if(!(am_sysadmin() || am_officer())){
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
 <div id="content" class="container mt-5 mb-5">
+<a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
+<br>
+<br>
   <div id="main-menu">
   <a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>
   <br>
