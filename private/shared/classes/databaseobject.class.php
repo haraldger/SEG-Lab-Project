@@ -74,7 +74,6 @@ class DatabaseObject {
     $sql .= ") VALUES ('";
     $sql .= join("', '", array_values($attributes));
     $sql .= "')";
-    echo($sql);
     $result = self::$database->query($sql);
     if($result) {
       $this->id = self::$database->insert_id;
