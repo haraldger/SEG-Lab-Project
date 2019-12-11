@@ -6,47 +6,53 @@
     class SocietyEvent extends DatabaseObject{
         
         static protected $table_name = 'societyEvents';
-        static protected $db_columns = ['id', 'creatorid', 'title', 'description', 'eventdate', 'releasedate', 'eventenddate'];
+        static protected $db_columns = ['id', 'name', 'description', 'eventDate', 'releaseDate', 'expiryDate'];
 
         public $id;
-        public $creatorid;
-        public $title;
+        public $name;
         public $description;
-        public $eventdate;
-        public $releasedate;
-        public $eventenddate;
+        public $eventDate;
+        public $releaseDate;
+        public $expiryDate;
 
         public function __construct($args=[]) {
-            $this->creatorid = $args['creatorid'] ?? '';
-            $this->title = $args['title'] ?? '';
+            $this->id = $args['id'] ?? '';
+            $this->name = $args['name'] ?? '';
             $this->description = $args['description'] ?? '';
-            $this->eventdate = $args['eventdate'] ?? '';
-            $this->releasedate = $args['releasedate'] ?? '';
-            $this->eventenddate = $args['eventenddate'] ?? '';
+            $this->eventDate = $args['eventDate'] ?? '';
+            $this->releaseDate = $args['releaseDate'] ?? '';
+            $this->expiryDate = $args['expiryDate'] ?? '';
         }
 
         protected function validate() {
             $this->errors = [];
         
-            if(is_blank($this->creatorid)) {
-              $this->errors[] = "Creator id cannot be blank.";
-            }
-            if(is_blank($this->title)) {
+            if(is_blank($this->name)) {
               $this->errors[] = "Title cannot be blank.";
             }
             if(is_blank($this->description)) {
-              $this->errors[] = "Title cannot be blank.";
+              $this->errors[] = "Description cannot be blank.";
             }
-            if(is_blank($this->eventstartdate)) {
-              $this->errors[] = "Event start date cannot be blank.";
+            if(is_blank($this->eventDate)) {
+              $this->errors[] = "Event date cannot be blank.";
             }
-            if(is_blank($this->releasedate)) {
+            if(is_blank($this->releaseDate)) {
                 $this->errors[] = "Release date cannot be blank.";
             }
-            if(is_blank($this->eventenddate)){
-                $this->errors[] = "Event end date cannot be blank.";
+            if(is_blank($this->expiryDate)){
+                $this->errors[] = "Event expiry date cannot be blank.";
             }
-            return $this->errors;
+            if (!is_blank($this->expiryDate) && !is_blank($this->releaseDate)){
+                 if ($this->expiryDate < $this->releaseDate){
+                      $this->errors[] = "Release date is after expiry date.";
+                 }
+				 if ($this->eventDate < $this->releaseDate){
+                      $this->errors[] = "Event date is before release date.";
+                 }
+				 if ($this->eventDate > $this->expiryDate){
+                      $this->errors[] = "Event date is after expiry date.";
+                 }
+            }
         }
       
     }
