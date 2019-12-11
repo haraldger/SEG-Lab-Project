@@ -1,12 +1,16 @@
 <?php 
 require_once('../../private/initialise.php');
 
+if(!(am_sysadmin() || am_officer())){
+	redirect_to(url_for('../public'));
+}
+
 if(isset($_POST['email'])){
   
     $email = htmlspecialchars($_POST['email']);
     $member = Member::find_by_email($email);
     if($member){
-      echo url_for('/officer/memberBan.php?id=' . h(u($member->id)));
+      redirect_to(url_for('/officer/memberBan.php?id=' . h(u($member->id))));
     }
     else{
         insert_blacklist($email, $database);
