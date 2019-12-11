@@ -78,9 +78,9 @@ CREATE TABLE tournamentMatches (
   competitorID2 INT,
   winner INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (competitorID1) REFERENCES members(id),
-  FOREIGN KEY (competitorID2) REFERENCES members(id),
-  FOREIGN KEY (tournamentID) REFERENCES members(id)
+  FOREIGN KEY (competitorID1) REFERENCES members(id) ON DELETE CASCADE,
+  FOREIGN KEY (competitorID2) REFERENCES members(id) ON DELETE CASCADE,
+  FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE
 );
 
 
