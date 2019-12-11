@@ -8,7 +8,9 @@
     $member = Member::find_by_id($id);
 	
 	if($member == false || (!am_officer() && get_session_id()!=$id)){
-		redirect_to(url_for('/index.php'));
+    if(!am_sysadmin()){
+      redirect_to(url_for('/index.php'));
+    }
 	}
 ?>
 

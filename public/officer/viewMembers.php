@@ -29,7 +29,8 @@ $sys_admin = am_sysadmin();
             <th scope="col">Name</th>
             <th scope="col">Rating</th>     
 			<th scope="col">Email</th>
-			<th scope="col">&nbsp;</th>	
+            <th scope="col">Profile</th>	
+			<th scope="col">Ban User</th>	
             <?php if($sys_admin){ ?><th scope="col">&nbsp;</th>	<?php }?>	
         </tr>
     </thead>
@@ -43,6 +44,12 @@ $sys_admin = am_sysadmin();
                     echo "<td>$member->rating</td>";
                     echo "<td>$member->email</td>";
                     echo "<td> <a href=../member/profiles/index.php?id=$member->id>View Profile</td>";
+                    if($member->role == "Member"){
+                        echo "<td> <a style='color:red;' href=../officer/memberBan.php?id=$member->id>Block</td>";
+                    }
+                    else{
+                        echo "<td> </td>";
+                    }
                     if($sys_admin){
                         echo "<td>"; 
                         if($member->role == "Member"){
@@ -61,6 +68,15 @@ $sys_admin = am_sysadmin();
             }
         ?>
     </table>
+            <br>
+    <h2 class=" mx-sm-3">Ban User By Email</h2><br>
+    <form class="form-inline" action="<?php echo url_for('/officer/banByEmail.php') ?>" method="post">
+        <div class="form-group mx-sm-3 mb-2">
+            <label class="sr-only">Email</label>
+            <input class="form-control" type="email" name="email" placeholder="email@kcl.ac.uk">
+        </div>
+        <button type="submit" class="btn btn-danger mb-2">Ban this user</button>
+    </form>
     
 	<br>
 	<br>

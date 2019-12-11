@@ -1,7 +1,6 @@
 <?php 
 // Common functions used throughout project
 
-
 function am_logged_in(){
   session_start();
   if (isset($_SESSION["logged_in"])){
@@ -12,6 +11,10 @@ function am_logged_in(){
   return false;
 }
 
+function insert_blacklist($email, $database){
+  $sql = "INSERT INTO blacklist (email) " .  "VALUES ('" . $email . "');";
+  $result = $database->query($sql);
+}
 
 function am_member(){
   session_start();
