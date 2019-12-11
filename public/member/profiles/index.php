@@ -1,5 +1,4 @@
 <?php require_once('../../../private/initialise.php'); ?>
-<?php require_once('../../../private/functions.php'); ?>
 <?php
     if(!isset($_GET['id'])) {
         redirect_to(url_for('/index.php'));
@@ -17,7 +16,7 @@
 
 <div id="content" class="container mt-5 mb-5">
 <?php if(!(am_officer() || am_sysadmin())){?>
-  <a class="back-link" href="<?php echo url_for('/member/index.php'); // change to home page ?>">&laquo; Back to Member's Home page</a>
+  <a class="back-link" href="<?php echo url_for('/index.php'); // change to home page ?>">&laquo; Back to Member's Home page</a>
 <?php } else { ?>
   <a class="back-link" href="<?php echo url_for('/officer/viewMembers.php'); ?>">&laquo; Back to List of Members</a>
   <?php }?>

@@ -25,7 +25,12 @@ $is_organiser_of_this = in_array(get_session_id(), $organiserIDs);
 if(is_post_request() && $is_organiser_of_this) {
   $member = Member::find_by_email($_POST["email"]);
   
-  $tournaments->add_organiser($member->id);
+  if($member->role=="Officer" || $member->role=="System Admin"){
+	$tournaments->add_organiser($member->id);
+  }
+  else{
+	$tournaments->errors[] = "Email address provided doesn't belong to an officer or admin";
+  }
 }
 
 include(SHARED_PATH . '/officer_header.php');
