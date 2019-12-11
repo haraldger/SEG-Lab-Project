@@ -22,9 +22,6 @@ else{
 
 ?>
 
-
-?>
-
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
 		<div id="content" class="container mt-5 mb-5">
