@@ -17,8 +17,8 @@ if(get_session_id()!=$id){
 if(is_post_request()) {
     $result = $member->delete();
     //$session->message('The member was deleted successfully.');
-    redirect_to(url_for('/member/profiles/index.php'));
-  
+    redirect_to(url_for('/logout.php'));
+	
   } else {
     // Display form
   }
