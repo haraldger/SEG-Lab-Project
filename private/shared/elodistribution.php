@@ -1,15 +1,5 @@
 <?php 
-
-    
-    require_once('../initialise.php'); 
-    $members = Member::find_all();
-    
-    
-    foreach($members as $member){
-         $eloRatings[$member->fName] = $member->rating;
-    }
-    // example data for testing purposes
-    /*
+    //random data
    $eloRatings["Jon Smith"]= 1063;
    $eloRatings["Person2"]= 1151;
    $eloRatings["person3"]= 1840;
@@ -31,7 +21,7 @@
    $eloRatings["person19"]= 1320;
    $eloRatings["person20"]= 1490;
    $eloRatings["person21"]= 2030;
-*/
+
    $distribution = array();
    //ranges for distribution
    //assumption:
@@ -79,12 +69,11 @@
         case $score <= 2000:
             $distribution[2000] += 1;
             break;    
-        case $score <= 2100:
+        case $score > 2000:
             $distribution[2100] += 1;
             break;                                   
     }
    }
-   
    //height and width of the pane of the graph
    $width = 600;
    $height = 300;
@@ -93,8 +82,7 @@
    //axis height
    $axisHeight = $height - ($padding * 2); //290
    $axisWidth = $width - ($padding * 2); //590
-   
-   
+
    //colours and image set up
    $img = imagecreatetruecolor($width, $height);
    $black = imagecolorallocate($img, 0, 0, 0);
@@ -105,10 +93,9 @@
    $almost_black_blue = imagecolorallocate($img,0,0,51);
    $white_pink = imagecolorallocate($img,255,102,178);
 
-   
    //background setup
    imagefill($img, 0, 0, $white);
-   imagefilledrectangle($img,0,0,$width,$height,$white);
+   imagefilledrectangle($img,0,0,$width,$height,white);
 
    //find the max rating (to set as max height of the graph)
    $maxRating = 0;
@@ -135,7 +122,7 @@
     $centreBarX = $x1 + ($x2-$x1)/2 - 1;
     $centreBarY = $y1 + ($y2-$y1)/2;
     imagestring ($img, 2,  $x1, $y1, $key, $gray_dark);
-    // imagestring ($img, 2,  $centreBarX, $centreBarY, $value, $white_pink);
+    imagestring ($img, 2,  $centreBarX, $centreBarY, $value, $white_pink);
     imageline($img, $padding, $y2, $padding + 5,  $y2, $gray_dark);
     $i++;
    }
@@ -163,7 +150,6 @@
         }
     }
 
-    
     //headers and graph titles
     $titleX = $width /2 - 50;
     $titleY = $padding /2 -10;
