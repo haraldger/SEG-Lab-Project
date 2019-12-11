@@ -5,7 +5,7 @@ if(!isset($_GET['id'])) {
   redirect_to(url_for('/officer/index.php'));
 }
 
-  $id = $_GET['id'];
+  $id = htmlspecialchars($_GET['id']);
   $member = Member::find_by_id($id);
   if($member == false) {
     redirect_to(url_for('/officer/index.php'));

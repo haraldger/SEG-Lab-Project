@@ -12,7 +12,7 @@ function am_logged_in(){
 }
 
 function insert_blacklist($email, $database){
-  $sql = "INSERT INTO blacklist (email) " .  "VALUES ('" . $email . "');";
+  $sql = "INSERT INTO blacklist (email) " .  "VALUES ('" . $database->escape_string($email) . "');";
   $result = $database->query($sql);
 }
 

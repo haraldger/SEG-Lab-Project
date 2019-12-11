@@ -3,7 +3,7 @@ require_once('../../private/initialise.php');
 
 if(isset($_POST['email'])){
   
-    $email = $_POST['email'];
+    $email = htmlspecialchars($_POST['email']);
     $member = Member::find_by_email($email);
     if($member){
       echo url_for('/officer/memberBan.php?id=' . h(u($member->id)));
