@@ -22,6 +22,7 @@ require_once(SHARED_PATH . '/classes/tournament.class.php');
 			<th scope="col">&nbsp;</th>
 			<th scope="col">&nbsp;</th>
 			<th scope="col">&nbsp;</th>
+			<th scope="col">&nbsp;</th>
 			<th>
 		    <div class="actions">
 			<a href=tournamentCreate.php><button class="btn btn-primary">+</button></a>
@@ -50,8 +51,10 @@ require_once(SHARED_PATH . '/classes/tournament.class.php');
 						echo "<td> <a href=tournamentCompetitors.php?id=$tournament->id>Competitors</td>";
 						echo "<td> <a href=tournamentEdit.php?id=$tournament->id>Edit</td>";
 						echo "<td> <a href=tournamentDelete.php?id=$tournament->id>Delete</td>";
+						echo "<td> <a href=tournamentMatches.php?id=$tournament->id>Matches</td>";
 					}
 					else{
+						echo "<td>&nbsp;</td>";
 						echo "<td>&nbsp;</td>";
 						echo "<td>&nbsp;</td>";
 						echo "<td>&nbsp;</td>";

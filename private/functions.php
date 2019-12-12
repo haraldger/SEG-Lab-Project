@@ -124,6 +124,94 @@ function display_errors($errors=array()) {
   return $output;
 }
 
+function find_last_round($tournament_id, $database) {
+  $sql = "SELECT roundNum FROM tournamentmatches ";
+  $sql .= "WHERE tournamentID = '" . $tournament_id;
+  $sql .= "' ORDER BY roundNum DESC LIMIT 1";
+  $result = $database->query($sql);
+  if (!$result) {
+      exit("Database query failed.");
+  }
+  $record = $result->fetch_assoc();
+  $result->free();
+  if (isset($record['roundNum'])) return $record['roundNum'];
+  else return 0;
+}
+
+function check_if_round_finished($tournament_id, $round_num, $database){
+  $sql = "SELECT * FROM tournamentMatches WHERE ";
+  $sql .= "tournamentID = '" . $tournament_id;
+  $sql .= "' AND roundNum = '" . $round_num;
+  $sql .= "' AND winner = '0'";
+  $result = $database->query($sql);
+  if (!$result) {
+      exit("Database query failed.");
+  }
+  if ($result->num_rows == 0) return true;
+  else return false;
+}
+
+function get_last_round_winners($tournament_id, $round_num, $database){
+  $sql = "SELECT winner FROM tournamentMatches WHERE ";
+  $sql .= "tournamentID = '" . $tournament_id;
+  $sql .= "' AND roundNum = '" . $round_num . "'";
+  $result = $database->query($sql);
+  if (!$result) {
+    exit("Database query failed.");
+  }
+  $competitor_ids = array();
+  while ($record = $result->fetch_assoc()) {
+    array_push($competitor_ids, $record['winner']);
+  }
+  $result->free();
+  return $competitor_ids;
+}
+
+function winner_found($tournament_id, $round_num, $database){
+  $sql = "SELECT winner FROM tournamentMatches WHERE ";
+  $sql .= "tournamentID = '" . $tournament_id;
+  $sql .= "' AND roundNum = '" . $round_num . "'";
+  $result = $database->query($sql);
+  if (!$result) {
+    exit("Database query failed.");
+  }
+  if ($result->num_rows == 1){
+    $winner = $result->fetch_assoc()['winner'];
+    $result->free();
+    return $winner;
+  }
+  else return -1;
+}
+
+function get_round_matches($tournament_id, $round_num, $database){
+  $sql = "SELECT matchID FROM tournamentMatches WHERE ";
+  $sql .= "tournamentID = '" . $tournament_id;
+  $sql .= "' AND roundNum = '" . $round_num . "'";
+  $result = $database->query($sql);
+  if (!$result) {
+    exit("Database query failed.");
+  }
+  $match_ids = array();
+  while ($record = $result->fetch_assoc()) {
+    array_push($match_ids, $record['id']);
+  }
+  $result->free();
+  return $match_ids;
+}
+
+function get_match_competitors($match_id, $database){
+  $sql = "SELECT competitorID1 AND competitorID2 WHERE ";
+  $sql .= "matchID = '" . $match_id . "'";
+  $result = $database->query($sql);
+  if (!$result) {
+    exit("Database query failed.");
+  }
+  $record = $result->fetch_assoc();
+  $competitor_ids = array("competitorID1"=> $record['competitorID1'], "competitorID2"=> $record['competitorID2']);
+  $result->free();
+  return $competitor_ids;
+}
+
 function generate_first_round($participant_ids) {
   // LIMIT NUM. OF PARTICIPANTS TO BETWEEN 4 AND 32
 
@@ -161,5 +249,3 @@ function generate_next_round($participant_ids) {
   }
   return $match_ids;
 }
-
-?>
