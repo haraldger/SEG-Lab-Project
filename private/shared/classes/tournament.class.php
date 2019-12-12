@@ -48,6 +48,17 @@ class Tournament extends DatabaseObject {
             ."(SELECT organiserID FROM tournamentOrganisers WHERE tournamentID=$this->id)";
     return Member::find_by_sql($sql);
   }
+
+  /**
+   * Adds a given competitor to a tournament.
+   */
+  public function add_competitor($memberid){
+    $sql = "INSERT INTO tournamentCompetitors(tournamentID, competitorID) VALUES ($this->id, $memberid)";
+    $result = self::$database->query($sql);
+    if (!$result){
+      $this->errors[] = "Insertion of competitor failed. Either member id doesnt exist or member is already a competitor.";
+    }
+  }
   
   /**
    * Get an array of competitors that are signed up for this tournament
@@ -56,6 +67,14 @@ class Tournament extends DatabaseObject {
     $sql = "SELECT DISTINCT * from members WHERE members.id IN "
             ."(SELECT competitorID FROM tournamentCompetitors WHERE tournamentID=$this->id)";
     return Member::find_by_sql($sql);
+  }
+
+  /**
+   * Check if a member is a competitor in this tournament.
+   */
+  public function has_competitor($memberid){
+    $competitors = $this->get_competitors();
+    return in_array($memberid, $competitors);
   }
 
   /**
