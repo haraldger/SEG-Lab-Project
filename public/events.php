@@ -53,7 +53,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
                 ");
             if($tournament->signupDeadline != ''){
                 $date = date_create_from_format('Y-m-d H:i:s', $tournament->signupDeadline);
-                echo("<p>" . h($date->format('Y-m-d')) . "</p>");
+                echo("<p>Deadline: " . h($date->format('Y-m-d')) . "</p>");
                 if(!$tournament->has_competitor(get_session_id())){
                     // User not signed up
                     if(sizeof($tournament->get_competitors()) >= 32){  // Tournament full
