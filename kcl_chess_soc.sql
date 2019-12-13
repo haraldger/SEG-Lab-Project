@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS tournamentCompetitors;
 CREATE TABLE tournamentCompetitors (
   tournamentID INT,
   competitorID INT,
-  initrating,
+  initrating INT,
   UNIQUE (tournamentID, competitorID),
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE,
   FOREIGN KEY (competitorID) REFERENCES members(id) ON DELETE CASCADE

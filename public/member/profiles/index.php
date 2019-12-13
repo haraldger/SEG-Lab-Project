@@ -1,5 +1,4 @@
 <?php require_once('../../../private/initialise.php'); ?>
-<?php require_once('../../../private/functions.php'); ?>
 <?php
     if(!isset($_GET['id'])) {
         redirect_to(url_for('/index.php'));
