@@ -51,12 +51,9 @@
           // Show the tournament name and display change in ELO
           $initrating = $tournament->get_init_rating($id);
           $diff = intval($rating_ptr) - intval($initrating);
-          echo "<br><h3>$tournament->name <span>";
-          if ($diff > 0){
-            echo '<span style="color::green"> +'.$diff.'</span>';
-          }          
-          else if ($diff < 0){
-            echo '<span style="color::red"> '.$diff.'</span>';
+          echo "<br><h3>$tournament->name";
+          if ($diff != 0){
+            echo $diff;
           }
           echo '</h3>';
           $rating_ptr = $initrating;
