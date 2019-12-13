@@ -2,7 +2,7 @@
 
 <html lang="en">
   <head>
-    <title>Welcome to KCLSU</title>
+    <title>Admin Portal</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -22,13 +22,13 @@
             <li class="nav-item">
               <a class="nav-link" href="/SEG-Lab-Project/public/officer/events/events.php">Events</a>
             </li>
-			<li class="nav-item">
+			      <li class="nav-item">
               <a class="nav-link" href="/SEG-Lab-Project/public/officer/tournaments/tournaments.php">Tournaments</a>
             </li>
-			<li class="nav-item">
+			      <li class="nav-item">
               <a class="nav-link" href="/SEG-Lab-Project/public/officer/members/viewMembers.php">Members</a>
             </li>
-			<li class="nav-item">
+			      <li class="nav-item">
               <a class="nav-link" href="/SEG-Lab-Project/public/officer/statistics.php">Elo Distribution</a>
             </li>
           </ul>
