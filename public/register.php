@@ -12,10 +12,8 @@
     $result = $member->save();
     if($result === true) {
       $new_id = $member->id;
-      // TODO: redirect to profile page of newly generated member account with $new_id
       redirect_to(url_for("index.php"));
     } else {
-      // report errors
     }
   }
 
@@ -59,15 +57,7 @@
       <label for="inputAddress">Address</label>
       <input type="text" class="form-control" name="address" placeholder="1234 Main St" value="<?php echo h($member->address); ?>">
     </div>
-    <!-- <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-      </div> -->
     <div class="form-row">
-      <!-- <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity">
-        </div> -->
       <div class="form-group col-md-4">
         <label for="inputState">Gender</label>
         <select name="gender" class="form-control">
@@ -83,14 +73,6 @@
         <small class="form-text text-muted">In the format YY/MM/DD</small>
       </div>
     </div>
-    <!--div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-        Keep me logged in
-        </label>
-      </div>
-    </div> -->
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
 </div>

@@ -1,5 +1,6 @@
 <?php 
 require_once('../private/initialise.php');
+$page_title = "News";
 require_once('../private/shared/header.php');
 ?>
 
@@ -25,6 +26,7 @@ require_once('../private/shared/header.php');
     	else return 1;
     });
 
+    // display the news items
     foreach ($news as $newsItem) {
         echo("
             <h4>" . h($newsItem->title) . "</h4>

@@ -1,5 +1,6 @@
 <?php 
 require_once('../private/initialise.php');
+$page_title = 'Upcoming';
 require_once('../private/shared/header.php');
 ?>
 
