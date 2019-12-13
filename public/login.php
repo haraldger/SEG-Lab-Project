@@ -4,8 +4,6 @@
 <?php include '../private/shared/header.php' ?>
 
 <?php
-    require_once('../private/initialise.php');
-    require_once('../private/shared/classes/member.class.php');
 	$errors = [];
 	$email = '';
 	$password = '';
