@@ -13,10 +13,10 @@ if(!(am_sysadmin() || am_officer())){
     <h2>Main Menu</h2>
 
     <br>
-      <p><a href="<?php echo url_for('/officer/news.php'); ?>"><button type="button" class="btn btn-outline-dark">News</button></a></p>
-      <p><a href="<?php echo url_for('/officer/events.php'); ?>"><button type="button" class="btn btn-outline-dark">Events</button></a></p>
-	  <p><a href="<?php echo url_for('/officer/tournaments.php'); ?>"><button type="button" class="btn btn-outline-dark">Tournaments</button></a></p>
-	  <p><a href="<?php echo url_for('/officer/viewMembers.php'); ?>"><button type="button" class="btn btn-outline-dark">Members</button></a></p>
+      <p><a href="<?php echo url_for('/officer/news/news.php'); ?>"><button type="button" class="btn btn-outline-dark">News</button></a></p>
+      <p><a href="<?php echo url_for('/officer/events/events.php'); ?>"><button type="button" class="btn btn-outline-dark">Events</button></a></p>
+	  <p><a href="<?php echo url_for('/officer/tournaments/tournaments.php'); ?>"><button type="button" class="btn btn-outline-dark">Tournaments</button></a></p>
+	  <p><a href="<?php echo url_for('/officer/members/viewMembers.php'); ?>"><button type="button" class="btn btn-outline-dark">Members</button></a></p>
 	  <p><a href="<?php echo url_for('/officer/statistics.php'); ?>"><button type="button" class="btn btn-outline-dark">Member Elo Distribution</button></a></p>
 
   </div>

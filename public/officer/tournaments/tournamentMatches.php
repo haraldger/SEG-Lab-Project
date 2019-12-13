@@ -1,11 +1,11 @@
-<?php require_once('../../private/initialise.php');
+<?php require_once('../../../private/initialise.php');
 
 if (!(am_sysadmin() || am_officer())) {
-    redirect_to(url_for('../public'));
+    redirect_to(url_for('../../public'));
 }
 
 if (!isset($_GET['id'])) {
-    redirect_to(url_for('officer/tournaments.php'));
+    redirect_to(url_for('officer/tournaments/tournaments.php'));
 }
 
 $tournament = Tournament::find_by_id($_GET['id']);
@@ -18,7 +18,7 @@ foreach ($tournament->get_organisers() as $organiser) {
 }
 
 if (!in_array(get_session_id(), $organiserIDs)) {
-    redirect_to(url_for('officer/tournaments.php?id=' . $id));
+    redirect_to(url_for('officer/tournaments/tournaments.php?id=' . $id));
 }
 
 $last_round = find_last_round($tournament->id, $database);
@@ -49,7 +49,7 @@ if (is_post_request()) {
         $match = new Match($match_infomation);
         $result = $match->save();
     }
-    redirect_to(url_for('officer/tournamentMatches.php?id=' . $tournament->id));
+    redirect_to(url_for('officer/tournaments/tournamentMatches.php?id=' . $tournament->id));
 }
 
 else {
@@ -60,7 +60,7 @@ include(SHARED_PATH . '/officer_header.php');
 
 <div class="container mt-5 mb-5">
 
-    <a class="back-link" href="<?php echo url_for('/officer/tournaments.php'); ?>">&laquo; Back to List</a>
+    <a class="back-link" href="<?php echo url_for('/officer/tournaments/tournaments.php'); ?>">&laquo; Back to List</a>
     <h1><?php echo h($tournament->name); ?></h1>
     <br>
     <?php
@@ -75,7 +75,7 @@ include(SHARED_PATH . '/officer_header.php');
         <?php echo "ROUND " . $last_round . ": IN PROGRESS";?>
         <br>
         <br>
-        <a href="<?php echo url_for('/officer/matchRecord.php?id=' . h(u($tournament->id)) . '&round=' . h(u($last_round))); ?>">RECORD MATCH RESULTS</a>
+        <a href="<?php echo url_for('/officer/tournaments/matchRecord.php?id=' . h(u($tournament->id)) . '&round=' . h(u($last_round))); ?>">RECORD MATCH RESULTS</a>
     <?php endif; ?>
 
     <?php if ($last_round_finished): ?>
@@ -87,7 +87,7 @@ include(SHARED_PATH . '/officer_header.php');
             <?php endif; ?>
             <br>
             <?php if ($winner_found == -1): ?>
-                <form action="<?php echo url_for('/officer/tournamentMatches.php?id=' . h(u($tournament->id))); ?>" method="post">
+                <form action="<?php echo url_for('/officer/tournaments/tournamentMatches.php?id=' . h(u($tournament->id))); ?>" method="post">
                     <div class="form-group">
                     <dl>
                         <dt>Match Date/Time</dt>

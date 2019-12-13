@@ -1,5 +1,5 @@
 <?php
-require_once('../../private/initialise.php');
+require_once('../../../private/initialise.php');
 
 if(!isset($_GET['id'])) {
   redirect_to(url_for('/officer/index.php'));
@@ -8,7 +8,7 @@ if(!isset($_GET['id'])) {
 $id = $_GET['id'];
 $member = Member::find_by_id($id);
 if($member == false || $member->role=="Officer" || $member->role=="System Admin" || !(am_officer() || am_sysadmin())) {
-  redirect_to(url_for('/officer/viewMembers.php'));
+  redirect_to(url_for('/officer/members/viewMembers.php'));
 }
 
 
@@ -22,7 +22,7 @@ if($member == false || $member->role=="Officer" || $member->role=="System Admin"
     if ($member->role == "Member"){
       insert_blacklist($member->email, $database);
       $member->delete();
-      redirect_to(url_for('/officer/banByEmail.php'));
+      redirect_to(url_for('/officer/members/banByEmail.php'));
     }
     else {
       $error_message = "You cannot ban an officer.";
@@ -38,7 +38,7 @@ if($member == false || $member->role=="Officer" || $member->role=="System Admin"
 
 <div id="content" class="container mt-5 mb-5">
 
-  <a class="back-link" href="<?php echo url_for('/officer/viewMembers.php');  ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/officer/members/viewMembers.php');  ?>">&laquo; Back to List</a>
 <br><br>
   <div class="member ban">
     <?php if (isset($error_message)) echo $error_message; ?>
@@ -46,7 +46,7 @@ if($member == false || $member->role=="Officer" || $member->role=="System Admin"
     <p>Are you sure you want to ban this member? Banning a member will delete their account. </p><br>
 
 
-    <form action="<?php echo url_for('/officer/memberBan.php?id=' . h(u($member->id))); ?>" method="post">
+    <form action="<?php echo url_for('/officer/members/memberBan.php?id=' . h(u($member->id))); ?>" method="post">
       <div id="operations">
         <input type="submit" class="btn btn-danger"name="commit" value="Permanently Ban" />
       </div>

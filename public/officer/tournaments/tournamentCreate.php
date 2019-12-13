@@ -1,10 +1,9 @@
-<?php require_once('../../private/initialise.php'); 
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
-require_once(SHARED_PATH .'/classes/tournament.class.php'); 
 
 if(is_post_request()) {
 	$tournament = new Tournament($_POST);
@@ -14,7 +13,7 @@ if(is_post_request()) {
 	if($result == false){
 		
 	} else{
-		redirect_to(url_for('officer/tournaments.php'));
+		redirect_to(url_for('officer/tournaments/tournaments.php'));
 	}
   
 	} else {
@@ -29,14 +28,14 @@ if(is_post_request()) {
 
 	<div id="content" class="container mt-5 mb-5">
 
-	  <a class="back-link" href="<?php echo url_for('/officer/tournaments.php'); ?>">&laquo; Back to List</a>
+	  <a class="back-link" href="<?php echo url_for('/officer/tournaments/tournaments.php'); ?>">&laquo; Back to List</a>
 		<br><br>
 	  <div class="tournament new">
 		<h1>Create Tournament</h1><br><hr>
 
 		<?php echo display_errors($tournament->errors); ?>
 
-		<form action="<?php echo url_for('/officer/tournamentCreate.php'); ?>" method="post">
+		<form action="<?php echo url_for('/officer/tournaments/tournamentCreate.php'); ?>" method="post">
 		<div class="form-group">
 		  <dl>
 			<dt>Signup Deadline</dt>

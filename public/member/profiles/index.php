@@ -18,7 +18,7 @@
 <?php if(!(am_officer() || am_sysadmin())){?>
   <a class="back-link" href="<?php echo url_for('/index.php'); // change to home page ?>">&laquo; Back to Member's Home page</a>
 <?php } else { ?>
-  <a class="back-link" href="<?php echo url_for('/officer/viewMembers.php'); ?>">&laquo; Back to List of Members</a>
+  <a class="back-link" href="<?php echo url_for('/officer/members/viewMembers.php'); ?>">&laquo; Back to List of Members</a>
   <?php }?>
 <div class="member show"><br><br>
 

@@ -1,13 +1,12 @@
 <?php
-require_once('../../private/initialise.php');
-require_once(SHARED_PATH .'/classes/societyevent.class.php');
+require_once('../../../private/initialise.php');
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
 if(!isset($_GET['id'])) {
-	redirect_to(url_for('officer/events.php'));
+	redirect_to(url_for('officer/events/events.php'));
 }
 $id = $_GET['id'];
 
@@ -17,7 +16,7 @@ if(is_post_request()) {
 	$result = $new_event->delete();
 	
 	if($result){
-		redirect_to(url_for('officer/events.php'));
+		redirect_to(url_for('officer/events/events.php'));
 	}
 }
 
@@ -29,7 +28,7 @@ if(is_post_request()) {
 
 	<div id="content" class="container mt-5 mb-5">
 
-	  <a class="back-link" href="<?php echo url_for('officer/events.php'); ?>">&laquo; Back to List</a>
+	  <a class="back-link" href="<?php echo url_for('officer/events/events.php'); ?>">&laquo; Back to List</a>
 
 	  <div class="event delete">
 	  <br><br>
@@ -37,7 +36,7 @@ if(is_post_request()) {
 		<p>Are you sure you want to delete this event?</p>
 		<p class="item"><?php echo "Society Event ID: ".h($id); ?></p> <br>
 
-		<form action="<?php echo url_for('/officer/eventDelete.php?id=' .h(u($id))); ?>" method="post">
+		<form action="<?php echo url_for('/officer/events/eventDelete.php?id=' .h(u($id))); ?>" method="post">
 		  <div id="operations">
 			<input type="submit" class= "btn btn-danger" name="commit" value="Delete Event" />
 		  </div>

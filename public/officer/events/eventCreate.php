@@ -1,10 +1,9 @@
-<?php require_once('../../private/initialise.php'); 
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
-require_once(SHARED_PATH .'/classes/societyevent.class.php'); 
 
 if(is_post_request()) {
 	
@@ -15,7 +14,7 @@ if(is_post_request()) {
 		// errors!
 	}
 	else{
-		redirect_to(url_for('officer/events.php'));
+		redirect_to(url_for('officer/events/events.php'));
 	}
   
 } else {
@@ -29,14 +28,14 @@ if(is_post_request()) {
 	  
 	<div id="content" class="container mt-5 mb-5">
 
-	  <a class="back-link" href="<?php echo url_for('/officer/events.php'); ?>">&laquo; Back to List</a>
+	  <a class="back-link" href="<?php echo url_for('/officer/events/events.php'); ?>">&laquo; Back to List</a>
 
 	  <div class="event new">
 		<h1>Create Society Event</h1>
 
 		<?php echo display_errors($event->errors); ?>
 		
-		<form action="<?php echo url_for('/officer/eventCreate.php'); ?>" method="post">
+		<form action="<?php echo url_for('/officer/events/eventCreate.php'); ?>" method="post">
 		<div class="form-group">
 		  <dl>
 			<dt>Name</dt>

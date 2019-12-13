@@ -1,8 +1,6 @@
 <?php 
 require_once('../private/initialise.php');
 require_once('../private/shared/header.php');
-require_once('../private/shared/classes/societyevent.class.php');
-require_once('../private/shared/classes/tournament.class.php');
 ?>
 
 <?php

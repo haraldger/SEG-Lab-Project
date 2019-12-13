@@ -1,8 +1,8 @@
 <?php 
-require_once('../../private/initialise.php');
+require_once('../../../private/initialise.php');
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
 if(isset($_POST['email'])){
@@ -10,7 +10,7 @@ if(isset($_POST['email'])){
     $email = htmlspecialchars($_POST['email']);
     $member = Member::find_by_email($email);
     if($member){
-      redirect_to(url_for('/officer/memberBan.php?id=' . h(u($member->id))));
+      redirect_to(url_for('/officer/members/memberBan.php?id=' . h(u($member->id))));
     }
     else{
         insert_blacklist($email, $database);
@@ -32,5 +32,5 @@ if(isset($_POST['email'])){
         echo "<p>This user was successfully banned.</p>";
         }?>
     <br>
-    <a class="link" href="<?php echo url_for('/officer/viewMembers.php');  ?>">&laquo; Go back</a>
+    <a class="link" href="<?php echo url_for('/officer/members/viewMembers.php');  ?>">&laquo; Go back</a>
 

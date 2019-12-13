@@ -1,7 +1,7 @@
-<?php require_once('../../private/initialise.php'); 
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
 include(SHARED_PATH . '/officer_header.php');
@@ -43,9 +43,9 @@ $sys_admin = am_sysadmin();
                     echo "<td>$member->fName $member->lName</td>";
                     echo "<td>$member->rating</td>";
                     echo "<td>$member->email</td>";
-                    echo "<td> <a href=../member/profiles/index.php?id=$member->id>View Profile</td>";
+                    echo "<td> <a href=../../member/profiles/index.php?id=$member->id>View Profile</td>";
                     if($member->role == "Member"){
-                        echo "<td> <a style='color:red;' href=../officer/memberBan.php?id=$member->id>Block</td>";
+                        echo "<td> <a style='color:red;' href=../../officer/members/memberBan.php?id=$member->id>Block</td>";
                     }
                     else{
                         echo "<td> </td>";
@@ -70,7 +70,7 @@ $sys_admin = am_sysadmin();
     </table>
             <br>
     <h2 class=" mx-sm-3">Ban User By Email</h2><br>
-    <form class="form-inline" action="<?php echo url_for('/officer/banByEmail.php') ?>" method="post">
+    <form class="form-inline" action="<?php echo url_for('/officer/members/banByEmail.php') ?>" method="post">
         <div class="form-group mx-sm-3 mb-2">
             <label class="sr-only">Email</label>
             <input class="form-control" type="email" name="email" placeholder="email@kcl.ac.uk">

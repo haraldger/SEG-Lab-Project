@@ -1,13 +1,11 @@
-<?php require_once('../../private/initialise.php'); 
-
-require_once(SHARED_PATH .'/classes/tournament.class.php'); 
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
 if(!isset($_GET['id'])) {
-	redirect_to(url_for('officer/tournaments.php'));
+	redirect_to(url_for('officer/tournaments/tournaments.php'));
 }
 
 $id = $_GET['id'];
@@ -21,7 +19,7 @@ foreach($tournamentItem->get_organisers() as $organiser){
 }
 
 if(!in_array(get_session_id(), $organiserIDs)){
-	redirect_to(url_for('officer/tournaments.php?id=' . $id));
+	redirect_to(url_for('officer/tournaments/tournaments.php?id=' . $id));
 }
 
 if(is_post_request()) {
@@ -34,7 +32,7 @@ if(is_post_request()) {
 		
 	}
 	else{
-		redirect_to(url_for('officer/tournaments.php'));
+		redirect_to(url_for('officer/tournaments/tournaments.php'));
 	}
   
 } else {
@@ -47,13 +45,13 @@ if(is_post_request()) {
 
 	<div id="content" class="container mt-5 mb-5">
 
-	  <a class="back-link" href="<?php echo url_for('/officer/tournaments.php'); ?>">&laquo; Back to List</a>
+	  <a class="back-link" href="<?php echo url_for('/officer/tournaments/tournaments.php'); ?>">&laquo; Back to List</a>
 	  <br><br>
 	  <div>
 		<h1>Edit Tournament</h1><br><hr>
 		<?php echo display_errors($errors); ?>
 
-		<form action="<?php echo url_for('/officer/tournamentEdit.php?id=' . h(u($id))); ?>" method="post">
+		<form action="<?php echo url_for('/officer/tournaments/tournamentEdit.php?id=' . h(u($id))); ?>" method="post">
 		<div class="form-group">
 		  <dl>
 			<dt>Name</dt>
