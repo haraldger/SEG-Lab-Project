@@ -9,8 +9,10 @@ require_once('../private/shared/classes/tournament.class.php');
 // Register user to tournament
 if(is_post_request() && $_POST['signup'] === 'true'){
     $tournament = Tournament::find_by_id($_POST['tournament']);
-    var_dump($tournament);
     $tournament->add_competitor(get_session_id());
+} elseif (is_post_request() && $_POST['signup'] === 'false'){
+    $tournament = Tournament::find_by_id($_POST['tournament']);
+    $tournament->remove_competitor(get_session_id());
 }
 
 ?>
@@ -65,6 +67,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
                     ?>
                     <form action = "<?php $_PHP_SELF ?>" method = "POST">
                         <input type ="hidden" name="type" value="<?php echo($_POST['type']); ?>">
+                        <input type="hidden" name="tournament" value="<?php echo($tournament->id); ?>">
                         Signed up!
                         <button name="signup" value="false" type="submit">X</button>
                     </form>

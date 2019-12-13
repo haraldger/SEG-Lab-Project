@@ -50,6 +50,26 @@ class Tournament extends DatabaseObject {
   }
 
   /**
+   * Remove an organiser from a tournament
+   */
+  public function remove_organiser($memberid){
+    $sql = "DELETE FROM tournamentOrganisers WHERE tournamentID=$this->id AND organiserID=$memberid";
+    $result = self::$database->query($sql);
+  }
+
+  /**
+   * Check if a member is an organiser for this tournament
+   */
+  public function has_organiser($memberid){
+    $sql = "SELECT * FROM tournamentOrganisers WHERE tournamentID=$this->id AND organiserID=$memberid";
+    $result = self::$database->query($sql);
+    if (mysqli_num_rows($result)==1){
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * Adds a given competitor to a tournament.
    */
   public function add_competitor($memberid){
@@ -70,26 +90,18 @@ class Tournament extends DatabaseObject {
   }
 
   /**
-   * Check if a member is a competitor in this tournament.
+   * Remove an competitor from a tournament
    */
-  public function has_competitor($memberid){
-    $competitors = $this->get_competitors();
-    return in_array($memberid, $competitors);
-  }
-
-  /**
-   * Remove an organiser from a tournament
-   */
-  public function remove_organiser($memberid){
-    $sql = "DELETE FROM tournamentOrganisers WHERE tournamentID=$this->id AND organiserID=$memberid";
+  public function remove_competitor($memberid){
+    $sql = "DELETE FROM tournamentCompetitors WHERE tournamentID=$this->id AND competitorID=$memberid";
     $result = self::$database->query($sql);
   }
 
   /**
-   * Check if a member is an organiser for this tournament
+   * Check if a member is a competitor in this tournament.
    */
-  public function has_organiser($memberid){
-    $sql = "SELECT * FROM tournamentOrganisers WHERE tournamentID=$this->id AND organiserID=$memberid";
+  public function has_competitor($memberid){
+    $sql = "SELECT * FROM tournamentCompetitors WHERE tournamentID=$this->id AND competitorID=$memberid";
     $result = self::$database->query($sql);
     if (mysqli_num_rows($result)==1){
       return true;
@@ -97,7 +109,7 @@ class Tournament extends DatabaseObject {
     return false;
   }
 
-
+  
 
 }
 
