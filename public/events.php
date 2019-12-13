@@ -22,8 +22,8 @@ if(is_post_request() && $_POST['signup'] === 'true'){
     <hr>
     <h3>
         <form action = "<?php $_PHP_SELF ?>" method = "POST">
-            <button name="type" value="events" type="submit">Events</button>
-            <button name="type" value="tournaments" type="submit">Tournaments</button>
+            <button name="type" class= "btn btn-outline-primary" value="events" type="submit">Events</button>
+            <button name="type" class= "btn btn-outline-primary" value="tournaments" type="submit">Tournaments</button><br>
         </form>
     </h3>
     <?php
@@ -62,7 +62,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
                             <form action = "<?php $_PHP_SELF ?>" method = "POST">
                                 <input type="hidden" name="type" value="<?php echo($_POST['type']); ?>">
                                 <input type="hidden" name="tournament" value="<?php echo($tournament->id); ?>">
-                                <button name="signup" value="true" type="submit">Sign Up</button>
+                                <button name="signup" class="btn btn-primary" value="true" type="submit">Sign Up</button>
                             </form>
                         <?php 
                     }
@@ -72,7 +72,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
                         <input type ="hidden" name="type" value="<?php echo($_POST['type']); ?>">
                         <input type="hidden" name="tournament" value="<?php echo($tournament->id); ?>">
                         Signed up!
-                        <button name="signup" value="false" type="submit">X</button>
+                        <button name="signup" class="close" value="false" type="submit">X</button>
                     </form>
                     <?php
                 }

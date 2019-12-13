@@ -1,6 +1,5 @@
-<!-- // File used in bottom of all webpages
-// Mostly html code but also closes DB connection -->
-<div style="height:70px;"></div>
+<!-- footer for every page and closing the DB connection -->
+<div style="height:140px;"></div> 
 <footer class="jumbotron jumbotron-fluid mt-10" style="margin-bottom:0px;">
   <div class="container">
   <br>

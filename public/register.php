@@ -4,7 +4,6 @@
 <?php 
   include('../private/shared/header.php');
 
-
   $member = new Member;
   if(is_post_request()) {
     // Create record using post parameters
