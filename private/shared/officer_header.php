@@ -41,7 +41,7 @@
               <a class="nav-link" href="/SEG-Lab-Project/public/member/profiles/index.php?id= <?php echo get_session_id()?>">Profile</a>
             </li>
             <li class="nav-item px-md-1">
-              <a href="../../public/logout.php"><button type="button" class="btn btn-secondary">Log out</button></a>
+              <a href="/SEG-Lab-Project/public/logout.php"><button type="button" class="btn btn-secondary">Log out</button></a>
             </li>
           </ul>
         </div>
