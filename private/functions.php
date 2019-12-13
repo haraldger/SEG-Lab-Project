@@ -184,7 +184,7 @@ function winner_found($tournament_id, $round_num, $database){
 }
 
 function get_round_matches($tournament_id, $round_num, $database){
-  $sql = "SELECT matchID FROM tournamentMatches WHERE ";
+  $sql = "SELECT id FROM tournamentMatches WHERE ";
   $sql .= "tournamentID = '" . $tournament_id;
   $sql .= "' AND roundNum = '" . $round_num . "'";
   $result = $database->query($sql);
@@ -200,8 +200,8 @@ function get_round_matches($tournament_id, $round_num, $database){
 }
 
 function get_match_competitors($match_id, $database){
-  $sql = "SELECT competitorID1 AND competitorID2 WHERE ";
-  $sql .= "matchID = '" . $match_id . "'";
+  $sql = "SELECT competitorID1,competitorID2 FROM tournamentmatches WHERE ";
+  $sql .= "id = '" . $match_id . "'";
   $result = $database->query($sql);
   if (!$result) {
     exit("Database query failed.");
@@ -209,7 +209,33 @@ function get_match_competitors($match_id, $database){
   $record = $result->fetch_assoc();
   $competitor_ids = array("competitorID1"=> $record['competitorID1'], "competitorID2"=> $record['competitorID2']);
   $result->free();
-  return $competitor_ids;
+
+  $sql = "SELECT members.email FROM tournamentMatches, members WHERE ";
+  $sql .= "tournamentMatches.id = '" . $match_id . "' AND ";
+  $sql .= "competitorID1 = '" . $competitor_ids["competitorID1"] . "' ";
+  $sql .= 'AND tournamentmatches.competitorID1 = members.id';
+  $result = $database->query($sql);
+  if (!$result) {
+    exit("Database query failed.");
+  }
+  $record = $result->fetch_assoc();
+  $competitor_email_1 = $record['email'];
+  $result->free();
+
+  $sql = "SELECT members.email FROM tournamentMatches, members WHERE ";
+  $sql .= "tournamentMatches.id = '" . $match_id . "' AND ";
+  $sql .= "competitorID2 = '" . $competitor_ids["competitorID2"] . "'";
+  $sql .= 'AND tournamentmatches.competitorID2 = members.id';
+  $result = $database->query($sql);
+  if (!$result) {
+    exit("Database query failed.");
+  }
+  $record = $result->fetch_assoc();
+  $competitor_email_2 = $record['email'];
+  $result->free();
+
+  $competitors = array("compID1" => $competitor_ids["competitorID1"], "compEmail1" => $competitor_email_1, "compID2" => $competitor_ids["competitorID1"], "compEmail2" => $competitor_email_2);
+  return $competitors;
 }
 
 function generate_first_round($participant_ids) {

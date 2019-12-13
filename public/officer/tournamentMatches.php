@@ -71,38 +71,11 @@ include(SHARED_PATH . '/officer_header.php');
     }
     ?>
 
-    <?php if ($last_round_finished): ?>
+    <?php if (!$last_round_finished): ?>
         <?php echo "ROUND " . $last_round . ": IN PROGRESS";?>
         <br>
-        <?php if ($winner_found == -1): ?>
-            <?php
-             $ongoing_match_ids = get_round_matches($tournament->id, $last_round, $database); 
-             foreach($ongoing_match_ids as $match_id) {
-                echo 
-             }
-            
-            ?>
-
-            <form action="<?php echo url_for('/officer/tournamentMatches.php?id=' . h(u($tournament->id))); ?>" method="post">
-                <div class="form-group">
-                
-                <dl>
-                    <dt>Match Winner</dt>
-                    <select name="participants">
-                    <option value=<?php echo '"' .  .'"' ?>>Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
-                </select>
-                </dl>
-                </div>
-                <div id="operations">
-                    <input class= "btn btn-primary btn-lg" type="submit" value="Generate Next Round" />
-                </div>
-                </form>
-            <br><br>
-        <?php endif; ?>
-
+        <br>
+        <a href="<?php echo url_for('/officer/matchRecord.php?id=' . h(u($tournament->id)) . '&round=' . h(u($last_round))); ?>">RECORD MATCH RESULTS</a>
     <?php endif; ?>
 
     <?php if ($last_round_finished): ?>
