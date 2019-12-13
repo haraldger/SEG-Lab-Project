@@ -229,7 +229,86 @@ INSERT INTO tournaments(name, signupDeadline)
 VALUES ('LSE Showmatch', '2020-03-04');
 
 
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (1, 12);
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (2, 12);
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (3, 12);
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (4, 12);
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (5, 10);
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (6, 12);
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (7, 12);
+INSERT INTO tournamentOrganisers (tournamentID, organiserID)
+VALUES (8, 12);
 
-
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 1);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 2);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 3);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 4);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 5);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 6);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 7);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 8);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 9);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 10);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 11);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 12);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 13);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 14);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 15);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 16);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 17);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 18);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 19);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 20);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 21);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 22);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 23);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 24);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 25);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 26);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 27);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 28);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 29);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 30);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 31);
+INSERT INTO tournamentCompetitors (tournamentID, competitorID)
+VALUES (5, 32);
 
 
