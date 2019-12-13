@@ -1,7 +1,7 @@
-<?php require_once('../../private/initialise.php'); 
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
 include(SHARED_PATH . '/officer_header.php');
@@ -67,12 +67,12 @@ else{
 	
 	<?php
 		if(is_post_request()){
-			echo "<form action=".url_for('/officer/news.php')." method='get'>";
+			echo "<form action=".url_for('/officer/news/news.php')." method='get'>";
 				echo "<div id='operations'>";
 				echo "<input type='submit' class='btn btn-danger' value='Hide unreleased / expired news' />";
 		}
 		else{
-			echo "<form action=".url_for('/officer/news.php')." method='post'>";
+			echo "<form action=".url_for('/officer/news/news.php')." method='post'>";
 				echo "<div id='operations'>";
 				echo "<input type='submit' class='btn btn-info' value='Show unreleased / expired news' />";
 		}
