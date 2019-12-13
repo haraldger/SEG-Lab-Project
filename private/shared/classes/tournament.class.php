@@ -109,7 +109,15 @@ class Tournament extends DatabaseObject {
     return false;
   }
 
-  
+  public function get_init_rating($memberid){
+    $sql = "SELECT * from tournamentCompetitors WHERE tournamentID=$this->id AND competitorID=$memberid";
+    $result = self::$database->query($sql);
+    if(!$result || mysqli_num_rows($result)!=1) {
+      exit("The member hasn't signed up for this tournament!");
+    }
+    $tournamentCompetitor = $result->fetch_assoc();
+    return intval($tournamentCompetitor["initrating"]);
+  }
 
 }
 
