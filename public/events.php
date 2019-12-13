@@ -21,12 +21,12 @@ if(is_post_request() && $_POST['signup'] === 'true'){
 	<h2>KCLCS</h2>
     <img src="./static/chessSocietyLogo.jpg" alt="logo" width="10%" height="10%">
     <hr>
-    <h3>
+    
         <form action = "<?php $_PHP_SELF ?>" method = "POST">
-            <button name="type" value="events" type="submit">Events</button>
-            <button name="type" value="tournaments" type="submit">Tournaments</button>
+            <button name="type" class= "btn btn-outline-primary" value="events" type="submit">Events</button>
+            <button name="type" class= "btn btn-outline-primary" value="tournaments" type="submit">Tournaments</button>
         </form>
-    </h3>
+        <br><br>
     <?php
 
     // User clicked tournaments
@@ -63,7 +63,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
                             <form action = "<?php $_PHP_SELF ?>" method = "POST">
                                 <input type="hidden" name="type" value="<?php echo($_POST['type']); ?>">
                                 <input type="hidden" name="tournament" value="<?php echo($tournament->id); ?>">
-                                <button name="signup" value="true" type="submit">Sign Up</button>
+                                <button name="signup" class="btn btn-primary" value="true" type="submit">Sign Up</button>
                             </form>
                         <?php 
                     }
@@ -73,7 +73,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
                         <input type ="hidden" name="type" value="<?php echo($_POST['type']); ?>">
                         <input type="hidden" name="tournament" value="<?php echo($tournament->id); ?>">
                         Signed up!
-                        <button name="signup" value="false" type="submit">X</button>
+                        <button name="signup" value="false" class="close" type="submit">x</button>
                     </form>
                     <?php
                 }

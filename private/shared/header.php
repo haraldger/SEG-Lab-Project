@@ -16,7 +16,7 @@
    <!-- needs link to css -->
   </head>
 
-  <body>
+  <body style="height =100%;">
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="../public/index.php">KCLSU</a>
