@@ -75,7 +75,8 @@ class Tournament extends DatabaseObject {
    * Adds a given competitor to a tournament.
    */
   public function add_competitor($memberid){
-    $sql = "INSERT INTO tournamentCompetitors(tournamentID, competitorID) VALUES ($this->id, $memberid)";
+    $member = Member::find_by_id($memberid);
+    $sql = "INSERT INTO tournamentCompetitors(tournamentID, competitorID, initrating) VALUES ($this->id, $memberid, $member->rating)";  
     $result = self::$database->query($sql);
     if (!$result){
       $this->errors[] = "Insertion of competitor failed. Either member id doesnt exist or member is already a competitor.";
