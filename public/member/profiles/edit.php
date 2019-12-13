@@ -37,7 +37,7 @@ include(SHARED_PATH . '/header.php'); ?>
     <?php echo display_errors($member->errors); ?>
     <form action="<?php echo url_for('/member/profiles/edit.php?id=' . h(u($id))); ?>" method="post">
       <?php
-      if(!isset($member)) {redirect_to(url_for('/member/profiles/index.php')); //change to home page}
+       if(!isset($member)) redirect_to(url_for('/member/index.php'));
       ?>
       <div class="form-group">
         <label >First Name: </label><br>
@@ -78,6 +78,3 @@ include(SHARED_PATH . '/header.php'); ?>
     </form>
   </div>
 </div>
-
-<?php include(SHARED_PATH . '/footer.php'); ?>
-
