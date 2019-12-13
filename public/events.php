@@ -4,6 +4,10 @@ require_once('../private/shared/header.php');
 ?>
 
 <?php
+if(!am_logged_in()){
+    redirect_to(url_for('/index.php'));
+}
+
 // Register user to tournament
 if(is_post_request() && $_POST['signup'] === 'true'){
     $tournament = Tournament::find_by_id($_POST['tournament']);
