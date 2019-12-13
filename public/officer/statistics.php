@@ -1,9 +1,9 @@
-<?php require_once('../../private/initialise.php'); 
+<?php 
+require_once('../../private/initialise.php'); 
 if(!(am_sysadmin() || am_officer())){
 	redirect_to(url_for('../public'));
 }
 ?>
-
 
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
@@ -12,7 +12,7 @@ if(!(am_sysadmin() || am_officer())){
 <br>
 <br>
   <div id="main-menu">
-    <h2>Elo statistics</h2>
+    <h2>Elo Distribution</h2>
     <img src="../../private/shared/elodistribution.php">
   </div>
 
