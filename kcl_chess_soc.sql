@@ -33,7 +33,7 @@ CREATE TABLE societyEvents (
 
 DROP TABLE IF EXISTS news;
 CREATE TABLE news (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT, 
   title VARCHAR(255),
   authorID int,
   description text,

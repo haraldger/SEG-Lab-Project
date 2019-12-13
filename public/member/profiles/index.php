@@ -45,8 +45,22 @@
         echo '<p style="padding-right: 5px;">No tournaments signed up to. Why not sign up one?</p>';
       }
       else {
+        $rating_ptr = Member::find_by_id($id)->rating;
         foreach ($tournaments as $tournament){
-          echo "<br><h3>$tournament->name</h3>";
+
+          // Show the tournament name and display change in ELO
+          $initrating = $tournament->get_init_rating($id);
+          $diff = intval($rating_ptr) - intval($initrating);
+          echo "<br><h3>$tournament->name <span>";
+          if ($diff > 0){
+            echo '<span style="color::green"> +'.$diff.'</span>';
+          }          
+          else if ($diff < 0){
+            echo '<span style="color::red"> '.$diff.'</span>';
+          }
+          echo '</h3>';
+          $rating_ptr = $initrating;
+
           $matchsql = "SELECT * from tournamentMatches WHERE (competitorID1=$id or competitorID2=$id) AND tournamentID=$tournament->id";
           $matches = Match::find_by_sql($matchsql);
           if (sizeof($matches) > 0) {
