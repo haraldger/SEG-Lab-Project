@@ -11,10 +11,8 @@
     $result = $member->save();
     if($result === true) {
       $new_id = $member->id;
-      // TODO: redirect to profile page of newly generated member account with $new_id
       redirect_to(url_for("index.php"));
     } else {
-      // report errors
     }
   }
 
