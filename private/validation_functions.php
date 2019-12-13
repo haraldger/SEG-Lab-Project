@@ -62,7 +62,7 @@ function has_length($value, $options) {
 //    returns 1 for a match, 0 for no match
 //    http://php.net/manual/en/function.preg-match.php
 function has_valid_email_format($value) {
-    $email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
+    $email_regex = '/\A[A-Z0-9._%+-]+@kcl.ac.uk\Z/i';
     return preg_match($email_regex, $value) === 1;
 }
 
