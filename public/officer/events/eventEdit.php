@@ -1,13 +1,11 @@
-<?php require_once('../../private/initialise.php'); 
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
-require_once(SHARED_PATH .'/classes/societyevent.class.php'); 
-
 if(!isset($_GET['id'])) {
-	redirect_to(url_for('officer/events.php'));
+	redirect_to(url_for('officer/events/events.php'));
 }
 $id = $_GET['id'];
 
@@ -21,7 +19,7 @@ if(is_post_request()) {
 		// errors!
 	}
 	else{
-		redirect_to(url_for('officer/events.php'));
+		redirect_to(url_for('officer/events/events.php'));
 	}
   
 }else {
@@ -32,7 +30,7 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/officer_header.php'); ?>
 
 	<div id="content" class="container mt-5 mb-5">
-	<a class="back-link" href="<?php echo url_for('/officer/events.php'); ?>">&laquo; Back to List</a>
+	<a class="back-link" href="<?php echo url_for('/officer/events/events.php'); ?>">&laquo; Back to List</a>
 	  <br><br>
 	  
 	  <div class="event edit">
@@ -41,7 +39,7 @@ if(is_post_request()) {
 
 		<?php echo display_errors($eventItem->errors); ?>
 
-		<form action="<?php echo url_for('/officer/eventEdit.php?id=' . h(u($id))); ?>" method="post">
+		<form action="<?php echo url_for('/officer/events/eventEdit.php?id=' . h(u($id))); ?>" method="post">
 		<div class="form-group">
 		  <dl>
 			<dt>Name</dt>
