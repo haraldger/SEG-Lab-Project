@@ -52,8 +52,7 @@
           echo '</h3>';
           $rating_ptr = $initrating;
 
-          $matchsql = "SELECT * from tournamentMatches WHERE (competitorID1=$id or competitorID2=$id) AND tournamentID=$tournament->id";
-          $matches = Match::find_by_sql($matchsql);
+          $matches = $tournament->get_matches_of($id);
           if (sizeof($matches) > 0) {
             echo '<table class="table table-hover">
               <tr>

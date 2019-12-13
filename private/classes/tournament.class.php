@@ -121,6 +121,11 @@ class Tournament extends DatabaseObject {
     $tournamentCompetitor = $result->fetch_assoc();
     return intval($tournamentCompetitor["initrating"]);
   }
+
+  public function get_matches_of($memberid){
+    $matchsql = "SELECT * from tournamentMatches WHERE (competitorID1=$memberid or competitorID2=$memberid) AND tournamentID=$this->id";
+    return Match::find_by_sql($matchsql);
+  }
 }
 
 ?>
