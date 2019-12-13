@@ -36,7 +36,7 @@
   <div> 
     <h2>Tournament history</h2>
     <?php 
-      $tournaments = Member::find_by_id($id)->getTournaments();
+      $tournaments = Member::find_by_id($id)->getTournamentsParticipating();
       if (sizeof($tournaments) == 0){
         echo '<p style="padding-right: 5px;">No tournaments signed up to. Why not sign up one?</p>';
       }
@@ -48,9 +48,7 @@
           $initrating = $tournament->get_init_rating($id);
           $diff = intval($rating_ptr) - intval($initrating);
           echo "<br><h3>$tournament->name";
-          if ($diff != 0){
-            echo $diff;
-          }
+          if ($diff > 0){echo " +$diff";} else if ($diff < 0){echo " -$diff";}
           echo '</h3>';
           $rating_ptr = $initrating;
 
@@ -68,12 +66,12 @@
               $othermember= Member::find_by_id($othercompetitorid);
               $outcome = ($m->winner == $id)? "WIN" : "LOSS";
 
-			        echo '<table class="table table-hover"><thead><tr><th scope="col"> Matches Against </th><th scope="col">Match Date</th><th scope="col"> Outcome </th></tr></thead>';
-              echo '<tbody><tr><td>'.$othermember->full_name().'</td><td>'.$m->matchDate.'</td>';
+              echo '<tr><td>'.$othermember->full_name().'</td><td>'.$m->matchDate.'</td>';
               if ($outcome == "WIN"){ echo '<td><span style="color:green">'.$outcome.'</span></td>';} 
               else { echo '<td><span style="color:red">'.$outcome.'</span></td>';}
-              echo '</tr></tbody></table>';
+              echo '</tr>';
             }
+            echo "</table>";
           } else {
             echo "<p>Signed up to this tournament. Greatness awaits!</p><br><br>";
           }
