@@ -1,5 +1,5 @@
 <!-- footer for every page and closing the DB connection -->
-<div style="height:70px;"></div> 
+<div style="height:140px;"></div> 
 <footer class="jumbotron jumbotron-fluid mt-10" style="margin-bottom:0px;">
   <div class="container">
   <br>

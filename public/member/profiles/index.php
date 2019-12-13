@@ -36,20 +36,18 @@
   <div> 
     <h2>Tournament history</h2>
     <?php 
-      $tournaments = Member::find_by_id($id)->getTournamentsParticipating();
+      $tournaments = Member::find_by_id($id)->getTournaments();
       if (sizeof($tournaments) == 0){echo '<p style="padding-right: 5px;">No tournaments signed up to. Why not sign up one?</p>';} else {
         foreach ($tournaments as $tournament){
-        
           echo "<br><h3>$tournament->name</h3>";
-          $matchsql = "SELECT * from tournamentMatches WHERE (competitorID1=$id or competitorID2=$id) AND tournamentID=$tournament->id";
+          $matchsql = "SELECT * from tournamentMatches WHERE (competitorID1=$id or competitorID2=$id) AND tournamentID=$tournament->id ORDER BY roundNum DESC";
           $matches = Match::find_by_sql($matchsql);
-
           if (sizeof($matches) > 0) {
             foreach ($matches as $m){
-              
               $othercompetitorid = ($m->competitorID1 == $id)? $m->competitorID2 : $m->competitorID1;
               $othermember= Member::find_by_id($othercompetitorid);
               $outcome = ($m->winner == $id)? "WIN" : "LOSS";
+
 			        echo '<table class="table table-hover"><thead><tr><th scope="col"> Matches Against </th><th scope="col">Match Date</th><th scope="col"> Outcome </th></tr></thead>';
               echo '<tbody><tr><td>'.$othermember->full_name().'</td><td>'.$m->matchDate.'</td>';
               if ($outcome == "WIN"){ echo '<td><span style="color:green">'.$outcome.'</span></td>';} 
