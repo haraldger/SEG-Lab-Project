@@ -36,8 +36,9 @@
   <div> 
     <h2>Tournament history</h2>
     <?php 
-      $tournaments = Member::find_by_id($id)->getTournaments();
-      if (sizeof($tournaments) == 0){echo '<p style="padding-right: 5px;">No tournaments signed up to. Why not sign up one?</p>';} else {
+    try {
+      $tournaments = Member::find_by_id($id)->getTournamentsParticipating();
+      if (sizeof($tournaments) == 0){echo '<p style="padding-right: 5px;">No tournaments signed up to. Why not sign up to one?</p>';} else {
         foreach ($tournaments as $tournament){
           echo "<br><h3>$tournament->name</h3>";
           $matchsql = "SELECT * from tournamentMatches WHERE (competitorID1=$id or competitorID2=$id) AND tournamentID=$tournament->id ORDER BY roundNum DESC";
@@ -59,6 +60,11 @@
           }
         }
       }
+    }
+    catch(exception $e){
+      echo "<p>No tournaments</p>";
+    }
+ 
     ?>
     </div>
     <a class="action" href="<?php echo url_for('/member/profiles/edit.php?id=' . h(u($member->id))); ?>"><button class="btn btn-primary">Edit Profile</button></a>

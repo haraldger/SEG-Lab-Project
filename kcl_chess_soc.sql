@@ -101,6 +101,12 @@ INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating
 VALUES ('Kennedy', 'Trevino', 'Kennedy@kcl.ac.uk', '91 DJ Yolo Street', '07192837465', 'Other', '1995-01-01', 1600, 'Officer', '$SK3DEDd3');
 INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
 VALUES ('Gracelyn', 'Hampton', 'Gracelyn@kcl.ac.uk', '91 DJ Yolo Street', '07192837465', 'Other', '1995-01-01', 1100, 'Officer', '$SK3DEDd3');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Demetrius', 'Levenworth', 'Levenworth@kcl.ac.uk', '111 Halloumi Street', '077777777', 'Other', '1998-01-01', 1600, 'System Admin', '$2y$10$f2bv37dQwmvj.l/tkh/nG.aFzQ8OII7yzuNbApuR6d63650CJ/4wu');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Serge', 'LeMans', 'lemans@kcl.ac.uk', '111 Halloumi Street', '0777332574', 'Other', '1998-01-01', 1500, 'Officer', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Xena', 'Wobbles', 'Wobbles@kcl.ac.uk', '111 Halloumi Street', '0747332574', 'Other', '1998-01-01', 1400, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
 
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Coffee Morning', 'Come to the cafe and enjoy a hot drink while meeting society members', '2019-12-05 10:00:00', '2019-11-18 00:00:00', '2019-12-05 12:00:00');
