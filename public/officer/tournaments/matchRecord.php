@@ -1,11 +1,11 @@
-<?php require_once('../../private/initialise.php');
+<?php require_once('../../../private/initialise.php');
 
 if (!(am_sysadmin() || am_officer())) {
-    redirect_to(url_for('../public'));
+    redirect_to(url_for('../../public'));
 }
 
 if (!isset($_GET['id']) || !isset($_GET['round'])) {
-    redirect_to(url_for('officer/tournaments.php'));
+    redirect_to(url_for('officer/tournaments/tournaments.php'));
 }
 
 $roundNum = $_GET['round'];
@@ -19,7 +19,7 @@ foreach ($tournament->get_organisers() as $organiser) {
 }
 
 if (!in_array(get_session_id(), $organiserIDs)) {
-    redirect_to(url_for('officer/tournaments.php?id=' . $id));
+    redirect_to(url_for('officer/tournaments/tournaments.php?id=' . $id));
 }
 
 $match_ids = get_round_matches($tournament->id, $roundNum, $database);
@@ -32,7 +32,7 @@ if (is_post_request()) {
         $match->save();
         $counter++;
     }
-    redirect_to(url_for('/officer/tournamentMatches.php?id=' . $tournament->id));
+    redirect_to(url_for('/officer/tournaments/tournamentMatches.php?id=' . $tournament->id));
 } else { }
 
 include(SHARED_PATH . '/officer_header.php');
@@ -40,11 +40,11 @@ include(SHARED_PATH . '/officer_header.php');
 
 <div class="container mt-5 mb-5">
 
-    <a class="back-link" href="<?php echo url_for('/officer/tournamentMatches.php?id=' . $tournament->id); ?>">&laquo; Back to Matches</a>
+    <a class="back-link" href="<?php echo url_for('/officer/tournaments/tournamentMatches.php?id=' . $tournament->id); ?>">&laquo; Back to Matches</a>
     <h1><?php echo h($tournament->name); ?></h1>
     <br>
 
-    <form action="<?php echo url_for('/officer/matchRecord.php?id=' . $tournament->id . '&round=' . $roundNum); ?>" method="post">
+    <form action="<?php echo url_for('/officer/tournaments/matchRecord.php?id=' . $tournament->id . '&round=' . $roundNum); ?>" method="post">
         <div class="form-group">
             <?php
             $counter = 1;

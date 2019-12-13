@@ -1,11 +1,10 @@
-<?php require_once('../../private/initialise.php'); 
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
 include(SHARED_PATH . '/officer_header.php');
-require_once(SHARED_PATH . '/classes/tournament.class.php');
 ?>
     <div class="container mt-5 mb-5">
 	<a class="back-link" href="<?php echo url_for('/officer/index.php'); ?>">&laquo; Back to Menu</a>

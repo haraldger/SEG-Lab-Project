@@ -1,12 +1,11 @@
-<?php require_once('../../private/initialise.php'); 
-require_once(SHARED_PATH . '/classes/tournament.class.php');
+<?php require_once('../../../private/initialise.php'); 
 
 if(!(am_sysadmin() || am_officer())){
-	redirect_to(url_for('../public'));
+	redirect_to(url_for('../../public'));
 }
 
 if(!isset($_GET['id'])) {
-	redirect_to(url_for('officer/tournaments.php'));
+	redirect_to(url_for('officer/tournaments/tournaments.php'));
 }
 
 $id = $_GET['id'];
@@ -21,13 +20,13 @@ foreach($tournaments->get_organisers() as $organiser){
 }
 
 if(!in_array(get_session_id(), $organiserIDs)){
-	redirect_to(url_for('officer/tournaments.php'));
+	redirect_to(url_for('officer/tournaments/tournaments.php'));
 }
 
 include(SHARED_PATH . '/officer_header.php');
 ?>
     <div class="container mt-5 mb-5">
-	<a class="back-link" href="<?php echo url_for('/officer/tournaments.php'); ?>">&laquo; Back to List</a>
+	<a class="back-link" href="<?php echo url_for('/officer/tournaments/tournaments.php'); ?>">&laquo; Back to List</a>
     <br>
     <br>
     <h3>Competitors</h1>
