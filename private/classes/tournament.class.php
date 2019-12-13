@@ -2,7 +2,9 @@
 
 require_once('databaseobject.class.php');
 
-
+/**
+ * A class to represent a chess tournament 
+ */
 class Tournament extends DatabaseObject {
 
   static protected $table_name = 'tournaments';

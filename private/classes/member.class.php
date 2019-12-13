@@ -102,8 +102,16 @@ class Member extends DatabaseObject {
       $this->errors[] = "Email already exists.";
     }
 
-    if($this->dob === ''){
+    if(is_blank($this->dob)){
       $this->errors[] = "Date of Birth cannot be blank.";
+    }
+
+    if(is_blank($this->rating)){
+      $this->errors[] = "Rating cannot be blank.";
+    }
+
+    if(is_blank($this->role)){
+      $this->errors[] = " Role cannot be blank."; 
     }
 
     if($this->password_required) {

@@ -42,17 +42,20 @@
             if(is_blank($this->expiryDate)){
                 $this->errors[] = "Event expiry date cannot be blank.";
             }
-            if (!is_blank($this->expiryDate) && !is_blank($this->releaseDate)){
-                 if ($this->expiryDate < $this->releaseDate){
-                      $this->errors[] = "Release date is after expiry date.";
-                 }
-				 if ($this->eventDate < $this->releaseDate){
-                      $this->errors[] = "Event date is before release date.";
-                 }
-				 if ($this->eventDate > $this->expiryDate){
-                      $this->errors[] = "Event date is after expiry date.";
-                 }
+            if (!is_blank($this->expiryDate) && !is_blank($this->releaseDate) && !is_blank($this->eventDate)){
+              if ($this->expiryDate < $this->releaseDate){
+                  $this->errors[] = "Release date is after expiry date.";
+              } else if (!($this->eventDate > $this->releaseDate && $this->eventDate<$this->expiryDate)){
+                  $this->errors[] = "Event date does not lie between release date and expiry date";
+              }
             }
+            if ($this->eventDate < $this->releaseDate){
+                          $this->errors[] = "Event date is before release date.";
+                    }
+            if ($this->eventDate > $this->expiryDate){
+                          $this->errors[] = "Event date is after expiry date.";
+            }
+            
         }
       
     }
