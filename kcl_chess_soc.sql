@@ -12,13 +12,15 @@ CREATE TABLE members (
   role ENUM ('Member', 'Officer', 'System Admin') DEFAULT 'Member',
   hashed_password VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
-);
+)
+ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS blacklist;
 CREATE TABLE blacklist (
   email VARCHAR(255),
   PRIMARY KEY (email)
-);
+)
+ENGINE=InnoDB;
  
 DROP TABLE IF EXISTS societyEvents;
 CREATE TABLE societyEvents (
@@ -29,7 +31,8 @@ CREATE TABLE societyEvents (
   releaseDate DATETIME NOT NULL,
   expiryDate DATETIME NOT NULL,
   PRIMARY KEY (id)
-);
+)
+ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS news;
 CREATE TABLE news (
@@ -41,7 +44,8 @@ CREATE TABLE news (
   expiryDate DATETIME NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (authorID) REFERENCES members(id)  ON DELETE SET NULL
-);
+)
+ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS tournaments;
 CREATE TABLE tournaments (
@@ -49,7 +53,8 @@ CREATE TABLE tournaments (
   name VARCHAR(255) NOT NULL,
   signupDeadline DATETIME NOT NULL,
   PRIMARY KEY (id)
-);
+)
+ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS tournamentOrganisers;
 CREATE TABLE tournamentOrganisers (
@@ -58,7 +63,8 @@ CREATE TABLE tournamentOrganisers (
   UNIQUE (tournamentID, organiserID),
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE,
   FOREIGN KEY (organiserID) REFERENCES members(id) ON DELETE CASCADE
-);
+)
+ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS tournamentCompetitors;
 CREATE TABLE tournamentCompetitors (
@@ -68,7 +74,8 @@ CREATE TABLE tournamentCompetitors (
   UNIQUE (tournamentID, competitorID),
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE,
   FOREIGN KEY (competitorID) REFERENCES members(id) ON DELETE CASCADE
-);
+)
+ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS tournamentMatches;
 CREATE TABLE tournamentMatches (
@@ -83,7 +90,8 @@ CREATE TABLE tournamentMatches (
   FOREIGN KEY (competitorID1) REFERENCES members(id) ON DELETE CASCADE,
   FOREIGN KEY (competitorID2) REFERENCES members(id) ON DELETE CASCADE,
   FOREIGN KEY (tournamentID) REFERENCES tournaments(id) ON DELETE CASCADE
-);
+)
+ENGINE=InnoDB;
 
 
 INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
