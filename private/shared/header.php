@@ -34,6 +34,12 @@
             <li class="nav-item">
           <a class="nav-link" href="/SEG-Lab-Project/public/news.php">News</a>
             </li>
+            <?php if(am_logged_in()){ ?>
+              <li class="nav-item">
+                <a class="nav-link" href="/SEG-Lab-Project/public/events.php">Events & Tournaments</a>
+              </li>
+            <?php }
+            ?>
           </ul>
           <div class="collapse navbar-collapse justify-content-end">
            <ul class="navbar-nav">

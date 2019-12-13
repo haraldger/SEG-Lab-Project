@@ -48,15 +48,6 @@ class Tournament extends DatabaseObject {
             ."(SELECT organiserID FROM tournamentOrganisers WHERE tournamentID=$this->id)";
     return Member::find_by_sql($sql);
   }
-  
-  /**
-   * Get an array of competitors that are signed up for this tournament
-   */
-  public function get_competitors(){
-    $sql = "SELECT DISTINCT * from members WHERE members.id IN "
-            ."(SELECT competitorID FROM tournamentCompetitors WHERE tournamentID=$this->id)";
-    return Member::find_by_sql($sql);
-  }
 
   /**
    * Remove an organiser from a tournament
@@ -78,7 +69,47 @@ class Tournament extends DatabaseObject {
     return false;
   }
 
+  /**
+   * Adds a given competitor to a tournament.
+   */
+  public function add_competitor($memberid){
+    $sql = "INSERT INTO tournamentCompetitors(tournamentID, competitorID) VALUES ($this->id, $memberid)";
+    $result = self::$database->query($sql);
+    if (!$result){
+      $this->errors[] = "Insertion of competitor failed. Either member id doesnt exist or member is already a competitor.";
+    }
+  }
+  
+  /**
+   * Get an array of competitors that are signed up for this tournament
+   */
+  public function get_competitors(){
+    $sql = "SELECT DISTINCT * from members WHERE members.id IN "
+            ."(SELECT competitorID FROM tournamentCompetitors WHERE tournamentID=$this->id)";
+    return Member::find_by_sql($sql);
+  }
 
+  /**
+   * Remove an competitor from a tournament
+   */
+  public function remove_competitor($memberid){
+    $sql = "DELETE FROM tournamentCompetitors WHERE tournamentID=$this->id AND competitorID=$memberid";
+    $result = self::$database->query($sql);
+  }
+
+  /**
+   * Check if a member is a competitor in this tournament.
+   */
+  public function has_competitor($memberid){
+    $sql = "SELECT * FROM tournamentCompetitors WHERE tournamentID=$this->id AND competitorID=$memberid";
+    $result = self::$database->query($sql);
+    if (mysqli_num_rows($result)==1){
+      return true;
+    }
+    return false;
+  }
+
+  
 
 }
 
