@@ -1,5 +1,4 @@
 <?php
-//require("user_path.php");
 require_once('../private/initialise.php');
 session_start();
 $_SESSION['id'] = "";
