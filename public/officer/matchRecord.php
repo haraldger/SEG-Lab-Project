@@ -29,6 +29,7 @@ if (is_post_request()) {
     foreach ($match_ids as $match_id) {
         $match = Match::find_by_id($match_id);
         $match->winner = $_POST["matchWinner" . $counter];
+        $match->calculateElo();
         $match->save();
         $counter++;
     }
