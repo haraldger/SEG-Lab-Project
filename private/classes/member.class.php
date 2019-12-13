@@ -138,6 +138,10 @@ class Member extends DatabaseObject {
     }
   }
 
+  public function getTournamentsParticipating(){
+    return Tournament::find_by_sql("SELECT tournaments. * from tournaments WHERE id in (select tournamentID from tournamentCompetitors WHERE competitorID=$this->id) ORDER BY signupDeadline desc");
+  }
+
 }
 
 ?>

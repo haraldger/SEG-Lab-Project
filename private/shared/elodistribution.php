@@ -1,37 +1,12 @@
 <?php 
-
-    
     require_once('../initialise.php'); 
-    $members = Member::find_all();
-    
-    
+
+    $members = Member::find_all();  
+    //get ratings of members 
     foreach($members as $member){
          $eloRatings[$member->fName] = $member->rating;
     }
-    // example data for testing purposes
-    /*
-   $eloRatings["Jon Smith"]= 1063;
-   $eloRatings["Person2"]= 1151;
-   $eloRatings["person3"]= 1840;
-   $eloRatings["person4"]= 1777;
-   $eloRatings["person5"]= 1915;
-   $eloRatings["person6"]= 1777;
-   $eloRatings["person7"]= 1520;
-   $eloRatings["person8"]= 1585;
-   $eloRatings["person9"]= 1521;
-   $eloRatings["person10"]= 1447;
-   $eloRatings["person11"]= 1700;
-   $eloRatings["person12"]= 1500;
-   $eloRatings["person13"]= 1521;
-   $eloRatings["person14"]= 1234;
-   $eloRatings["person15"]= 1700;
-   $eloRatings["person16"]= 1342;
-   $eloRatings["person17"]= 1540;
-   $eloRatings["person18"]= 1244;
-   $eloRatings["person19"]= 1320;
-   $eloRatings["person20"]= 1490;
-   $eloRatings["person21"]= 2030;
-*/
+
    $distribution = array();
    //ranges for distribution
    //assumption:
@@ -163,7 +138,6 @@
         }
     }
 
-    
     //headers and graph titles
     $titleX = $width /2 - 50;
     $titleY = $padding /2 -10;
