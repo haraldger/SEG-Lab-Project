@@ -22,7 +22,7 @@
             $this->matchDate = $args['matchDate'] ?? '';
             $this->competitorID1 = $args['competitorID1'] ?? '';
             $this->competitorID2 = $args['competitorID2'] ?? '';
-            $this->winner = $args['winner'] ?? '';
+            $this->winner = $args['winner'] ?? '0';
         }
 
         public function validate(){
@@ -52,7 +52,7 @@
         }
 
         public function calculateElo(){
-            if ($this->winner != '' && $this->competitorID1!='' && $this->competitorID2!=''){
+            if ($this->winner != '0' && $this->competitorID1!='' && $this->competitorID2!=''){
                 $m1 = Member::find_by_id($this->competitorID1);
                 $m2 = Member::find_by_id($this->competitorID2);
 
