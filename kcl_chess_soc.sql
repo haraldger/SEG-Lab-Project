@@ -109,6 +109,49 @@ VALUES ('Serge', 'LeMans', 'lemans@kcl.ac.uk', '111 Halloumi Street', '077733257
 INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
 VALUES ('Xena', 'Wobbles', 'Wobbles@kcl.ac.uk', '111 Halloumi Street', '0747332574', 'Other', '1998-01-01', 1400, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
 INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Harald', 'Gerhardsen', 'harald.gerhardsen@kcl.ac.uk', 'Bush House', '0712345678', 'Male', '1999-02-15', 2100, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Ravi', 'Ghaghada', 'ghaghada@kcl.ac.uk', '1 Strand Street', '0712332574', 'Male', '1999-03-13', 2000, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Kristin', 'Bensen', 'bensen@kcl.ac.uk', '44 London Road', '0747331274', 'Female', '1999-12-24', 2100, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Uri', 'Lee', 'lee@kcl.ac.uk', '234 Northern Street', '0750002574', 'Female', '1998-01-01', 1900, 'Officer', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Hovsep', 'Birian', 'prague@kcl.ac.uk', '23 New York Square', '0747332000', 'Other', '1995-11-11', 1000, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Alan', 'Parsons', 'project@kcl.ac.uk', '111 Halloumi Street', '0747332574', 'Other', '1998-01-01', 1400, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Wena', 'Xobbles', 'xabble@kcl.ac.uk', 'Carla Road', '0705432123', 'Other', '1997-04-21', 1700, 'Officer', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Roan', 'Atkinson', 'bean@kcl.ac.uk', 'Mean Street Bridge', '0716532574', 'Male', '1978-06-07', 1000, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Doctor', 'House', 'housemd@kcl.ac.uk', '123 Hospital Road', '0754321574', 'Other', '2003-12-12', 2050, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Darth', 'Vader', 'deathstar@kcl.ac.uk', '0 Death Star', '0747332424', 'Other', '1945-10-01', 1100, 'Officer', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Morgoth', 'Melkor', 'belerian@kcl.ac.uk', '23 Valinor Road', '0742882574', 'Other', '1987-01-01', 2000, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Bilbo', 'Baggins', 'baggins@kcl.ac.uk', 'Shire Hill', '0747376574', 'Male', '1992-04-28', 1500, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Gandalf', 'Grey', 'wizard@kcl.ac.uk', '999 Middle Earth', '0766632574', 'Other', '2002-02-15', 2200, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Galadriel', 'Elven', 'magic@kcl.ac.uk', '9 Lothlorien House', '0747332111', 'Female', '1955-09-06', 1100, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Anna', 'Jansson', 'crime@kcl.ac.uk', '32 Gotland', '0747442574', 'Female', '2001-04-13', 1250, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Camilla', 'Lackberg', 'redundant@kcl.ac.uk', '123 Strand Street', '0747654374', 'Female', '1978-11-01', 1100, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Avinash', 'Patel', 'info@kcl.ac.uk', '323 Bland Land', '0747336774', 'Male', '2000-08-08', 1750, 'Officer', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Magnus', 'Carlsen', 'master@kcl.ac.uk', '999 Pro Street', '0747332574', 'Other', '1998-01-01', 2000, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Ariel', 'Mermaid', 'water@kcl.ac.uk', 'Sea Street', '0747332522', 'Female', '1944-12-21', 1800, 'Officer', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Lord', 'Pretentious', 'fancy@kcl.ac.uk', '50 Rich Street', '0747777777', 'Male', '1966-07-07', 1850, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('John', 'Lennon', 'beatles@kcl.ac.uk', '178 New York', '0711332574', 'Male', '1940-05-15', 1900, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
+INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
+VALUES ('Paul', 'Mccartney', 'beatles@kcl.ac.uk', 'Abbey Road Studios', '0744432574', 'Male', '1942-11-21', 2100, 'Member', '$2y$10$rvav2vjDh2d5umrLE2zyYuPxwAz4JE2yoV9IZ3Az7TkAyj5ErWpU.');
 VALUES ('Contessa', 'Raylene', 'Raylene@kcl.ac.uk', '111 Camembert Street', '0747332574', 'Other', '1998-01-01', 1400, 'Member', '$2y$10$cJTVB5pyJUpz.z/dTRQyFuPhrkXA/kLg7h52TSdfNlnzbih5CRmFy');
 INSERT INTO members (fName, lName, email, address, phoneNum, gender, dob, rating, role, hashed_password)
 VALUES ('Dolly', 'Unicycle', 'Unicycle@kcl.ac.uk', '111 Camembert Street', '0747332574', 'Other', '1998-01-01', 1400, 'Officer', '$2y$10$a66q8wvlWqhjUm4FxHNysOVu8kFn9cCjQOjBayrq01JCImKYsgdPu');
