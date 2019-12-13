@@ -28,7 +28,7 @@
         public function validate(){
             $this->errors = [];
             
-            if ($this->tournamentID == ''){
+            if (is_blank($this->tournamentID)){
                 $this->errors[] = "Tournament ID cannot be null.";
             } else {
                 $tournament = Tournament::find_by_id($this->tournamentID);
@@ -37,15 +37,16 @@
                 }
             }
 
+            if (is_blank($this->roundNum))
             if ($this->matchDate == ''){
                 $this->errors[] = "Match date cannot be empty.";
             }
 
-            if ($this->competitorID1 == ''){
+            if (is_blank($this->competitorID1)){
                 $this->errors[] = "Competitor 1 cannot have no value";
             }
             
-            if ($this->competitorID2 == ''){
+            if (is_blank($this->competitorID2)){
                 $this->errors[] = "Competitor 2 cannot have no value";
             }
         }

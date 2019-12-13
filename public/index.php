@@ -1,4 +1,3 @@
-
 <?php 
 require_once('../private/initialise.php');
 $page_title = "Welcome to KCL Chess Society";             
@@ -16,6 +15,7 @@ require_once('../private/shared/header.php');
         <div class="col-4">
             <h3>News</h3>
             <?php
+            // display news items
             $sampleNews = News::find_all()[0];
             echo("
                 <h4>" . h($sampleNews->title) . "</h4>
