@@ -53,16 +53,20 @@ if(is_post_request() && $_POST['signup'] === 'true'){
                 ");
             if($tournament->signupDeadline != ''){
                 $date = date_create_from_format('Y-m-d H:i:s', $tournament->signupDeadline);
-                echo("<p>" . h($date->format('Y-m-d')) . "</p>");
+                echo("<p>Deadline: " . h($date->format('Y-m-d')) . "</p>");
                 if(!$tournament->has_competitor(get_session_id())){
                     // User not signed up
-                    ?>
-                    <form action = "<?php $_PHP_SELF ?>" method = "POST">
-                        <input type="hidden" name="type" value="<?php echo($_POST['type']); ?>">
-                        <input type="hidden" name="tournament" value="<?php echo($tournament->id); ?>">
-                        <button name="signup" value="true" type="submit">Sign Up</button>
-                    </form>
-                <?php 
+                    if(sizeof($tournament->get_competitors()) >= 32){  // Tournament full
+                        echo("<small><i>Signup closed</i></small>");
+                    } else {  // Can sign up
+                        ?>
+                            <form action = "<?php $_PHP_SELF ?>" method = "POST">
+                                <input type="hidden" name="type" value="<?php echo($_POST['type']); ?>">
+                                <input type="hidden" name="tournament" value="<?php echo($tournament->id); ?>">
+                                <button name="signup" value="true" type="submit">Sign Up</button>
+                            </form>
+                        <?php 
+                    }
                 }else{
                     ?>
                     <form action = "<?php $_PHP_SELF ?>" method = "POST">
