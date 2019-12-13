@@ -8,7 +8,7 @@ if (!isset($_GET['id']) || !isset($_GET['round'])) {
     redirect_to(url_for('officer/tournaments.php'));
 }
 
-$roundNum = $_GET['round']; 
+$roundNum = $_GET['round'];
 $tournament = Tournament::find_by_id($_GET['id']);
 
 $organiserIDs = array();
@@ -33,10 +33,7 @@ if (is_post_request()) {
         $counter++;
     }
     redirect_to(url_for('/officer/tournamentMatches.php?id=' . $tournament->id));
-}
-
-else {
-}
+} else { }
 
 include(SHARED_PATH . '/officer_header.php');
 ?>
@@ -49,23 +46,23 @@ include(SHARED_PATH . '/officer_header.php');
 
     <form action="<?php echo url_for('/officer/matchRecord.php?id=' . $tournament->id . '&round=' . $roundNum); ?>" method="post">
         <div class="form-group">
-        <?php 
-        $counter = 1;
-        $form_string = '';
-        foreach($match_ids as $match_id) {
-            $competitors = get_match_competitors($match_id, $database);
-            $form_string .= "<i>Match " . $counter . " Winner:<i><br>";
-            $form_string .= '<select name="matchWinner' . $counter . '">';
-            $form_string .= '<option value=' . $competitors["compID1"] . '>';
-            $form_string .=  $competitors["compEmail1"] . '</option>';
-            $form_string .=  '<option value=' . $competitors["compID2"] . '>';
-            $form_string .=  $competitors["compEmail2"] . '</option>';
-            $form_string .= '</select>';
-            $form_string .= "<br><br>";
-            $counter++;
-        }
-        echo $form_string;
-        ?>
+            <?php
+            $counter = 1;
+            $form_string = '';
+            foreach($match_ids as $match_id) {
+                $competitors = get_match_competitors($match_id, $database);
+                $form_string .= "<i>Match " . $counter . " Winner:<i><br>";
+                $form_string .= '<select name="matchWinner' . $counter . '">';
+                $form_string .= '<option value=' . $competitors["compID1"] . '>';
+                $form_string .=  $competitors["compEmail1"] . '</option>';
+                $form_string .=  '<option value=' . $competitors["compID2"] . '>';
+                $form_string .=  $competitors["compEmail2"] . '</option>';
+                $form_string .= '</select>';
+                $form_string .= "<br><br>";
+                $counter++;
+            }
+            echo $form_string;
+            ?>
         </div>
         <div id="operations">
             <input class= "btn btn-primary btn-lg" type="submit" value="Record Matches" />

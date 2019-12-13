@@ -24,6 +24,7 @@ if (!in_array(get_session_id(), $organiserIDs)) {
 $last_round = find_last_round($tournament->id, $database);
 $winner_found = winner_found($tournament->id, $last_round, $database);
 $last_round_finished = check_if_round_finished($tournament->id, $last_round, $database);
+$can_start = check_competitor_size($tournament->id, $database);
 
 if (is_post_request()) {
     if ($last_round == 0) {
@@ -32,11 +33,10 @@ if (is_post_request()) {
         foreach ($competitors as $competitor) {
             array_push($competitor_ids, $competitor->id);
         }
-        $match_ids = generate_first_round($competitor_ids);
-    } else {
-        $competitor_ids = get_last_round_winners($tournament->id, $last_round, $database);
         $match_ids = generate_next_round($competitor_ids);
-    }
+    } 
+    else $competitor_ids = get_last_round_winners($tournament->id, $last_round, $database);
+    $match_ids = generate_next_round($competitor_ids);
 
     $roundNum = $last_round+1;
     foreach ($match_ids as $match_pair) {
@@ -80,24 +80,30 @@ include(SHARED_PATH . '/officer_header.php');
 
     <?php if ($last_round_finished): ?>
         <?php if ($last_round > 0) echo "ROUND " . $last_round . ": COMPLETE"; ?>
-        <?php if ($winner_found != -1): ?>
-            <?php echo "<br><br><h3>Tournament Complete</h3>"?>
-        <?php endif; ?>
-        <br>
-        <?php if ($winner_found == -1): ?>
-            <form action="<?php echo url_for('/officer/tournamentMatches.php?id=' . h(u($tournament->id))); ?>" method="post">
-                <div class="form-group">
-                <dl>
-                    <dt>Match Date/Time</dt>
-                    <dd><input type="date" class="form-control" name="matchDate" value="<?php echo date('Y-m-d'); ?>"/></dd>
-                </dl>
-                </div>
-                <div id="operations">
-                    <input class= "btn btn-primary btn-lg" type="submit" value="Generate Next Round" />
-                </div>
-                </form>
-            <br><br>
+        <?php if ($can_start): ?>
+            <?php if ($winner_found != -1): ?>
+                <br><br><h3>Tournament Complete</h3>
+                <br>Winner: <?php echo $winner_found;?>
             <?php endif; ?>
+            <br>
+            <?php if ($winner_found == -1): ?>
+                <form action="<?php echo url_for('/officer/tournamentMatches.php?id=' . h(u($tournament->id))); ?>" method="post">
+                    <div class="form-group">
+                    <dl>
+                        <dt>Match Date/Time</dt>
+                        <dd><input type="date" class="form-control" name="matchDate" value="<?php echo date('Y-m-d'); ?>"/></dd>
+                    </dl>
+                    </div>
+                    <div id="operations">
+                        <input class= "btn btn-primary btn-lg" type="submit" value="Generate Next Round" />
+                    </div>
+                    </form>
+                <br><br>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if (!$can_start): ?>
+            This tournament does not have a valid number of competitors (4, 8, 16 or 32).
+        <?php endif; ?>
     <?php endif; ?>
 
 </div>
