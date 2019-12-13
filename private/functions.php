@@ -261,7 +261,7 @@ function get_match_competitors($match_id, $database){
   $sql = "SELECT members.email FROM tournamentMatches, members WHERE ";
   $sql .= "tournamentMatches.id = '" . $match_id . "' AND ";
   $sql .= "competitorID2 = '" . $competitor_ids["competitorID2"] . "'";
-  $sql .= 'AND tournamentatches.competitorID2 = members.id';
+  $sql .= 'AND tournamentMatches.competitorID2 = members.id';
   $result = $database->query($sql);
   if (!$result) {
     exit("Database query failed.");
