@@ -5,10 +5,11 @@
 
     class Match extends DatabaseObject{
         static protected $table_name = "tournamentMatches";
-        static protected $db_columns = ['id', 'tournamentID', 'matchDate', 'competitorID1', 'competitorID2', 'winner'];
+        static protected $db_columns = ['id', 'tournamentID', 'roundNum', 'matchDate', 'competitorID1', 'competitorID2', 'winner'];
 
         public $id;
         public $tournamentID;
+        public $roundNum;
         public $matchDate;
         public $competitorID1;
         public $competitorID2;
@@ -17,6 +18,7 @@
         public function __construct($args=[]) {
             $this->id = $args['id'] ?? '';
             $this->tournamentID = $args['tournamentID'] ?? '';
+            $this->roundNum = $args['roundNum'] ?? '';
             $this->matchDate = $args['matchDate'] ?? '';
             $this->competitorID1 = $args['competitorID1'] ?? '';
             $this->competitorID2 = $args['competitorID2'] ?? '';
@@ -30,7 +32,7 @@
                 $this->errors[] = "Tournament ID cannot be null.";
             } else {
                 $tournament = Tournament::find_by_id($this->tournamentID);
-                if (sizeof($tournament) != 1){
+                if (!$tournament){
                     $this->errors[] = "Tournament ID does not exist in the tdata ";
                 }
             }
@@ -57,7 +59,7 @@
                 $P2 = (1.0 / (1.0 + pow(10, (($m2->rating - $m1->rating) / 400))));
                 $K = 30;
 
-                if ($this->winner == $this->$competitorID1){
+                if ($this->winner == $this->competitorID1){
                     $m1->rating = $m1->rating + $K * (1 - $P1);
                     $m2->rating = $m2->rating + $K * (0 - $P2); 
                 }

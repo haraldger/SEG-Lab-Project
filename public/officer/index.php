@@ -17,7 +17,7 @@ if(!(am_sysadmin() || am_officer())){
       <p><a href="<?php echo url_for('/officer/events.php'); ?>"><button type="button" class="btn btn-outline-dark">Events</button></a></p>
 	  <p><a href="<?php echo url_for('/officer/tournaments.php'); ?>"><button type="button" class="btn btn-outline-dark">Tournaments</button></a></p>
 	  <p><a href="<?php echo url_for('/officer/viewMembers.php'); ?>"><button type="button" class="btn btn-outline-dark">Members</button></a></p>
-	  <p><a href="<?php echo url_for('/officer/statistics.php'); ?>"><button type="button" class="btn btn-outline-dark">Member Elo distribution</button></a></p>
+	  <p><a href="<?php echo url_for('/officer/statistics.php'); ?>"><button type="button" class="btn btn-outline-dark">Member Elo Distribution</button></a></p>
 
   </div>
 
