@@ -1,6 +1,5 @@
 <?php 
 require_once('../../../private/initialise.php'); 
-require_once('../../../private/shared/classes/news.class.php'); 
 
 if(!(am_sysadmin() || am_officer())){
 	redirect_to(url_for('../../public'));
