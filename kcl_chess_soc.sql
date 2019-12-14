@@ -191,7 +191,7 @@ INSERT INTO news (title, authorID, description, releaseDate, expiryDate)
 VALUES ('Upcoming tournament!', 4, 'Hey guys!
 Hope you had a great week and weekend! Congratulations to all of you who played in the 20/20 for performing so well and if you haven''t had enough of chess tournaments we will be organising another one tomorrow!
 
-At tomorrow''s session, we will have another blitz tournament with the time control of 5 minutes! Please arrive around 6:15pm to sign up for the tournament! Last signups are at 6:30pm so make sure to come before that! This will be the last tournament of the semester so please come and have a go at winning our awesome prizes! ', '2019-11-25 18:23:00', '2019-12-25 00:00:00');
+At tomorrow''s session, we will have another blitz tournament with the time control of 5 minutes! Please arrive around 6:15pm to sign up for the tournament! Last signups are at 6:30pm so make sure to come before that! This will be the last tournament of the semester so please come and have a go at winning our awesome prizes! ', '2019-12-14 18:23:00', '2020-02-25 00:00:00');
 INSERT INTO news (title, authorID, description, releaseDate, expiryDate)
 VALUES ('London Chess Classic', 4, 'Hi everyone!
 The London Chess Classic (the final part of the grand chess tour) is coming up soon! It will be from Dec 2nd to the 8th! This is a huge chess event because the famous Magnus Carlsen will be in it! 
@@ -206,7 +206,7 @@ VALUES ('Thank you for your service!', 4, 'As of today, our beloved president is
   in your continued adventures. We are now without a leader!', '2019-11-25 11:13:47', '2020-12-10 00:00:00');
 INSERT INTO news (title, authorID, description, releaseDate, expiryDate)
 VALUES ('Take to the streets!', 4, 'Today we march in unwavering support of the global communist revolution. The Bourgeoisie must be sent to the GULAGS!', 
-  '2021-05-21 19:23:00', '2025-12-10 00:00:00');
+  '2018-05-21 19:23:00', '2025-12-10 00:00:00');
 INSERT INTO news (title, authorID, description, releaseDate, expiryDate)
 VALUES ('The chess society is expanding', 4, 'We are glad to announce that the LSE Chess Society has bought the KCL Chess society. From now on, all members must transfer to LSE to remain in
   our society.', '2019-12-01 23:00:00', '2019-12-27 00:00:00');
