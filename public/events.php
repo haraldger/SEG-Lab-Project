@@ -45,7 +45,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
 
         // Sort tournaments for deadline
         usort($tournaments, function($a, $b){
-            if($b->signupDeadline < $a->signupDeadline) return -1;
+            if($b->signupDeadline > $a->signupDeadline) return -1;
             elseif ($a->signupDeadline === $b->signupDeadline) return 0;
             else return 1;
         });
@@ -96,9 +96,9 @@ if(is_post_request() && $_POST['signup'] === 'true'){
             }
         }
 
-        // Sort events for release date
+        // Sort events for event date
         usort($events, function($a, $b){
-            if($b->releaseDate < $a->releaseDate) return -1;
+            if($b->eventDate > $a->eventDate) return -1;
             elseif ($a == $b) return 0;
             else return 1;
         });

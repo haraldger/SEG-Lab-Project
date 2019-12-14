@@ -117,7 +117,7 @@ class Member extends DatabaseObject {
     if($this->password_required) {
       if(is_blank($this->password)) {
         $this->errors[] = "Password cannot be blank.";
-      } elseif (!has_length($this->password, array('min' => 6))) {
+      } elseif (!has_length($this->password, array('min' => 5))) {
         $this->errors[] = "Password must contain 6 or more characters";
       } elseif (!preg_match('/[A-Za-z]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 letter";
