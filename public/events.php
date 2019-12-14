@@ -21,7 +21,7 @@ if(is_post_request() && $_POST['signup'] === 'true'){
 ?>
 
 <div class="container mt-5 mb-5">
-	<h2>KCLCS</h2>
+    <h2>KCLCS</h2>
     <img src="./static/chessSocietyLogo.jpg" alt="logo" width="10%" height="10%">
     <hr>
     <h3>
@@ -89,16 +89,12 @@ if(is_post_request() && $_POST['signup'] === 'true'){
     } else {
         $events = SocietyEvent::find_all();
 
-        // Fetch non-expired events
+        // Fetch non-expired, released events
         for ($i=0; $i < count($events); $i++) { 
             if(strtotime($events[$i]->expiryDate) < time()) {
                 unset($events[$i]);
             }
-        }
-
-        // Remove unreleased events
-        for ($i=0; $i < count($events); $i++) { 
-            if(strtotime($events[$i]->releaseDate) > time()) {
+            elseif(strtotime($events[$i]->releaseDate) > time()) {
                 unset($events[$i]);
             }
         }
