@@ -87,17 +87,11 @@ if(is_post_request() && $_POST['signup'] === 'true'){
 
     // User clicked events, or page just loaded
     } else {
-        $events = SocietyEvent::find_all();
-
-        // Fetch non-expired, released events
-        for ($i=0; $i < count($events); $i++) { 
-            if(strtotime($events[$i]->expiryDate) < time()) {
-                unset($events[$i]);
-            }
-            elseif(strtotime($events[$i]->releaseDate) > time()) {
-                unset($events[$i]);
-            }
-        }
+        date_default_timezone_set("Europe/London");
+		$date = date('Y-m-d H:i:s', time());
+		$query = "SELECT * FROM societyEvents WHERE releaseDate < '".$date."' AND expiryDate > '".$date."'";
+		
+		$events = SocietyEvent::find_by_sql($query);
 
         // Sort events for event date
         usort($events, function($a, $b){
