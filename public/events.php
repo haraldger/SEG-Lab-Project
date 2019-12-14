@@ -96,6 +96,13 @@ if(is_post_request() && $_POST['signup'] === 'true'){
             }
         }
 
+        // Remove unreleased events
+        for ($i=0; $i < count($events); $i++) { 
+            if(strtotime($events[$i]->releaseDate) > time()) {
+                unset($events[$i]);
+            }
+        }
+
         // Sort events for event date
         usort($events, function($a, $b){
             if($b->eventDate > $a->eventDate) return -1;
