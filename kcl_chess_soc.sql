@@ -164,7 +164,7 @@ VALUES ('Pub Quiz', 'Get to know society members with a little friendly competit
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Awards Ceremony', 'Come and celebrate the achievements of our society members', '2020-04-01 14:00:00', '2020-02-01 00:00:00', '2020-04-01 21:00:00');
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
-VALUES ('Meet&Greet w/ Magnus Carlsen', 'Enjoy an excellent presentation, as well as a meet and greet, with chess legend Magnus Carlsen', '2020-01-14 15:30:00', '2020-01-01 00:00:00', '2020-02-01 00:00:00');
+VALUES ('Meet&Greet w/ Magnus Carlsen', 'Enjoy an excellent presentation, as well as a meet and greet, with chess legend Magnus Carlsen', '2019-12-31 15:30:00', '2019-12-10 00:00:00', '2020-02-01 00:00:00');
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Yearly Meeting', 'Join us in deciding the future of the chess society! All members have the right to vote.', '2020-09-03 12:00:00', '2019-12-01 00:00:00', '2020-09-05 00:00:00');
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
@@ -172,7 +172,7 @@ VALUES ('Masterclass', 'Want to become the next Magnus Carlsen? Sign up for this
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Feeding the homeless', 'Homeless people are starving, so bring coffee and biscuits', '2021-11-30 10:00:00', '2020-02-01 00:00:00', '2022-01-01 23:59:00');
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
-VALUES ('Learn How to Cook', 'Gordon Ramsay is visiting KCLCS, and he\'ll show us where the lamb sauce is', '2019-12-31 23:49:00', '2019-12-01 00:00:00', '2020-04-01 21:00:00');
+VALUES ('Learn How to Cook', 'Gordon Ramsay is visiting KCLCS, and he\'ll show us where the lamb sauce is', '2020-04-01 13:49:00', '2019-12-31 00:00:00', '2020-04-01 21:00:00');
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
 VALUES ('Dissolve the government', 'In their never-ending quest to babysit each and every British citizen, the government has decided that chess is a taxable offense.', '2023-06-01 14:00:00', '2018-02-01 00:00:00', '2025-04-01 21:00:00');
 INSERT INTO societyEvents (name, description, eventDate, releaseDate, expiryDate)
